@@ -1,6 +1,5 @@
 from unittest import TestCase
 from Scraper import *
-from Search import Search
 from Statline import StatLine
 from pathlib import Path
 
@@ -133,9 +132,3 @@ class TestBulkScraper(TestCase):
         assert len(players) == 1
 
 
-class TestPlayerSearch(TestCase):
-    def test_search(self):
-        results = Search.search("Kobe")
-        assert len(results) == 4
-        assert 'Kobe Bryant (1997-2016)' in [_tuple[0] for _tuple in results]
-        assert all([_tuple[1].startswith("https://www.basketball-reference.com/players/") for _tuple in results])
