@@ -58,6 +58,7 @@ class PlayerPageScraper(Scraper):
         super().__init__(url)
         self._reg_season_table = self.get_table_with_id("totals")
         self._playoff_table = self.get_table_with_id("playoffs_totals")
+        self._advanced_table = self.get_table_with_id("advanced")
 
     def player(self) -> Player:
         id_ = self.get_id()
@@ -153,18 +154,47 @@ class PlayerPageScraper(Scraper):
         turnovers = self.get_stat_in_season("tov", row)
         fouls = self.get_stat_in_season("pf", row)
         points = self.get_stat_in_season("pts", row)
-        return StatLine(season=season, age=age, all_star=all_star, gamesPlayed=gamesPlayed, gamesStarted=gamesStarted,
-                        minutesPlayed=minutesPlayed, team=team,
-                        position=position, fg_made=fg_made, fg_attempted=fg_attempted, three_fg_made=three_fg_made,
-                        three_fg_attempted=three_fg_attempted, two_fg_made=two_fg_made,
-                        two_fg_attempted=two_fg_attempted, effective_fg_percentage=effective_fg_percentage,
-                        free_throw_made=free_throw_made, free_throw_attempted=free_throw_attempted,
-                        offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
-                        assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls, points=points)
+        statline = StatLine(season=season, age=age, all_star=all_star, gamesPlayed=gamesPlayed,
+                            gamesStarted=gamesStarted,
+                            minutesPlayed=minutesPlayed, team=team,
+                            position=position, fg_made=fg_made, fg_attempted=fg_attempted, three_fg_made=three_fg_made,
+                            three_fg_attempted=three_fg_attempted, two_fg_made=two_fg_made,
+                            two_fg_attempted=two_fg_attempted, effective_fg_percentage=effective_fg_percentage,
+                            free_throw_made=free_throw_made, free_throw_attempted=free_throw_attempted,
+                            offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
+                            assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
+                            points=points)
+        advanced_statline_rows = [tr for tr in self._advanced_table.find_all("tr", class_="full_table") if
+                                 self.get_stat_in_season("season", tr) == season]
+        if advanced_statline_rows:
+            advanced_statline = self._parse_stats_from_advanced_row(advanced_statline_rows[0], statline)
+            statline.advanced = advanced_statline
+        return statline
 
-    def _parse_stats_from_advanced_row(self, row):
+    def _parse_stats_from_advanced_row(self, row, season):
+        per = self.get_stat_in_season("per", row)
+        tsp = self.get_stat_in_season("ts_pct", row)
+        orb = self.get_stat_in_season("orb_pct", row)
+        tpar = self.get_stat_in_season("fg3a_per_fga_pct", row)
+        ftar = self.get_stat_in_season("fta_per_fga_pct", row)
+        drb = self.get_stat_in_season("drb_pct", row)
+        trb = self.get_stat_in_season("trb_pct", row)
+        astp = self.get_stat_in_season("ast_pct", row)
+        stlp = self.get_stat_in_season("stl_pct", row)
+        blkp = self.get_stat_in_season("blk_pct", row)
+        tovp = self.get_stat_in_season("tov_pct", row)
+        usgp = self.get_stat_in_season("usg_pct", row)
+        ows = self.get_stat_in_season("ows", row)
+        dws = self.get_stat_in_season("dws", row)
+        wsp48 = self.get_stat_in_season("ws_per_48", row)
+        obpm = self.get_stat_in_season("obpm", row)
+        dbpm = self.get_stat_in_season("dbpm", row)
+        vorp = self.get_stat_in_season("vorp", row)
 
-        return AdvancedStatLine()
+        return AdvancedStatLine(season=season, per=per, tsp=tsp, orb=orb, drb=drb, trb=trb, astp=astp, stlp=stlp,
+                                tpar=tpar, ftar=ftar,
+                                blkp=blkp, tovp=tovp, usgp=usgp, ows=ows, dws=dws,
+                                wsp48=wsp48, obpm=obpm, dbpm=dbpm, vorp=vorp)
 
     def _safe_get_item_prop(self, prop, attr=None, element=None):
         el = self._parsed.find(element, attrs={"itemprop": prop})
@@ -180,7 +210,7 @@ class PlayerPageScraper(Scraper):
             return None
         val: str = val.text
         try:
-            if val.startswith("."):
+            if "." in val:
                 return float(val)
             return int(val)
         except ValueError:

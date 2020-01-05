@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 from AdvancedStatLine import AdvancedStatLine
 
@@ -30,7 +30,7 @@ class StatLine:
     fouls: int
     points: int
     effective_fg_percentage: int
-    #advanced: Optional[AdvancedStatLine]
+    advanced: Optional[AdvancedStatLine] = field(init=False, repr=False)
 
     @property
     def two_fg_percentage(self):

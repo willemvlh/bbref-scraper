@@ -11,7 +11,7 @@ class TestPlayerSearch(TestCase):
         assert all([_tuple[1].startswith("https://www.basketball-reference.com/players/") for _tuple in results])
 
     def test_search_redirect(self):
-        #sometimes the search engine does not return a result page, but redirects automatically
+        # sometimes the search engine does not return a result page, but redirects automatically
         results = Search.search("LeBron")
         assert isinstance(results, list)
         print(results)

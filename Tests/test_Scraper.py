@@ -79,6 +79,25 @@ class TestScraper:
         player = self.carmelo_anthony.player()
         s = player.seasons[0]
         assert s.advanced.astp == 13.8
+        assert s.advanced.per == 17.6
+        assert s.advanced.tsp == 0.509
+        assert s.advanced.tpar == 0.146
+        assert s.advanced.ftar == 0.358
+        assert s.advanced.orb == 6.8
+        assert s.advanced.drb == 12.1
+        assert s.advanced.trb == 9.4
+        assert s.advanced.stlp == 1.7
+        assert s.advanced.blkp == 1.0
+        assert s.advanced.tovp == 12.7
+        assert s.advanced.usgp == 28.5
+        assert s.advanced.ows == 3.7
+        assert s.advanced.dws == 2.4
+        assert s.advanced.ws == 6.1
+        assert s.advanced.wsp48 == 0.098
+        assert s.advanced.obpm == 1.2
+        assert s.advanced.dbpm == -1.2
+        assert s.advanced.bpm == 0
+        assert s.advanced.vorp == 1.6
 
     def test_seasons(self):
         seasons = self.julius_erving.get_regular_season_totals()
