@@ -20,5 +20,5 @@ class Search:
     @staticmethod
     def search(name: str) -> List[Tuple]:
         scraper = _SearchPageScraper(
-            f"https://www.basketball-reference.com/search/search.fcgi?hint=&search={name}&pid=&idx=")
+            f"https://www.basketball-reference.com/search/search.fcgi?search={name}")
         return scraper.get_player_results()
