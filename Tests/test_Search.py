@@ -13,4 +13,5 @@ class TestPlayerSearch(TestCase):
     def test_search_redirect(self):
         #sometimes the search engine does not return a result page, but redirects automatically
         results = Search.search("LeBron")
+        assert isinstance(results, list)
         print(results)

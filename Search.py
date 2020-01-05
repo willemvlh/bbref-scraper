@@ -3,12 +3,12 @@ from Scraper import Scraper, PlayerPageScraper
 
 
 class _SearchPageScraper(Scraper):
-    def get_player_results(self):
+    def get_player_results(self) -> List[Tuple]:
         if self._parsed.find("div", id="info"):
             # sometimes the search automatically redirects to a specific player page.
             redirected_url = self._parsed.find("link", rel="canonical").attrs["href"]
             name = self._parsed.find("h1", itemprop="name").text
-            return name, redirected_url
+            return [(name, redirected_url)]
         results = []
         for result in self._parsed.find("div", id="players").find_all("div", class_="search-item"):
             name = result.find("div", class_="search-item-name").find("a")
