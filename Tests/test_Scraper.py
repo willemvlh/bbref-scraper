@@ -3,6 +3,8 @@ from Scraper import *
 from Statline import StatLine
 from pathlib import Path
 
+from TeamScraper import TeamPageScraper
+
 
 def assert_equal(first, second):
     if first != second:
@@ -29,22 +31,22 @@ class TestScraper:
         assert self.carmelo_anthony._get_name() == "Carmelo Anthony"
 
     def test_get_dob(self):
-        assert self.carmelo_anthony.get_dob() == "1984-05-29"
+        assert self.carmelo_anthony._get_dob() == "1984-05-29"
 
     def test_get_career_stats(self):
-        stats = self.carmelo_anthony.get_career_stats()
+        stats = self.carmelo_anthony._get_career_stats()
         assert isinstance(stats, StatLine)
         assert int(stats.gamesStarted) > 1000
 
     def test_get_id(self):
-        assert self.carmelo_anthony.get_id() == "carmelo_anthony"
+        assert self.carmelo_anthony._get_id() == "carmelo_anthony"
 
     def test_get_shooting_hand(self):
-        assert self.carmelo_anthony.get_shooting_hand() == "Right"
+        assert self.carmelo_anthony._get_shooting_hand() == "Right"
 
     def test_get_college(self):
-        assert self.carmelo_anthony.get_college() == "Syracuse"
-        assert self.lebron_james.get_college() is None
+        assert self.carmelo_anthony._get_college() == "Syracuse"
+        assert self.lebron_james._get_college() is None
 
     def test_player(self):
         player = self.carmelo_anthony.player()
@@ -100,22 +102,27 @@ class TestScraper:
         assert s.advanced.vorp == 1.6
 
     def test_seasons(self):
-        seasons = self.julius_erving.get_regular_season_totals()
+        seasons = self.julius_erving._get_regular_season_totals()
         assert len(seasons) == 11  # ABA seasons must be discarded
 
     def test_get_physicals(self):
-        assert self.carmelo_anthony.get_physicals() == ("6-8", 240)
+        assert self.carmelo_anthony._get_physicals() == ("6-8", 240)
 
     def test_get_draft_pick(self):
-        assert self.carmelo_anthony.get_draft_pick() == 3
-        assert self.ben_wallace.get_draft_pick() is None
+        assert self.carmelo_anthony._get_draft_pick() == 3
+        assert self.ben_wallace._get_draft_pick() is None
 
     def test_all_star(self):
-        assert len([season for season in self.julius_erving.get_regular_season_totals() if season.all_star]) == 11
+        assert len([season for season in self.julius_erving._get_regular_season_totals() if season.all_star]) == 11
 
     def test_get_playoff_totals(self):
-        assert len(self.julius_erving.get_playoffs_totals()) == 11
-        assert sum([season.points for season in self.julius_erving.get_playoffs_totals()]) == 3088
+        assert len(self.julius_erving._get_playoffs_totals()) == 11
+        assert sum([season.points for season in self.julius_erving._get_playoffs_totals()]) == 3088
+
+    def test_historical_player(self):
+        player = PlayerPageScraper("https://www.basketball-reference.com/players/h/hawkito01.html").player()
+        assert player.name == "Tom Hawkins"
+        assert player.date_of_birth == "1936-12-22"
 
 
 class TestPlayerListScraper(TestCase):
@@ -127,8 +134,7 @@ class TestPlayerListScraper(TestCase):
         assert all([url.startswith("https://www.basketball-reference.com/players/") for url in urls])
 
 
-
-class TestTotalMinutesListScraper(TestCase):
+class TestTotalMinutesListScraper:
     def test_scrape(self):
         s = TotalMinutesScraper(2000)
         urls = s.get_player_urls()
@@ -136,7 +142,7 @@ class TestTotalMinutesListScraper(TestCase):
         assert all([url.startswith("https://www.basketball-reference.com/players/") for url in urls])
 
 
-class TestBulkScraper(TestCase):
+class TestBulkScraper:
 
     def test_scrape(self):
         logging.getLogger().setLevel(logging.DEBUG)
@@ -151,3 +157,38 @@ class TestBulkScraper(TestCase):
         assert len(players) == 1
 
 
+class TestTeamPageScraper:
+
+    def test_team(self):
+        scr = TeamPageScraper("CLE")
+        team = scr.team()
+        assert team.name == "Cleveland Cavaliers"
+        assert team.code == "CLE"
+
+    def test_team_with_url(self):
+        team = TeamPageScraper(get_resource("cavs.html")).team()
+        assert team.name == "Cleveland Cavaliers"
+        assert team.wins == 1858
+        assert team.losses == 2149
+        assert team.playoff_appearances == 22
+        assert team.championships == 1
+        assert team.code == "CLE"
+        assert len(team.seasons) == 50
+
+    def test_season(self):
+        team = TeamPageScraper(get_resource("cavs.html")).team()
+        last_season = team.seasons[-1]
+        assert last_season.losses == 27
+        assert last_season.wins == 10
+        assert last_season.pace == 98.8
+        assert last_season.rel_pace == -1.6
+        assert last_season.ortg == 105.6
+        assert last_season.rel_ortg == -3.6
+        assert last_season.season == "2019-20"
+        assert not last_season.won_championship
+        assert not last_season.made_playoffs
+        team = TeamPageScraper(get_resource("cavs.html")).team()
+        championship_season = team.season("2015-16")
+        assert championship_season.wins == 57
+        assert championship_season.won_championship
+        assert championship_season.made_playoffs

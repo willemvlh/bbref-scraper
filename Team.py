@@ -1,5 +1,6 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
+
 
 @dataclass
 class TeamSeason:
@@ -7,6 +8,9 @@ class TeamSeason:
     wins: int
     losses: int
     pace: float
+    won_championship: bool
+    made_playoffs: bool
+    playoff_result: str
     rel_pace: float
     ortg: float
     rel_ortg: float
@@ -21,6 +25,13 @@ class Team:
     seasons: List[TeamSeason]
     wins: int
     losses: int
-    championships: int
-    playoffs: int
+    championships: int = field(init=False)
+    playoff_appearances: int = field(init=False)
 
+    def __post_init__(self):
+        self.playoff_appearances = len([s for s in self.seasons if s.made_playoffs])
+        self.championships = len([s for s in self.seasons if s.won_championship])
+
+    def season(self, year: str):
+        season = [s for s in self.seasons if s.season == year]
+        return season[0] if season else None

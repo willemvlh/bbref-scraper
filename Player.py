@@ -20,6 +20,9 @@ class Player:
     id: str
     shooting_hand: str
 
+    def __repr__(self):
+        return f"Player({self.name}, {self.date_of_birth})"
+
     def __eq__(self, other):
         return isinstance(other, Player) and self.id == other.id
 

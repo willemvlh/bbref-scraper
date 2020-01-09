@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 
@@ -23,7 +23,14 @@ class AdvancedStatLine:
     obpm: float
     dbpm: float
     vorp: float
+    bpm: float = field(init=False)
+    ws: float = field(init=False)
+
+    def __repr__(self):
+        return f"Statline({self.season})"
 
     def __post_init__(self):
-        self.bpm = self.dbpm + self.obpm
-        self.ws = self.ows + self.dws
+        if self.dbpm and self.obpm:
+            self.bpm = self.dbpm + self.obpm
+        if self.ows and self.dws:
+            self.ws = self.ows + self.dws

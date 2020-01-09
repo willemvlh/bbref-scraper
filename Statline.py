@@ -32,6 +32,9 @@ class StatLine:
     effective_fg_percentage: int
     advanced: Optional[AdvancedStatLine] = field(init=False, repr=False)
 
+    def __repr__(self):
+        return f"Statline({self.season}"
+
     @property
     def two_fg_percentage(self):
         return self.two_fg_made / self.two_fg_attempted

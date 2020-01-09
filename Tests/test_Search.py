@@ -3,15 +3,24 @@ from unittest.case import TestCase
 from Search import Search
 
 
-class TestPlayerSearch(TestCase):
-    def test_search(self):
-        results = Search.search("Kobe")
+class TestSearch(TestCase):
+    def test_search_players(self):
+        results = Search.search_players("Kobe")
         assert len(results) == 4
         assert 'Kobe Bryant (1997-2016)' in [_tuple[0] for _tuple in results]
         assert all([_tuple[1].startswith("https://www.basketball-reference.com/players/") for _tuple in results])
 
-    def test_search_redirect(self):
+    def test_search_players_redirect(self):
         # sometimes the search engine does not return a result page, but redirects automatically
-        results = Search.search("LeBron")
+        results = Search.search_players("LeBron")
         assert isinstance(results, list)
         print(results)
+
+    def test_team_search(self):
+        results = Search.search_teams("Bobcats")
+        assert len(results) == 1
+
+    def test_search_players_redirect(self):
+        results = Search.search_teams("Cavs")
+        assert len(results) == 1
+        print(results[0])
