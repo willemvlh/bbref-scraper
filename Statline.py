@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 from typing import Optional
 from AdvancedStatLine import AdvancedStatLine
+from GameLog import GameLog
+import Scraper
 
 
 @dataclass
@@ -31,13 +33,19 @@ class StatLine:
     points: int
     effective_fg_percentage: int
     advanced: Optional[AdvancedStatLine] = field(init=False, repr=False)
+    _player_url: str
 
     def __repr__(self):
-        return f"Statline({self.season}"
+        return f"Statline({self.season})"
 
     @property
     def two_fg_percentage(self):
         return self.two_fg_made / self.two_fg_attempted
+
+    @property
+    def game_logs(self):
+        scr = Scraper.GameLogScraper(self._player_url.rstrip(".html") + "/gamelog/" + str((int(self.season[0:4])+ 1)))
+        return scr.get_game_logs()
 
     @property
     def three_fg_percentage(self):

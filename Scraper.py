@@ -2,6 +2,7 @@ from typing import List
 from bs4 import BeautifulSoup, Comment, NavigableString
 
 from AdvancedStatLine import AdvancedStatLine
+from GameLog import GameLog
 from Player import Player
 from Statline import StatLine
 import requests
@@ -39,11 +40,14 @@ class Scraper:
         else:
             raise ValueError
 
-    def _get_data_stat_in_element(self, stat_name, element):
+    def _get_data_stat_in_element(self, stat_name, element, attr=None):
         val = element.find(attrs={"data-stat": stat_name})
         if not val:
             return None
-        val: str = val.text if not val.find("a") else val.find("a").text
+        if attr:
+            val = val.attrs[attr]
+        else:
+            val = val.text if not val.find("a") else val.find("a").text
         try:
             if "." in val:
                 return float(val)
@@ -191,7 +195,7 @@ class PlayerPageScraper(Scraper):
                             free_throw_made=free_throw_made, free_throw_attempted=free_throw_attempted,
                             offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
                             assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
-                            points=points)
+                            points=points, _player_url=self._url)
         advanced_statline_rows = [tr for tr in self._advanced_table.find_all("tr", class_="full_table") if
                                   self._get_data_stat_in_element("season", tr) == season]
         if advanced_statline_rows:
@@ -257,3 +261,42 @@ class TotalMinutesScraper(Scraper):
     def get_player_urls(self):
         cells = self._parsed.find_all("td", {"data-stat": "player"})
         return ["https://www.basketball-reference.com" + cell.find_next("a").attrs["href"] for cell in cells]
+
+
+class GameLogScraper(Scraper):
+    def get_game_logs(self) -> List[GameLog]:
+        table = self._find("table", id="pgl_basic")
+        if not table:
+            return
+        rows = table.find("tbody").find_all("tr")
+        return [self._parse_row(row) for row in rows if "class" not in row.attrs]
+
+    def _parse_row(self, row):
+        gl = GameLog()
+        gl.date = self._get_data_stat_in_element("date_game", row)
+        gl.age = self._get_data_stat_in_element("age", row)
+        gl.team = self._get_data_stat_in_element("team_id", row)
+        gl.opponent = self._get_data_stat_in_element("opp_id", row)
+        gl.result = self._get_data_stat_in_element("game_result", row)
+        gl.started = self._get_data_stat_in_element("gs", row) == 1
+        gl.played = not self._get_data_stat_in_element("reason", row)
+        if gl.played:
+            gl.seconds_played = self._get_data_stat_in_element("mp", row, "csk")
+            gl.fg = self._get_data_stat_in_element("fg", row)
+            gl.fga = self._get_data_stat_in_element("fga", row)
+            gl.tp = self._get_data_stat_in_element("fg3", row)
+            gl.tpa = self._get_data_stat_in_element("fg3a", row)
+            gl.ft = self._get_data_stat_in_element("ft", row)
+            gl.fta = self._get_data_stat_in_element("fta", row)
+            gl.orb = self._get_data_stat_in_element("orb", row)
+            gl.drb = self._get_data_stat_in_element("drb", row)
+            gl.ast = self._get_data_stat_in_element("ast", row)
+            gl.stl = self._get_data_stat_in_element("stl", row)
+            gl.blk = self._get_data_stat_in_element("blk", row)
+            gl.tov = self._get_data_stat_in_element("tov", row)
+            gl.pf = self._get_data_stat_in_element("pf", row)
+            gl.points = self._get_data_stat_in_element("pts", row)
+            gl.game_score = self._get_data_stat_in_element("game_score", row)
+            gl.plus_minus = self._get_data_stat_in_element("plus_minus", row)
+
+        return gl

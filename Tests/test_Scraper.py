@@ -6,11 +6,6 @@ from pathlib import Path
 from TeamScraper import TeamPageScraper
 
 
-def assert_equal(first, second):
-    if first != second:
-        raise AssertionError(f"AssertionError: {first} does not equal {second}")
-
-
 def get_resource(fn):
     return str(Path(__file__).parent.joinpath("resources").joinpath(fn).absolute())
 
@@ -53,29 +48,29 @@ class TestScraper:
         assert len(player.seasons) > 10
         rookie_season = player.seasons[0]
         assert rookie_season.position == "SF"
-        assert_equal(rookie_season.season, "2003-04")
-        assert_equal(rookie_season.gamesStarted, 82)
-        assert_equal(rookie_season.gamesPlayed, 82)
-        assert_equal(rookie_season.minutesPlayed, 2995)
-        assert_equal(rookie_season.fg_attempted, 1465)
-        assert_equal(rookie_season.fg_made, 624)
-        assert_equal(rookie_season.three_fg_made, 69)
-        assert_equal(rookie_season.three_fg_attempted, 214)
-        assert_equal(rookie_season.two_fg_attempted, 1251)
-        assert_equal(rookie_season.two_fg_made, 555)
-        assert_equal(rookie_season.effective_fg_percentage, 0.449)
-        assert_equal(rookie_season.free_throw_made, 408)
-        assert_equal(rookie_season.free_throw_attempted, 525)
-        assert_equal(rookie_season.offensive_rebounds, 183)
-        assert_equal(rookie_season.defensive_rebounds, 315)
-        assert_equal(rookie_season.rebounds, 498)
-        assert_equal(rookie_season.all_star, False)
-        assert_equal(rookie_season.assists, 227)
-        assert_equal(rookie_season.blocks, 41)
-        assert_equal(rookie_season.turnovers, 247)
-        assert_equal(rookie_season.steals, 97)
-        assert_equal(rookie_season.fouls, 225)
-        assert_equal(rookie_season.points, 1725)
+        assert rookie_season.season == "2003-04"
+        assert rookie_season.gamesStarted == 82
+        assert rookie_season.gamesPlayed == 82
+        assert rookie_season.minutesPlayed == 2995
+        assert rookie_season.fg_attempted == 1465
+        assert rookie_season.fg_made == 624
+        assert rookie_season.three_fg_made == 69
+        assert rookie_season.three_fg_attempted == 214
+        assert rookie_season.two_fg_attempted == 1251
+        assert rookie_season.two_fg_made == 555
+        assert rookie_season.effective_fg_percentage == 0.449
+        assert rookie_season.free_throw_made == 408
+        assert rookie_season.free_throw_attempted == 525
+        assert rookie_season.offensive_rebounds == 183
+        assert rookie_season.defensive_rebounds == 315
+        assert rookie_season.rebounds == 498
+        assert not rookie_season.all_star
+        assert rookie_season.assists == 227
+        assert rookie_season.blocks == 41
+        assert rookie_season.turnovers == 247
+        assert rookie_season.steals == 97
+        assert rookie_season.fouls == 225
+        assert rookie_season.points == 1725
 
     def test_advanced_stats(self):
         player = self.carmelo_anthony.player()
@@ -104,6 +99,11 @@ class TestScraper:
     def test_seasons(self):
         seasons = self.julius_erving._get_regular_season_totals()
         assert len(seasons) == 11  # ABA seasons must be discarded
+
+    def test_game_log(self):
+        seasons = PlayerPageScraper("https://www.basketball-reference.com/players/m/mbengdj01.html").player().seasons
+        gl = seasons[0].game_logs
+        assert len([game for game in gl if game.played]) == seasons[0].gamesPlayed
 
     def test_get_physicals(self):
         assert self.carmelo_anthony._get_physicals() == ("6-8", 240)
@@ -148,7 +148,7 @@ class TestBulkScraper:
         logging.getLogger().setLevel(logging.DEBUG)
         bulk_scr = BulkScraper(map(get_resource, ["lebron_james.html", "carmelo_anthony.html"]))
         processed = bulk_scr.scrape_all()
-        assert_equal(len(processed), 2)
+        assert len(processed) == 2
         assert "Carmelo Anthony" in [p.name for p in processed]
 
     def test_double_scrape(self):
@@ -192,3 +192,40 @@ class TestTeamPageScraper:
         assert championship_season.wins == 57
         assert championship_season.won_championship
         assert championship_season.made_playoffs
+
+class TestGameLogScraper:
+
+    def test_scrape(self):
+        url = "https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2008/"
+        scr = GameLogScraper(url)
+        logs = scr.get_game_logs()
+        assert len(logs) == 70
+        first_game = logs[0]
+        assert not first_game.played
+        assert first_game.team == "GSW"
+        assert first_game.opponent == "TOR"
+        assert first_game.date == "2007-11-18"
+
+        second_game = logs[1]
+        assert not second_game.started
+        assert second_game.played
+        assert second_game.team == "GSW"
+        assert second_game.opponent == "NYK"
+        assert second_game.result == "W (+26)"
+        assert second_game.seconds_played == 597
+        assert second_game.fg == 1
+        assert second_game.fga == 3
+        assert second_game.tp == 0
+        assert second_game.tpa == 0
+        assert second_game.ft == 0
+        assert second_game.fta == 0
+        assert second_game.orb == 1
+        assert second_game.drb == 0
+        assert second_game.ast == 0
+        assert second_game.stl == 0
+        assert second_game.blk == 1
+        assert second_game.tov == 0
+        assert second_game.pf == 3
+        assert second_game.points == 2
+        assert second_game.game_score == 0.5
+        assert second_game.plus_minus == 1
