@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List
-
+from typing import List, Dict
 
 @dataclass
 class TeamSeason:
@@ -16,6 +15,13 @@ class TeamSeason:
     rel_ortg: float
     drtg: float
     rel_drtg: float
+    _team_code: str
+
+    @property
+    def roster(self) -> List[Dict]:
+        from bballer.scrapers.team import TeamSeasonScraper
+        scraper = TeamSeasonScraper(self._team_code, int(self.season[0:4]) + 1)
+        return scraper.get_roster()
 
 
 @dataclass

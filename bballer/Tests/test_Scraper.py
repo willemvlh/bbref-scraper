@@ -4,12 +4,10 @@ from unittest import TestCase
 from bballer.scrapers.gamelog import GameLogScraper
 from bballer.scrapers.misc import BulkScraper, TotalMinutesScraper
 from bballer.scrapers.player import PlayerListScraper, PlayerPageScraper
+from bballer.scrapers.team import TeamPageScraper, TeamSeasonScraper
+
 from bballer.models.stats import StatLine
 from pathlib import Path
-
-from bballer.scrapers.team import TeamPageScraper
-from bballer.scrapers import misc
-
 
 def get_resource(fn):
     return str(Path(__file__).parent.joinpath("resources").joinpath(fn).absolute())
@@ -180,6 +178,11 @@ class TestTeamPageScraper:
         assert team.code == "CLE"
         assert len(team.seasons) == 50
 
+    def test_roster(self):
+        team = TeamPageScraper(get_resource("cavs.html")).team()
+        s = team.seasons[-1]
+        assert len(s.roster) > 10
+
     def test_season(self):
         team = TeamPageScraper(get_resource("cavs.html")).team()
         last_season = team.seasons[-1]
@@ -198,6 +201,16 @@ class TestTeamPageScraper:
         assert championship_season.won_championship
         assert championship_season.made_playoffs
 
+
+class TestTeamSeasonScraper:
+    def test_roster_scrape(self):
+        roster = TeamSeasonScraper("CLE", 2016).get_roster()
+        for player in roster:
+            assert isinstance(player["name"], str)
+            assert isinstance(player["url"], str)
+            assert isinstance(player["number"], int)
+
+
 class TestGameLogScraper:
 
     def test_scrape(self):
@@ -210,6 +223,7 @@ class TestGameLogScraper:
         assert first_game.team == "GSW"
         assert first_game.opponent == "TOR"
         assert first_game.date == "2007-11-18"
+        assert first_game.points is None
 
         second_game = logs[1]
         assert not second_game.started

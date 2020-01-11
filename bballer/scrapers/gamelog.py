@@ -21,23 +21,22 @@ class GameLogScraper(Scraper):
         gl.result = self._get_data_stat_in_element("game_result", row)
         gl.started = self._get_data_stat_in_element("gs", row) == 1
         gl.played = not self._get_data_stat_in_element("reason", row)
-        if gl.played:
-            gl.seconds_played = self._get_data_stat_in_element("mp", row, "csk")
-            gl.fg = self._get_data_stat_in_element("fg", row)
-            gl.fga = self._get_data_stat_in_element("fga", row)
-            gl.tp = self._get_data_stat_in_element("fg3", row)
-            gl.tpa = self._get_data_stat_in_element("fg3a", row)
-            gl.ft = self._get_data_stat_in_element("ft", row)
-            gl.fta = self._get_data_stat_in_element("fta", row)
-            gl.orb = self._get_data_stat_in_element("orb", row)
-            gl.drb = self._get_data_stat_in_element("drb", row)
-            gl.ast = self._get_data_stat_in_element("ast", row)
-            gl.stl = self._get_data_stat_in_element("stl", row)
-            gl.blk = self._get_data_stat_in_element("blk", row)
-            gl.tov = self._get_data_stat_in_element("tov", row)
-            gl.pf = self._get_data_stat_in_element("pf", row)
-            gl.points = self._get_data_stat_in_element("pts", row)
-            gl.game_score = self._get_data_stat_in_element("game_score", row)
-            gl.plus_minus = self._get_data_stat_in_element("plus_minus", row)
+        gl.seconds_played = self._get_data_stat_in_element("mp", row, "csk") if gl.played else None
+        gl.fg = self._get_data_stat_in_element("fg", row) if gl.played else None
+        gl.fga = self._get_data_stat_in_element("fga", row) if gl.played else None
+        gl.tp = self._get_data_stat_in_element("fg3", row) if gl.played else None
+        gl.tpa = self._get_data_stat_in_element("fg3a", row) if gl.played else None
+        gl.ft = self._get_data_stat_in_element("ft", row) if gl.played else None
+        gl.fta = self._get_data_stat_in_element("fta", row) if gl.played else None
+        gl.orb = self._get_data_stat_in_element("orb", row) if gl.played else None
+        gl.drb = self._get_data_stat_in_element("drb", row) if gl.played else None
+        gl.ast = self._get_data_stat_in_element("ast", row) if gl.played else None
+        gl.stl = self._get_data_stat_in_element("stl", row) if gl.played else None
+        gl.blk = self._get_data_stat_in_element("blk", row) if gl.played else None
+        gl.tov = self._get_data_stat_in_element("tov", row) if gl.played else None
+        gl.pf = self._get_data_stat_in_element("pf", row) if gl.played else None
+        gl.points = self._get_data_stat_in_element("pts", row) if gl.played else None
+        gl.game_score = self._get_data_stat_in_element("game_score", row) if gl.played else None
+        gl.plus_minus = self._get_data_stat_in_element("plus_minus", row) if gl.played else None
 
         return gl

@@ -5,10 +5,24 @@ from bballer.models.team import Team, TeamSeason
 from bballer.scrapers.base import Scraper
 
 
+class TeamSeasonScraper(Scraper):
+    def __init__(self, code, year):
+        url = f"https://www.basketball-reference.com/teams/{code}/{year}.html"
+        super().__init__(url)
+
+    def get_roster(self):
+        table = self._find("table", id="roster")
+        return [{"name": self._get_data_stat_in_element("player", row),
+                 "number": self._get_data_stat_in_element("number", row),
+                 "url": row.find("td", attrs={"data-stat": "player"}).find("a").attrs["href"]}
+                for row in table.find("tbody").find_all("tr")]
+
+
 class TeamPageScraper(Scraper):
     def __init__(self, code_or_url: str):
         code_is_url = True if len(code_or_url) > 3 else False
         url = code_or_url if code_is_url else f"https://www.basketball-reference.com/teams/{code_or_url}/"
+        self.code = code_or_url if not code_is_url else None
         super().__init__(url)
         self._team_table = self._find("table", id=self._get_code())
 
@@ -50,11 +64,13 @@ class TeamPageScraper(Scraper):
         made_playoffs = bool(playoff_result)
         return TeamSeason(season=season, wins=wins, losses=losses, pace=pace, rel_pace=rel_pace, rel_drtg=def_rtg_rel,
                           rel_ortg=off_rtg_rel, ortg=off_rtg, drtg=def_rtg, made_playoffs=made_playoffs,
-                          won_championship=won_championship, playoff_result=playoff_result)
+                          won_championship=won_championship, playoff_result=playoff_result, _team_code=self._get_code())
 
     def _get_code(self):
-        url = self._find("link", rel="canonical").attrs["href"]
-        return url.split("/")[-2]
+        if not self.code:
+            url = self._find("link", rel="canonical").attrs["href"]
+            self.code = url.split("/")[-2]
+        return self.code
 
     def _get_playoff_result_from_row(self, row):
         td = row.find("td", attrs={"data-stat": "rank_team_playoffs"})
