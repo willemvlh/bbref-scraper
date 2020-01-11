@@ -2,7 +2,7 @@ import logging
 from unittest import TestCase
 
 from bballer.scrapers.gamelog import GameLogScraper
-from bballer.scrapers.misc import BulkScraper
+from bballer.scrapers.misc import BulkScraper, TotalMinutesScraper
 from bballer.scrapers.player import PlayerListScraper, PlayerPageScraper
 from bballer.models.stats import StatLine
 from pathlib import Path
@@ -141,7 +141,7 @@ class TestPlayerListScraper(TestCase):
 
 class TestTotalMinutesListScraper:
     def test_scrape(self):
-        s = misc(2000)
+        s = TotalMinutesScraper(2000)
         urls = s.get_player_urls()
         assert len(urls) > 10
         assert all([url.startswith("https://www.basketball-reference.com/players/") for url in urls])
