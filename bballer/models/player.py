@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List
 import json
 
-from Statline import StatLine
+from bballer.models.stats import StatLine
 
 
 @dataclass

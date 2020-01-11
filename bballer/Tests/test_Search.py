@@ -1,6 +1,6 @@
 from unittest.case import TestCase
 
-from Search import Search
+from bballer.scrapers.search import Search
 
 
 class TestSearch(TestCase):
@@ -19,8 +19,6 @@ class TestSearch(TestCase):
     def test_team_search(self):
         results = Search.search_teams("Bobcats")
         assert len(results) == 1
-
-    def test_search_players_redirect(self):
-        results = Search.search_teams("Cavs")
-        assert len(results) == 1
-        print(results[0])
+        team, url = results[0]
+        assert "Bobcats" in team
+        assert url.startswith("http")

@@ -1,88 +1,12 @@
-from typing import List
-from bs4 import BeautifulSoup, Comment, NavigableString
-
-from AdvancedStatLine import AdvancedStatLine
-from GameLog import GameLog
-from Player import Player
-from Statline import StatLine
-import requests
-import re
-import jsonpickle
-import os
 import logging
-import concurrent.futures
+import os
+import re
 
+from bs4 import Comment, BeautifulSoup
 
-class Scraper:
-    def __init__(self, url: str):
-        self._url = url
-        self._parsed = self._get_page()
-        logging.debug(f"Scraping {url}")
-
-    def _get_page(self):
-        content = self._get_content()
-        return BeautifulSoup(content, features="html.parser")
-
-    def _find(self, *args, **kwargs):
-        return self._parsed.find(args, kwargs)
-
-    def _get_content(self):
-        if self._url.startswith("http"):
-            logging.debug(f"Connecting to {self._url}")
-            r = requests.get(self._url)
-            r.raise_for_status()
-            return r.content
-        elif os.path.isfile(self._url):
-            logging.debug(f"About to open {self._url}")
-            with open(self._url, "r", encoding="utf-8") as f:
-                logging.debug(f"Opened {self._url}")
-                return f.read()
-        else:
-            raise ValueError
-
-    def _get_data_stat_in_element(self, stat_name, element, attr=None):
-        val = element.find(attrs={"data-stat": stat_name})
-        if not val:
-            return None
-        if attr:
-            val = val.attrs[attr]
-        else:
-            val = val.text if not val.find("a") else val.find("a").text
-        try:
-            if "." in val:
-                return float(val)
-            return int(val)
-        except ValueError:
-            return val
-
-    def _safe_get_item_prop(self, prop, attr=None, element=None):
-        el = self._parsed.find(element, attrs={"itemprop": prop})
-        if el and attr and el.attrs[attr]:
-            return el.attrs[attr].strip()
-        if el:
-            return el.text.strip()
-        return None
-
-    def _get_text_sibling(self, tag_name: str, tag_value: str):
-        element = self._parsed.find(tag_name, string=re.compile(tag_value))
-        if element:
-            return element.find_next_sibling(string=lambda x: isinstance(x, NavigableString)).strip()
-
-
-class BulkScraper:
-    def __init__(self, urls):
-        self._urls = urls
-        self._processed = []
-
-    def scrape_all(self, _max: int = None) -> List[Player]:
-        urls = set(self._urls[0:_max] if _max else self._urls)
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            players = executor.map(lambda u: PlayerPageScraper(u).player(), urls)
-            return list(players)
-
-    def serialize(self):
-        jsonpickle.set_encoder_options(name="json", indent=1)
-        return jsonpickle.encode(self._processed, unpicklable=False)
+from bballer.models.player import Player
+from bballer.models.stats import StatLine, AdvancedStatLine
+from bballer.scrapers.base import Scraper
 
 
 class PlayerPageScraper(Scraper):
@@ -251,52 +175,3 @@ class PlayerListScraper(Scraper):
     def get_player_urls(self):
         cells = self._parsed.find_all("th", {"data-stat": "player", "scope": "row"})
         return ["https://www.basketball-reference.com" + cell.find_next("a").attrs["href"] for cell in cells]
-
-
-class TotalMinutesScraper(Scraper):
-    def __init__(self, year: int):
-        url = f"https://www.basketball-reference.com/leagues/NBA_{year}_totals.html"
-        super().__init__(url)
-
-    def get_player_urls(self):
-        cells = self._parsed.find_all("td", {"data-stat": "player"})
-        return ["https://www.basketball-reference.com" + cell.find_next("a").attrs["href"] for cell in cells]
-
-
-class GameLogScraper(Scraper):
-    def get_game_logs(self) -> List[GameLog]:
-        table = self._find("table", id="pgl_basic")
-        if not table:
-            return
-        rows = table.find("tbody").find_all("tr")
-        return [self._parse_row(row) for row in rows if "class" not in row.attrs]
-
-    def _parse_row(self, row):
-        gl = GameLog()
-        gl.date = self._get_data_stat_in_element("date_game", row)
-        gl.age = self._get_data_stat_in_element("age", row)
-        gl.team = self._get_data_stat_in_element("team_id", row)
-        gl.opponent = self._get_data_stat_in_element("opp_id", row)
-        gl.result = self._get_data_stat_in_element("game_result", row)
-        gl.started = self._get_data_stat_in_element("gs", row) == 1
-        gl.played = not self._get_data_stat_in_element("reason", row)
-        if gl.played:
-            gl.seconds_played = self._get_data_stat_in_element("mp", row, "csk")
-            gl.fg = self._get_data_stat_in_element("fg", row)
-            gl.fga = self._get_data_stat_in_element("fga", row)
-            gl.tp = self._get_data_stat_in_element("fg3", row)
-            gl.tpa = self._get_data_stat_in_element("fg3a", row)
-            gl.ft = self._get_data_stat_in_element("ft", row)
-            gl.fta = self._get_data_stat_in_element("fta", row)
-            gl.orb = self._get_data_stat_in_element("orb", row)
-            gl.drb = self._get_data_stat_in_element("drb", row)
-            gl.ast = self._get_data_stat_in_element("ast", row)
-            gl.stl = self._get_data_stat_in_element("stl", row)
-            gl.blk = self._get_data_stat_in_element("blk", row)
-            gl.tov = self._get_data_stat_in_element("tov", row)
-            gl.pf = self._get_data_stat_in_element("pf", row)
-            gl.points = self._get_data_stat_in_element("pts", row)
-            gl.game_score = self._get_data_stat_in_element("game_score", row)
-            gl.plus_minus = self._get_data_stat_in_element("plus_minus", row)
-
-        return gl

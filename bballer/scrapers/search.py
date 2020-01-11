@@ -1,5 +1,5 @@
 from typing import List, Tuple
-from Scraper import Scraper, PlayerPageScraper
+from bballer.scrapers.base import Scraper
 
 
 class _SearchPageScraper(Scraper):

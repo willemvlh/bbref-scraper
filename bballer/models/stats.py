@@ -1,8 +1,41 @@
 from dataclasses import dataclass, field
-from typing import Optional
-from AdvancedStatLine import AdvancedStatLine
-from GameLog import GameLog
-import Scraper
+from typing import Optional, Any
+
+from bballer.scrapers.gamelog import GameLogScraper
+
+
+@dataclass
+class AdvancedStatLine:
+    season: Any
+    per: float
+    tsp: float
+    tpar: float
+    ftar: float
+    orb: float
+    drb: float
+    trb: float
+    astp: float
+    stlp: float
+    blkp: float
+    tovp: float
+    usgp: float
+    ows: float
+    dws: float
+    wsp48: float
+    obpm: float
+    dbpm: float
+    vorp: float
+    bpm: float = field(init=False)
+    ws: float = field(init=False)
+
+    def __repr__(self):
+        return f"Statline({self.season})"
+
+    def __post_init__(self):
+        if self.dbpm and self.obpm:
+            self.bpm = self.dbpm + self.obpm
+        if self.ows and self.dws:
+            self.ws = self.ows + self.dws
 
 
 @dataclass
@@ -44,7 +77,8 @@ class StatLine:
 
     @property
     def game_logs(self):
-        scr = Scraper.GameLogScraper(self._player_url.rstrip(".html") + "/gamelog/" + str((int(self.season[0:4])+ 1)))
+        scr = GameLogScraper(
+            self._player_url.rstrip(".html") + "/gamelog/" + str((int(self.season[0:4]) + 1)))
         return scr.get_game_logs()
 
     @property

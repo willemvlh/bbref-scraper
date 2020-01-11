@@ -1,8 +1,8 @@
 import re
 from typing import Tuple
 
-from Scraper import Scraper
-from Team import Team, TeamSeason
+from bballer.models.team import Team, TeamSeason
+from bballer.scrapers.base import Scraper
 
 
 class TeamPageScraper(Scraper):
