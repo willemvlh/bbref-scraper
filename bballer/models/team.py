@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Dict
 
+
 @dataclass
 class TeamSeason:
     season: str
@@ -16,12 +17,15 @@ class TeamSeason:
     drtg: float
     rel_drtg: float
     _team_code: str
+    _roster: List[Dict] = field(init=False, default_factory=list)
 
     @property
     def roster(self) -> List[Dict]:
-        from bballer.scrapers.team import TeamSeasonScraper
-        scraper = TeamSeasonScraper(self._team_code, int(self.season[0:4]) + 1)
-        return scraper.get_roster()
+        if not self._roster:
+            from bballer.scrapers.team import TeamSeasonScraper
+            scraper = TeamSeasonScraper(self._team_code, int(self.season[0:4]) + 1)
+            self._roster = scraper.get_roster()
+        return self._roster
 
 
 @dataclass
@@ -39,5 +43,5 @@ class Team:
         self.championships = len([s for s in self.seasons if s.won_championship])
 
     def season(self, year: str):
-        season = [s for s in self.seasons if s.season == year]
+        season = [s for s in self.seasons if s.season.startswith(str(year))]
         return season[0] if season else None

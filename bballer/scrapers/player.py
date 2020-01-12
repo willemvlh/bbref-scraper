@@ -110,13 +110,13 @@ class PlayerPageScraper(Scraper):
         turnovers = self._get_data_stat_in_element("tov", row)
         fouls = self._get_data_stat_in_element("pf", row)
         points = self._get_data_stat_in_element("pts", row)
-        statline = StatLine(season=season, age=age, all_star=all_star, gamesPlayed=games_played,
-                            gamesStarted=games_started,
-                            minutesPlayed=minutes_played, team=team,
+        statline = StatLine(season=season, age=age, all_star=all_star, games_played=games_played,
+                            games_started=games_started,
+                            minutes_played=minutes_played, team=team,
                             position=position, fg_made=fg_made, fg_attempted=fg_attempted, three_fg_made=three_fg_made,
                             three_fg_attempted=three_fg_attempted, two_fg_made=two_fg_made,
                             two_fg_attempted=two_fg_attempted, effective_fg_percentage=effective_fg_percentage,
-                            free_throw_made=free_throw_made, free_throw_attempted=free_throw_attempted,
+                            ft_made=free_throw_made, ft_attempted=free_throw_attempted,
                             offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
                             assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
                             points=points, _player_url=self._url)
@@ -147,10 +147,12 @@ class PlayerPageScraper(Scraper):
         dbpm = self._get_data_stat_in_element("dbpm", row)
         vorp = self._get_data_stat_in_element("vorp", row)
 
-        return AdvancedStatLine(season=season, per=per, tsp=tsp, orb=orb, drb=drb, trb=trb, astp=astp, stlp=stlp,
-                                tpar=tpar, ftar=ftar,
-                                blkp=blkp, tovp=tovp, usgp=usgp, ows=ows, dws=dws,
-                                wsp48=wsp48, obpm=obpm, dbpm=dbpm, vorp=vorp)
+        return AdvancedStatLine(season=season, player_efficiency_rating=per, true_shooting_percentage=tsp,
+                                offensive_rebound_percentage=orb, defensive_rebound_percentage=drb,
+                                total_rebound_percentage=trb, assist_percentage=astp, steal_percentage=stlp,
+                                three_fg_attempt_rate=tpar, ft_attempt_rate=ftar,
+                                block_percentage=blkp, turnover_percentage=tovp, usage_percentage=usgp, offensive_win_shares=ows, defensive_win_shares=dws,
+                                win_shares_per_48=wsp48, offensive_box_plus_minus=obpm, defensive_box_plus_minus=dbpm, value_over_replacement_player=vorp)
 
     def _get_dob(self):
         return self._safe_get_item_prop("birthDate", attr="data-birth")

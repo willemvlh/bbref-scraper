@@ -7,35 +7,35 @@ from bballer.scrapers.gamelog import GameLogScraper
 @dataclass
 class AdvancedStatLine:
     season: Any
-    per: float
-    tsp: float
-    tpar: float
-    ftar: float
-    orb: float
-    drb: float
-    trb: float
-    astp: float
-    stlp: float
-    blkp: float
-    tovp: float
-    usgp: float
-    ows: float
-    dws: float
-    wsp48: float
-    obpm: float
-    dbpm: float
-    vorp: float
-    bpm: float = field(init=False)
-    ws: float = field(init=False)
+    player_efficiency_rating: float
+    true_shooting_percentage: float
+    three_fg_attempt_rate: float
+    ft_attempt_rate: float
+    offensive_rebound_percentage: float
+    defensive_rebound_percentage: float
+    total_rebound_percentage: float
+    assist_percentage: float
+    steal_percentage: float
+    block_percentage: float
+    turnover_percentage: float
+    usage_percentage: float
+    offensive_win_shares: float
+    defensive_win_shares: float
+    win_shares_per_48: float
+    offensive_box_plus_minus: float
+    defensive_box_plus_minus: float
+    value_over_replacement_player: float
+    box_plus_minus: float = field(init=False)
+    win_shares: float = field(init=False)
 
     def __repr__(self):
         return f"Statline({self.season})"
 
     def __post_init__(self):
-        if self.dbpm and self.obpm:
-            self.bpm = self.dbpm + self.obpm
-        if self.ows and self.dws:
-            self.ws = self.ows + self.dws
+        if self.defensive_box_plus_minus and self.offensive_box_plus_minus:
+            self.box_plus_minus = self.defensive_box_plus_minus + self.offensive_box_plus_minus
+        if self.offensive_win_shares and self.defensive_win_shares:
+            self.win_shares = self.offensive_win_shares + self.defensive_win_shares
 
 
 @dataclass
@@ -43,19 +43,19 @@ class StatLine:
     season: str
     age: int
     all_star: bool
-    minutesPlayed: int
+    minutes_played: int
     position: str
     team: str
-    gamesPlayed: int
-    gamesStarted: int
+    games_played: int
+    games_started: int
     fg_made: int
     fg_attempted: int
     two_fg_made: int
     two_fg_attempted: int
     three_fg_made: int
     three_fg_attempted: int
-    free_throw_made: int
-    free_throw_attempted: int
+    ft_made: int
+    ft_attempted: int
     offensive_rebounds: int
     defensive_rebounds: int
     assists: int
@@ -71,8 +71,6 @@ class StatLine:
 
     def __repr__(self):
         return f"Statline({self.season})"
-
-
 
     @property
     def two_fg_percentage(self):
@@ -96,7 +94,7 @@ class StatLine:
 
     @property
     def free_throw_percentage(self):
-        return self.free_throw_made / self.free_throw_attempted
+        return self.ft_made / self.ft_attempted
 
     @property
     def rebounds(self):

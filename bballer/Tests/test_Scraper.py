@@ -34,7 +34,7 @@ class TestScraper:
     def test_get_career_stats(self):
         stats = self.carmelo_anthony._get_career_stats()
         assert isinstance(stats, StatLine)
-        assert int(stats.gamesStarted) > 1000
+        assert int(stats.games_started) > 1000
 
     def test_get_id(self):
         assert self.carmelo_anthony._get_id() == "carmelo_anthony"
@@ -52,9 +52,9 @@ class TestScraper:
         rookie_season = player.seasons[0]
         assert rookie_season.position == "SF"
         assert rookie_season.season == "2003-04"
-        assert rookie_season.gamesStarted == 82
-        assert rookie_season.gamesPlayed == 82
-        assert rookie_season.minutesPlayed == 2995
+        assert rookie_season.games_started == 82
+        assert rookie_season.games_played == 82
+        assert rookie_season.minutes_played == 2995
         assert rookie_season.fg_attempted == 1465
         assert rookie_season.fg_made == 624
         assert rookie_season.three_fg_made == 69
@@ -62,8 +62,8 @@ class TestScraper:
         assert rookie_season.two_fg_attempted == 1251
         assert rookie_season.two_fg_made == 555
         assert rookie_season.effective_fg_percentage == 0.449
-        assert rookie_season.free_throw_made == 408
-        assert rookie_season.free_throw_attempted == 525
+        assert rookie_season.ft_made == 408
+        assert rookie_season.ft_attempted == 525
         assert rookie_season.offensive_rebounds == 183
         assert rookie_season.defensive_rebounds == 315
         assert rookie_season.rebounds == 498
@@ -78,26 +78,26 @@ class TestScraper:
     def test_advanced_stats(self):
         player = self.carmelo_anthony.player()
         s = player.seasons[0]
-        assert s.advanced.astp == 13.8
-        assert s.advanced.per == 17.6
-        assert s.advanced.tsp == 0.509
-        assert s.advanced.tpar == 0.146
-        assert s.advanced.ftar == 0.358
-        assert s.advanced.orb == 6.8
-        assert s.advanced.drb == 12.1
-        assert s.advanced.trb == 9.4
-        assert s.advanced.stlp == 1.7
-        assert s.advanced.blkp == 1.0
-        assert s.advanced.tovp == 12.7
-        assert s.advanced.usgp == 28.5
-        assert s.advanced.ows == 3.7
-        assert s.advanced.dws == 2.4
-        assert s.advanced.ws == 6.1
-        assert s.advanced.wsp48 == 0.098
-        assert s.advanced.obpm == 1.2
-        assert s.advanced.dbpm == -1.2
-        assert s.advanced.bpm == 0
-        assert s.advanced.vorp == 1.6
+        assert s.advanced.assist_percentage == 13.8
+        assert s.advanced.player_efficiency_rating == 17.6
+        assert s.advanced.true_shooting_percentage == 0.509
+        assert s.advanced.three_fg_attempt_rate == 0.146
+        assert s.advanced.ft_attempt_rate == 0.358
+        assert s.advanced.offensive_rebound_percentage == 6.8
+        assert s.advanced.defensive_rebound_percentage == 12.1
+        assert s.advanced.total_rebound_percentage == 9.4
+        assert s.advanced.steal_percentage == 1.7
+        assert s.advanced.block_percentage == 1.0
+        assert s.advanced.turnover_percentage == 12.7
+        assert s.advanced.usage_percentage == 28.5
+        assert s.advanced.offensive_win_shares == 3.7
+        assert s.advanced.defensive_win_shares == 2.4
+        assert s.advanced.win_shares == 6.1
+        assert s.advanced.win_shares_per_48 == 0.098
+        assert s.advanced.offensive_box_plus_minus == 1.2
+        assert s.advanced.defensive_box_plus_minus == -1.2
+        assert s.advanced.box_plus_minus == 0
+        assert s.advanced.value_over_replacement_player == 1.6
 
     def test_seasons(self):
         seasons = self.julius_erving._get_regular_season_totals()
@@ -106,7 +106,7 @@ class TestScraper:
     def test_game_log(self):
         seasons = PlayerPageScraper("https://www.basketball-reference.com/players/m/mbengdj01.html").player().seasons
         gl = seasons[0].game_logs
-        assert len([game for game in gl if game.played]) == seasons[0].gamesPlayed
+        assert len([game for game in gl if game.played]) == seasons[0].games_played
 
     def test_get_physicals(self):
         assert self.carmelo_anthony._get_physicals() == ("6-8", 240)
@@ -232,19 +232,19 @@ class TestGameLogScraper:
         assert second_game.opponent == "NYK"
         assert second_game.result == "W (+26)"
         assert second_game.seconds_played == 597
-        assert second_game.fg == 1
-        assert second_game.fga == 3
-        assert second_game.tp == 0
-        assert second_game.tpa == 0
-        assert second_game.ft == 0
-        assert second_game.fta == 0
-        assert second_game.orb == 1
-        assert second_game.drb == 0
-        assert second_game.ast == 0
-        assert second_game.stl == 0
-        assert second_game.blk == 1
-        assert second_game.tov == 0
-        assert second_game.pf == 3
+        assert second_game.fg_made == 1
+        assert second_game.fg_attempted == 3
+        assert second_game.three_fg_made == 0
+        assert second_game.three_fg_attempted == 0
+        assert second_game.ft_made == 0
+        assert second_game.ft_attempted == 0
+        assert second_game.offensive_rebounds == 1
+        assert second_game.defensive_rebounds == 0
+        assert second_game.assists == 0
+        assert second_game.steals == 0
+        assert second_game.blocks == 1
+        assert second_game.turnovers == 0
+        assert second_game.fouls == 3
         assert second_game.points == 2
         assert second_game.game_score == 0.5
         assert second_game.plus_minus == 1

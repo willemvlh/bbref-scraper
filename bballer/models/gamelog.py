@@ -10,19 +10,19 @@ class GameLog:
     started: bool
     seconds_played: int
     result: str
-    fg: int
-    fga: int
-    tp: int
-    tpa: int
-    ft: int
-    fta: int
-    orb: int
-    drb: int
-    ast: int
-    stl: int
-    blk: int
-    tov: int
-    pf: int
+    fg_made: int
+    fg_attempted: int
+    three_fg_made: int
+    three_fg_attempted: int
+    ft_made: int
+    ft_attempted: int
+    offensive_rebounds: int
+    defensive_rebounds: int
+    assists: int
+    steals: int
+    blocks: int
+    turnovers: int
+    fouls: int
     game_score: float
     plus_minus: int
     points: int
