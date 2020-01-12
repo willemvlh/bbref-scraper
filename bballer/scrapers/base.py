@@ -1,9 +1,9 @@
-from bs4 import BeautifulSoup, NavigableString
+import logging
+import os
+import re
 
 import requests
-import re
-import os
-import logging
+from bs4 import BeautifulSoup, NavigableString
 
 
 class Scraper:

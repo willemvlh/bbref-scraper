@@ -1,6 +1,6 @@
+import json
 from dataclasses import dataclass
 from typing import List
-import json
 
 from bballer.models.stats import StatLine
 

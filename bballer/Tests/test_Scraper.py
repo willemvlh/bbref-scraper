@@ -1,13 +1,13 @@
 import logging
+from pathlib import Path
 from unittest import TestCase
 
+from bballer.models.stats import StatLine
 from bballer.scrapers.gamelog import GameLogScraper
 from bballer.scrapers.misc import BulkScraper, TotalMinutesScraper
 from bballer.scrapers.player import PlayerListScraper, PlayerPageScraper
 from bballer.scrapers.team import TeamPageScraper, TeamSeasonScraper
 
-from bballer.models.stats import StatLine
-from pathlib import Path
 
 def get_resource(fn):
     return str(Path(__file__).parent.joinpath("resources").joinpath(fn).absolute())
