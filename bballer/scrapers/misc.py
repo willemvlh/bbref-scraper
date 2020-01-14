@@ -5,7 +5,7 @@ import jsonpickle
 
 from bballer.models.player import Player
 from bballer.scrapers.base import Scraper
-from bballer.scrapers.player import PlayerPageScraper
+from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
 
 
 class TotalMinutesScraper(Scraper):

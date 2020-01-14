@@ -172,12 +172,3 @@ class PlayerPageScraper(Scraper):
     def _get_season_from_row(self, row):
         s = self._get_data_stat_in_element("season", row)
         return 0 if "Career" in s else int(s[0:4]) + 1
-
-
-class PlayerListScraper(Scraper):
-    def __init__(self, url: str):
-        super().__init__(url)
-
-    def get_player_urls(self):
-        cells = self._parsed.find_all("th", {"data-stat": "player", "scope": "row"})
-        return ["https://www.basketball-reference.com" + cell.find_next("a").attrs["href"] for cell in cells]

@@ -3,10 +3,11 @@ from pathlib import Path
 from unittest import TestCase
 
 from bballer.models.stats import StatLine
-from bballer.scrapers.gamelog import GameLogScraper
+from bballer.scrapers.GameLogScraper import GameLogScraper
 from bballer.scrapers.misc import BulkScraper, TotalMinutesScraper
-from bballer.scrapers.player import PlayerListScraper, PlayerPageScraper
-from bballer.scrapers.team import TeamPageScraper, TeamSeasonScraper
+from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
+from bballer.scrapers.PlayerListScraper import PlayerListScraper
+from bballer.scrapers.TeamScraper import TeamPageScraper, TeamSeasonScraper
 
 
 def get_resource(fn):

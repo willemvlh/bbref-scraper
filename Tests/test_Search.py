@@ -1,6 +1,6 @@
 from unittest.case import TestCase
 
-from bballer.scrapers.search import Search
+from bballer.scrapers.Search import Search
 
 
 class TestSearch(TestCase):

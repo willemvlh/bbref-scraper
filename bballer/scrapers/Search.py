@@ -5,6 +5,8 @@ from bballer.scrapers.base import Scraper
 
 class _SearchPageScraper(Scraper):
     def get_search_results(self, table_id) -> List[Tuple]:
+        import requests
+        requests.get
         if self._parsed.find("div", id="info"):
             # sometimes the search automatically redirects to a specific player page.
             redirected_url = self._parsed.find("link", rel="canonical").attrs["href"]

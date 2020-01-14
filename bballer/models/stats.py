@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional, Any, List
 
-from bballer.scrapers.gamelog import GameLogScraper
+from bballer.scrapers.GameLogScraper import GameLogScraper
 
 
 @dataclass

@@ -22,7 +22,7 @@ class TeamSeason:
     @property
     def roster(self) -> List[Dict]:
         if not self._roster:
-            from bballer.scrapers.team import TeamSeasonScraper
+            from bballer.scrapers.TeamScraper import TeamSeasonScraper
             scraper = TeamSeasonScraper(self._team_code, int(self.season[0:4]) + 1)
             self._roster = scraper.get_roster()
         return self._roster
