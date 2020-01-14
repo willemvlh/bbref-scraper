@@ -85,7 +85,7 @@ class PlayerPageScraper(Scraper):
         return totals
 
     def _parse_stats_from_row(self, row):
-        season = self._get_data_stat_in_element("season", row)
+        season = self._get_season_from_row(row)
         age = self._get_data_stat_in_element("age", row)
         team = self._get_data_stat_in_element("team_id", row)
         all_star = bool(row.find("span", class_="sr_star"))
@@ -121,7 +121,7 @@ class PlayerPageScraper(Scraper):
                             assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
                             points=points, _player_url=self._url)
         advanced_statline_rows = [tr for tr in self._advanced_table.find_all("tr", class_="full_table") if
-                                  self._get_data_stat_in_element("season", tr) == season]
+                                  self._get_season_from_row(tr) == season]
         if advanced_statline_rows:
             advanced_statline = self._parse_stats_from_advanced_row(advanced_statline_rows[0], statline)
             statline.advanced = advanced_statline
@@ -168,6 +168,10 @@ class PlayerPageScraper(Scraper):
 
     def _get_shooting_hand(self) -> str:
         return self._get_text_sibling("strong", "Shoots:")
+
+    def _get_season_from_row(self, row):
+        s = self._get_data_stat_in_element("season", row)
+        return 0 if "Career" in s else int(s[0:4]) + 1
 
 
 class PlayerListScraper(Scraper):

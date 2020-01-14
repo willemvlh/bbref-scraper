@@ -25,3 +25,10 @@ class GameLog:
     game_score: float
     plus_minus: int
     points: int
+
+    def __repr__(self):
+        return f"GameLog(points={self.points}, rebounds={self.rebounds}, assists={self.assists})"
+
+    @property
+    def rebounds(self):
+        return self.offensive_rebounds + self.defensive_rebounds

@@ -51,7 +51,7 @@ class TestScraper:
         assert len(player.seasons) > 10
         rookie_season = player.seasons[0]
         assert rookie_season.position == "SF"
-        assert rookie_season.season == "2003-04"
+        assert rookie_season.season == 2004
         assert rookie_season.games_started == 82
         assert rookie_season.games_played == 82
         assert rookie_season.minutes_played == 2995

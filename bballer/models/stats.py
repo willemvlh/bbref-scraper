@@ -40,7 +40,7 @@ class AdvancedStatLine:
 
 @dataclass
 class StatLine:
-    season: str
+    season: int
     age: int
     all_star: bool
     minutes_played: int
@@ -80,7 +80,7 @@ class StatLine:
     def game_logs(self):
         if not self._game_logs:
             scr = GameLogScraper(
-                self._player_url.rstrip(".html") + "/gamelog/" + str((int(self.season[0:4]) + 1)))
+                self._player_url.rstrip(".html") + f"/gamelog/{self.season}")
             self._game_logs = scr.get_game_logs()
         return self._game_logs
 
