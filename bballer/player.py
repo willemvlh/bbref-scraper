@@ -2,8 +2,6 @@ from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
 from bballer.scrapers.Search import Search
 
 
-# TODO: write tests
-
 def get_by_name(name: str):
     result = Search.search_players(name)
     if not len(result):

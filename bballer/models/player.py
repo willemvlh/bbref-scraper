@@ -28,6 +28,3 @@ class Player:
 
     def __eq__(self, other):
         return other.__class__ == self.__class__ and other.id == self.id
-
-    def serialize(self, indent=False) -> str:
-        return json.dumps(self, default=lambda obj: obj.__dict__, indent=2 if indent else 0)
