@@ -151,13 +151,13 @@ class TestBulkScraper:
     def test_scrape(self):
         logging.getLogger().setLevel(logging.DEBUG)
         bulk_scr = BulkScraper(map(get_resource, ["lebron_james.html", "carmelo_anthony.html"]))
-        processed = bulk_scr.scrape_all()
+        processed = list(bulk_scr.scrape_all())
         assert len(processed) == 2
         assert "Carmelo Anthony" in [p.name for p in processed]
 
     def test_double_scrape(self):
         bulk_scr = BulkScraper(map(get_resource, ["lebron_james.html", "lebron_james.html"]))
-        players = bulk_scr.scrape_all()
+        players = list(bulk_scr.scrape_all())
         assert len(players) == 1
 
 

@@ -1,5 +1,5 @@
 import concurrent.futures
-from typing import List
+from typing import List, Iterator
 
 import jsonpickle
 
@@ -23,11 +23,14 @@ class BulkScraper:
         self._urls = urls
         self._processed = []
 
-    def scrape_all(self, _max: int = None) -> List[Player]:
-        urls = set(self._urls[0:_max] if _max else self._urls)
+    def scrape_all(self, _max: int = None) -> Iterator[Player]:
+        urls = list(set(self._urls[0:_max] if _max else self._urls))
+        batches = [urls[i:i+10] for i in range(0, len(urls), 10)]
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            players = executor.map(lambda u: PlayerPageScraper(u).player(), urls)
-            return list(players)
+            for batch in batches:
+                players = executor.map(lambda u: PlayerPageScraper(u).player(), batch)
+                for p in players:
+                    yield p
 
     def serialize(self):
         jsonpickle.set_encoder_options(name="json", indent=1)
