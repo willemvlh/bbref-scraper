@@ -5,6 +5,10 @@ def test_get_by_name():
     t = team.get_by_name("Cleveland Cavaliers")
     assert t.name == "Cleveland Cavaliers"
 
+def test_get_by_name_wrong():
+    t = team.get_by_name("blabla")
+    assert(t is None)
+
 
 def test_get_by_code():
     t = team.get_by_code("CLE")
