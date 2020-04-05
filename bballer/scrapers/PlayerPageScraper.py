@@ -1,6 +1,7 @@
 import logging
 import os
 import re
+from datetime import date
 
 from bs4 import Comment, BeautifulSoup
 
@@ -155,7 +156,8 @@ class PlayerPageScraper(Scraper):
                                 win_shares_per_48=wsp48, offensive_box_plus_minus=obpm, defensive_box_plus_minus=dbpm, value_over_replacement_player=vorp)
 
     def _get_dob(self):
-        return self._safe_get_item_prop("birthDate", attr="data-birth")
+        date_str = self._safe_get_item_prop("birthDate", attr="data-birth")
+        return date.fromisoformat(date_str)
 
     def _get_draft_pick(self):
         element = self._parsed.find("strong", string=re.compile("Draft:"))

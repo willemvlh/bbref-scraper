@@ -1,5 +1,5 @@
-import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from datetime import date
 from typing import List
 
 from bballer.models.stats import StatLine
@@ -8,7 +8,7 @@ from bballer.models.stats import StatLine
 @dataclass(frozen=True)
 class Player:
     name: str
-    date_of_birth: str
+    date_of_birth: date
     college: str
     height: str
     weight: int

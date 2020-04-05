@@ -1,13 +1,14 @@
 import logging
+from datetime import date
 from pathlib import Path
 from unittest import TestCase
 
 from bballer.models.stats import StatLine
 from bballer.scrapers.GameLogScraper import GameLogScraper
-from bballer.scrapers.misc import BulkScraper, TotalMinutesScraper
-from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
 from bballer.scrapers.PlayerListScraper import PlayerListScraper
+from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
 from bballer.scrapers.TeamScraper import TeamPageScraper, TeamSeasonScraper
+from bballer.scrapers.misc import BulkScraper, TotalMinutesScraper
 
 
 def get_resource(fn):
@@ -30,7 +31,9 @@ class TestScraper:
         assert self.carmelo_anthony._get_name() == "Carmelo Anthony"
 
     def test_get_dob(self):
-        assert self.carmelo_anthony._get_dob() == "1984-05-29"
+        dob = self.carmelo_anthony._get_dob()
+        assert isinstance(dob, date)
+        assert dob == date(1984, 5, 29)
 
     def test_get_career_stats(self):
         stats = self.carmelo_anthony._get_career_stats()
@@ -126,7 +129,7 @@ class TestScraper:
     def test_historical_player(self):
         player = PlayerPageScraper("https://www.basketball-reference.com/players/h/hawkito01.html").player()
         assert player.name == "Tom Hawkins"
-        assert player.date_of_birth == "1936-12-22"
+        assert player.date_of_birth == date(1936, 12, 22)
 
 
 class TestPlayerListScraper(TestCase):
@@ -223,7 +226,7 @@ class TestGameLogScraper:
         assert not first_game.played
         assert first_game.team == "GSW"
         assert first_game.opponent == "TOR"
-        assert first_game.date == "2007-11-18"
+        assert first_game.date == date.fromisoformat("2007-11-18")
         assert first_game.points is None
 
         second_game = logs[1]
