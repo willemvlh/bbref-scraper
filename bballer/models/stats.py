@@ -38,6 +38,10 @@ class AdvancedStatLine:
             self.win_shares = self.offensive_win_shares + self.defensive_win_shares
 
 
+def per_game():
+    pass
+
+
 @dataclass
 class StatLine:
     season: int
@@ -64,7 +68,7 @@ class StatLine:
     turnovers: int
     fouls: int
     points: int
-    effective_fg_percentage: int
+    effective_fg_percentage: float
     advanced: Optional[AdvancedStatLine] = field(init=False, repr=False)
     _player_url: str
     _game_logs: List = field(init=False, default=None)
@@ -81,7 +85,7 @@ class StatLine:
         if not self._game_logs:
             scr = GameLogScraper(
                 self._player_url.rstrip(".html") + f"/gamelog/{self.season}")
-            self._game_logs = scr.get_game_logs()
+            self._game_logs = scr.get_content()
         return self._game_logs
 
     @property
@@ -99,3 +103,10 @@ class StatLine:
     @property
     def rebounds(self):
         return self.defensive_rebounds + self.offensive_rebounds
+
+    def per_game(self):
+        from copy import copy
+        new = copy(self)
+
+    def per_100_possessions(self):
+        pass

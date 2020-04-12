@@ -11,9 +11,9 @@ class TeamSeasonScraper(Scraper):
         super().__init__(url)
 
     def get_roster(self):
-        table = self._find("table", id="roster")
-        return [{"name": self._get_data_stat_in_element("player", row),
-                 "number": self._get_data_stat_in_element("number", row),
+        table = self.find("table", id="roster")
+        return [{"name": self.get_data_stat_in_element("player", row),
+                 "number": self.get_data_stat_in_element("number", row),
                  "url": row.find("td", attrs={"data-stat": "player"}).find("a").attrs["href"]}
                 for row in table.find("tbody").find_all("tr")]
 
@@ -24,7 +24,7 @@ class TeamPageScraper(Scraper):
         url = code_or_url if code_is_url else f"https://www.basketball-reference.com/teams/{code_or_url}/"
         self.code = code_or_url if not code_is_url else None
         super().__init__(url)
-        self._team_table = self._find("table", id=self._get_code())
+        self._team_table = self.find("table", id=self._get_code())
 
     def team(self) -> Team:
         name = self._get_name()
@@ -34,10 +34,10 @@ class TeamPageScraper(Scraper):
         return Team(name=name, code=code, seasons=seasons, wins=wins, losses=losses)
 
     def _get_name(self):
-        return self._safe_get_item_prop("name", element="h1")
+        return self.safe_get_item_prop("name", element="h1")
 
     def _get_wins_and_losses(self) -> Tuple[int, int]:
-        record = self._get_text_sibling("strong", "Record:")
+        record = self.get_text_sibling("strong", "Record:")
         wins_losses = re.findall(r"\d{1,5}-\d{1,5}", record)
         if not wins_losses:
             return 0, 0
@@ -50,15 +50,15 @@ class TeamPageScraper(Scraper):
         return list(reversed([self.parse_team_row(row) for row in rows]))
 
     def parse_team_row(self, row):
-        season = self._get_data_stat_in_element("season", row)
-        wins = self._get_data_stat_in_element("wins", row)
-        losses = self._get_data_stat_in_element("losses", row)
-        pace = self._get_data_stat_in_element("pace", row)
-        rel_pace = self._get_data_stat_in_element("pace_rel", row)
-        off_rtg = self._get_data_stat_in_element("off_rtg", row)
-        off_rtg_rel = self._get_data_stat_in_element("off_rtg_rel", row)
-        def_rtg = self._get_data_stat_in_element("def_rtg", row)
-        def_rtg_rel = self._get_data_stat_in_element("def_rtg_rel", row)
+        season = self.get_data_stat_in_element("season", row)
+        wins = self.get_data_stat_in_element("wins", row)
+        losses = self.get_data_stat_in_element("losses", row)
+        pace = self.get_data_stat_in_element("pace", row)
+        rel_pace = self.get_data_stat_in_element("pace_rel", row)
+        off_rtg = self.get_data_stat_in_element("off_rtg", row)
+        off_rtg_rel = self.get_data_stat_in_element("off_rtg_rel", row)
+        def_rtg = self.get_data_stat_in_element("def_rtg", row)
+        def_rtg_rel = self.get_data_stat_in_element("def_rtg_rel", row)
         playoff_result = self._get_playoff_result_from_row(row)
         won_championship = playoff_result.lower() == "Won Finals".lower()
         made_playoffs = bool(playoff_result)
@@ -68,7 +68,7 @@ class TeamPageScraper(Scraper):
 
     def _get_code(self):
         if not self.code:
-            url = self._find("link", rel="canonical").attrs["href"]
+            url = self.find("link", rel="canonical").attrs["href"]
             self.code = url.split("/")[-2]
         return self.code
 

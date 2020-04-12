@@ -1,21 +1,11 @@
-import logging
 from datetime import date
-from pathlib import Path
-from unittest import TestCase
 
 from bballer.models.stats import StatLine
-from bballer.scrapers.GameLogScraper import GameLogScraper
-from bballer.scrapers.PlayerListScraper import PlayerListScraper
 from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
-from bballer.scrapers.TeamScraper import TeamPageScraper, TeamSeasonScraper
-from bballer.scrapers.misc import BulkScraper, TotalMinutesScraper
+from tests.scrapers.test_Scraper import get_resource
 
 
-def get_resource(fn):
-    return str(Path(__file__).parent.joinpath("resources").joinpath(fn).absolute())
-
-
-class TestScraper:
+class TestPlayerPageScraper:
     carmelo_anthony = PlayerPageScraper(get_resource("carmelo_anthony.html"))
     lebron_james = PlayerPageScraper(get_resource("lebron_james.html"))
     julius_erving = PlayerPageScraper(get_resource("julius_erving.html"))
@@ -130,125 +120,3 @@ class TestScraper:
         player = PlayerPageScraper("https://www.basketball-reference.com/players/h/hawkito01.html").player()
         assert player.name == "Tom Hawkins"
         assert player.date_of_birth == date(1936, 12, 22)
-
-
-class TestPlayerListScraper(TestCase):
-
-    def test_scrape(self):
-        s = PlayerListScraper(get_resource("w.html"))
-        urls = s.get_player_urls()
-        assert len(urls) == 364
-        assert all([url.startswith("https://www.basketball-reference.com/players/") for url in urls])
-
-
-class TestTotalMinutesListScraper:
-    def test_scrape(self):
-        s = TotalMinutesScraper(2000)
-        urls = s.get_player_urls()
-        assert len(urls) > 10
-        assert all([url.startswith("https://www.basketball-reference.com/players/") for url in urls])
-
-
-class TestBulkScraper:
-
-    def test_scrape(self):
-        logging.getLogger().setLevel(logging.DEBUG)
-        bulk_scr = BulkScraper(map(get_resource, ["lebron_james.html", "carmelo_anthony.html"]))
-        processed = list(bulk_scr.scrape_all())
-        assert len(processed) == 2
-        assert "Carmelo Anthony" in [p.name for p in processed]
-
-    def test_double_scrape(self):
-        bulk_scr = BulkScraper(map(get_resource, ["lebron_james.html", "lebron_james.html"]))
-        players = list(bulk_scr.scrape_all())
-        assert len(players) == 1
-
-
-class TestTeamPageScraper:
-
-    def test_team(self):
-        scr = TeamPageScraper("CLE")
-        team = scr.team()
-        assert team.name == "Cleveland Cavaliers"
-        assert team.code == "CLE"
-
-    def test_team_with_url(self):
-        team = TeamPageScraper(get_resource("cavs.html")).team()
-        assert team.name == "Cleveland Cavaliers"
-        assert team.wins == 1858
-        assert team.losses == 2149
-        assert team.playoff_appearances == 22
-        assert team.championships == 1
-        assert team.code == "CLE"
-        assert len(team.seasons) == 50
-
-    def test_roster(self):
-        team = TeamPageScraper(get_resource("cavs.html")).team()
-        s = team.seasons[-1]
-        assert len(s.roster) > 10
-
-    def test_season(self):
-        team = TeamPageScraper(get_resource("cavs.html")).team()
-        last_season = team.seasons[-1]
-        assert last_season.losses == 27
-        assert last_season.wins == 10
-        assert last_season.pace == 98.8
-        assert last_season.rel_pace == -1.6
-        assert last_season.ortg == 105.6
-        assert last_season.rel_ortg == -3.6
-        assert last_season.season == "2019-20"
-        assert not last_season.won_championship
-        assert not last_season.made_playoffs
-        team = TeamPageScraper(get_resource("cavs.html")).team()
-        championship_season = team.season("2015-16")
-        assert championship_season.wins == 57
-        assert championship_season.won_championship
-        assert championship_season.made_playoffs
-
-
-class TestTeamSeasonScraper:
-    def test_roster_scrape(self):
-        roster = TeamSeasonScraper("CLE", 2016).get_roster()
-        for player in roster:
-            assert isinstance(player["name"], str)
-            assert isinstance(player["url"], str)
-            assert isinstance(player["number"], int)
-
-
-class TestGameLogScraper:
-
-    def test_scrape(self):
-        url = "https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2008/"
-        scr = GameLogScraper(url)
-        logs = scr.get_game_logs()
-        assert len(logs) == 70
-        first_game = logs[0]
-        assert not first_game.played
-        assert first_game.team == "GSW"
-        assert first_game.opponent == "TOR"
-        assert first_game.date == date.fromisoformat("2007-11-18")
-        assert first_game.points is None
-
-        second_game = logs[1]
-        assert not second_game.started
-        assert second_game.played
-        assert second_game.team == "GSW"
-        assert second_game.opponent == "NYK"
-        assert second_game.result == "W (+26)"
-        assert second_game.seconds_played == 597
-        assert second_game.fg_made == 1
-        assert second_game.fg_attempted == 3
-        assert second_game.three_fg_made == 0
-        assert second_game.three_fg_attempted == 0
-        assert second_game.ft_made == 0
-        assert second_game.ft_attempted == 0
-        assert second_game.offensive_rebounds == 1
-        assert second_game.defensive_rebounds == 0
-        assert second_game.assists == 0
-        assert second_game.steals == 0
-        assert second_game.blocks == 1
-        assert second_game.turnovers == 0
-        assert second_game.fouls == 3
-        assert second_game.points == 2
-        assert second_game.game_score == 0.5
-        assert second_game.plus_minus == 1

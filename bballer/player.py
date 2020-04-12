@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional, Iterator
 
 from bballer.models.player import Player
 from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
@@ -14,7 +14,7 @@ def get_by_name(name: str) -> Optional[Player]:
     return PlayerPageScraper(url).player()
 
 
-def all_in_season(season: int) -> List[Player]:
+def all_in_season(season: int) -> Iterator[Player]:
     url_scraper = TotalMinutesScraper(season)
     urls = url_scraper.get_player_urls()
     scraper = BulkScraper(urls)

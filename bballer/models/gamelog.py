@@ -1,4 +1,8 @@
 from datetime import date
+from functools import lru_cache
+
+from bballer.scrapers.GameScraper import GameScraper
+
 
 class GameLog:
     date: date
@@ -25,10 +29,19 @@ class GameLog:
     game_score: float
     plus_minus: int
     points: int
+    game_url: str
 
     def __repr__(self):
         return f"GameLog(points={self.points}, rebounds={self.rebounds}, assists={self.assists})"
 
     @property
     def rebounds(self):
+        if None in [self.offensive_rebounds, self.defensive_rebounds]:
+            return None
         return self.offensive_rebounds + self.defensive_rebounds
+
+    @lru_cache(None)
+    def to_game(self):
+        assert self.game_url is not None
+        scr = GameScraper(self.game_url)
+        return scr.get_content()
