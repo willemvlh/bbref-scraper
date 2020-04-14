@@ -105,8 +105,7 @@ class StatLine:
         return self.defensive_rebounds + self.offensive_rebounds
 
     def per_game(self):
-        from copy import copy
-        new = copy(self)
+        pass
 
     def per_100_possessions(self):
         pass
