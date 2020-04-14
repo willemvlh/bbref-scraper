@@ -1,20 +1,25 @@
 import re
 from typing import Tuple
 
+from bballer.models.PlayerShell import PlayerShell
 from bballer.models.team import Team, TeamSeason
 from bballer.scrapers.base import Scraper
+from bballer.scrapers.utilities import to_absolute_url
 
 
 class TeamSeasonScraper(Scraper):
+    def get_content(self):
+        return self.get_roster()
+
     def __init__(self, code, year):
         url = f"https://www.basketball-reference.com/teams/{code}/{year}.html"
         super().__init__(url)
 
     def get_roster(self):
         table = self.find("table", id="roster")
-        return [{"name": self.get_data_stat_in_element("player", row),
-                 "number": self.get_data_stat_in_element("number", row),
-                 "url": row.find("td", attrs={"data-stat": "player"}).find("a").attrs["href"]}
+        return [PlayerShell(name=self.get_data_stat_in_element("player", row),
+                            number=self.get_data_stat_in_element("number", row),
+                            url=to_absolute_url(row.find("td", attrs={"data-stat": "player"}).find("a").attrs["href"]))
                 for row in table.find("tbody").find_all("tr")]
 
 

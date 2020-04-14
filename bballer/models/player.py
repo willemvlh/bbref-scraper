@@ -6,6 +6,13 @@ from bballer.models.stats import StatLine
 
 
 @dataclass(frozen=True)
+class Salary:
+    amount: int
+    season: str
+    team: str
+
+
+@dataclass(frozen=True)
 class Player:
     name: str
     date_of_birth: date
@@ -19,6 +26,7 @@ class Player:
     draft_pick: int
     id: str
     shooting_hand: str
+    salaries: List[Salary]
 
     def __repr__(self):
         return f"Player({self.name}, {self.date_of_birth})"

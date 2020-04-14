@@ -121,3 +121,11 @@ class TestPlayerPageScraper:
         player = PlayerPageScraper("https://www.basketball-reference.com/players/h/hawkito01.html").get_content()
         assert player.name == "Tom Hawkins"
         assert player.date_of_birth == date(1936, 12, 22)
+
+    def test_salaries(self):
+        anthony = self.carmelo_anthony.get_content()
+        assert len(anthony.salaries) == 17
+        assert all([sal.amount > 0 for sal in anthony.salaries])
+        assert all([sal.team and sal.team.startswith("http") for sal in anthony.salaries])
+        assert all([sal.season for sal in anthony.salaries])
+        assert sum([sal.amount for sal in anthony.salaries]) > 200000000

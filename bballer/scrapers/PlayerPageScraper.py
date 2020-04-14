@@ -3,9 +3,10 @@ import os
 import re
 from datetime import date
 
-from bballer.models.player import Player
+from bballer.models.player import Player, Salary
 from bballer.models.stats import StatLine, AdvancedStatLine
 from bballer.scrapers.base import Scraper
+from bballer.scrapers.utilities import to_absolute_url
 
 
 class PlayerPageScraper(Scraper):
@@ -31,11 +32,12 @@ class PlayerPageScraper(Scraper):
         positions = [season.position for season in seasons]
         position = max(positions, key=positions.count) if positions else None
         shooting_hand = self._get_shooting_hand()
+        salaries = self._get_salaries()
         logging.debug(f"Processed {name}")
         return Player(id=id_, name=name, seasons=seasons, playoffs=playoffs, college=college,
                       date_of_birth=date_of_birth,
                       career_stats=career_stats, height=height, weight=weight, draft_pick=draft_pick, position=position,
-                      shooting_hand=shooting_hand)
+                      shooting_hand=shooting_hand, salaries=salaries)
 
     def _get_id(self):
         if os.path.isfile(self._url):
@@ -58,7 +60,7 @@ class PlayerPageScraper(Scraper):
 
     def _get_college(self):
         preceding_element = self._parsed.find("strong", text=re.compile("College:"))
-        if preceding_element:
+        if preceding_element and preceding_element.find_next_sibling("a"):
             return preceding_element.find_next_sibling("a").text
 
     def _get_regular_season_totals(self):
@@ -169,3 +171,16 @@ class PlayerPageScraper(Scraper):
     def _get_season_from_row(self, row):
         s = self.get_data_stat_in_element("season", row)
         return 0 if "Career" in s else int(s[0:4]) + 1
+
+    def _get_salaries(self):
+        table = self.get_commented_table_with_id("all_salaries")
+        if not table:
+            return []
+        salaries = []
+        for row in table.find("tbody").find_all("tr"):
+            season = self.get_data_stat_in_element("season", row)
+            team = self.get_data_stat_in_element("team_name", row, return_first_child=True)["href"]
+            team_url = to_absolute_url(team)
+            amount = int(self.get_data_stat_in_element("salary", row, "csk"))
+            salaries.append(Salary(season=season, team=team_url, amount=amount))
+        return salaries

@@ -74,7 +74,7 @@ class StatLine:
     _game_logs: List = field(init=False, default=None)
 
     def __repr__(self):
-        return f"Statline({self.season})"
+        return f"{self.__class__.__name__}({self.season})"
 
     @property
     def two_fg_percentage(self):
@@ -109,3 +109,9 @@ class StatLine:
 
     def per_100_possessions(self):
         pass
+
+
+@dataclass
+class CareerStatLine(StatLine):
+    def __repr__(self):
+        return f"{self.__class__.__name__}(points={self.points}, rebounds={self.rebounds}, assists={self.assists})"

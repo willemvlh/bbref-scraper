@@ -6,8 +6,8 @@ Easy NBA data scraping for Python using data provided by Basketball Reference.
 ##Retrieving a player
 ```
 >>> from bballer import player
->>> pl = player.get_by_name("Carmelo Anthony") 
-Player(Carmelo Anthony, 1984-05-29) # Returns first match
+>>> pl = player.get_by_name("Jordan")
+Player(Michael Jordan, 1963-02-17) # Returns first match
 
 >>> pl_list = player.search("Bogdanovic")
 [('Bojan Bogdanović (2015-2020)', 'https://www.basketball-reference.com/players/b/bogdabo02.html'), ('Bogdan Bogdanović (2018-2020)', 'https://www.basketball-reference.com/players/b/bogdabo01.html')]
@@ -20,6 +20,8 @@ Player(Bojan Bogdanović, 1989-04-18)
 Player(Carmelo Anthony, 1984-05-29)
 >>> pl.date_of_birth
 datetime.date(1984, 5, 29)
+>>> stats = pl.career_stats
+>>>
 >>> rookie_season = pl.seasons[0]
 >>> rookie_season.minutes_played
 2995
