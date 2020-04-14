@@ -2,6 +2,9 @@ from bballer.scrapers.base import Scraper
 
 
 class PlayerListScraper(Scraper):
+    def get_content(self):
+        return self.get_player_urls()
+
     def __init__(self, url: str):
         super().__init__(url)
 

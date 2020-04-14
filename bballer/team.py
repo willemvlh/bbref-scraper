@@ -7,15 +7,15 @@ def get_by_name(name: str):
     if not len(result):
         return None
     url = result[0][-1]
-    return TeamPageScraper(url).team()
+    return TeamPageScraper(url).get_content()
 
 
 def get_by_code(code: str):
-    return TeamPageScraper(code).team()
+    return TeamPageScraper(code).get_content()
 
 
 def get_by_url(url: str):
-    return TeamPageScraper(url).team()
+    return TeamPageScraper(url).get_content()
 
 
 def search(name: str):

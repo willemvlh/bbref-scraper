@@ -11,7 +11,7 @@ def get_by_name(name: str) -> Optional[Player]:
     if not len(result):
         return None
     url = result[0][-1]
-    return PlayerPageScraper(url).player()
+    return PlayerPageScraper(url).get_content()
 
 
 def all_in_season(season: int) -> Iterator[Player]:
@@ -26,9 +26,9 @@ def search(term: str):
 
 
 def get_by_url(url: str) -> Player:
-    return PlayerPageScraper(url).player()
+    return PlayerPageScraper(url).get_content()
 
 
 def get_by_id(_id: str) -> Player:
     url = f"https://www.basketball-reference.com/players/{_id[0]}/{_id}.html"
-    return PlayerPageScraper(url).player()
+    return PlayerPageScraper(url).get_content()

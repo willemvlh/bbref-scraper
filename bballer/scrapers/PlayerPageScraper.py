@@ -9,6 +9,9 @@ from bballer.scrapers.base import Scraper
 
 
 class PlayerPageScraper(Scraper):
+    def get_content(self):
+        return self.player()
+
     def __init__(self, url: str):
         super().__init__(url)
         self._reg_season_table = self.get_commented_table_with_id("totals")

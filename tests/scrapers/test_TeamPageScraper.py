@@ -6,12 +6,12 @@ class TestTeamPageScraper:
 
     def test_team(self):
         scr = TeamPageScraper("CLE")
-        team = scr.team()
+        team = scr.get_content()
         assert team.name == "Cleveland Cavaliers"
         assert team.code == "CLE"
 
     def test_team_with_url(self):
-        team = TeamPageScraper(get_resource("cavs.html")).team()
+        team = TeamPageScraper(get_resource("cavs.html")).get_content()
         assert team.name == "Cleveland Cavaliers"
         assert team.wins == 1858
         assert team.losses == 2149
@@ -21,12 +21,12 @@ class TestTeamPageScraper:
         assert len(team.seasons) == 50
 
     def test_roster(self):
-        team = TeamPageScraper(get_resource("cavs.html")).team()
+        team = TeamPageScraper(get_resource("cavs.html")).get_content()
         s = team.seasons[-1]
         assert len(s.roster) > 10
 
     def test_season(self):
-        team = TeamPageScraper(get_resource("cavs.html")).team()
+        team = TeamPageScraper(get_resource("cavs.html")).get_content()
         last_season = team.seasons[-1]
         assert last_season.losses == 27
         assert last_season.wins == 10
@@ -37,7 +37,7 @@ class TestTeamPageScraper:
         assert last_season.season == "2019-20"
         assert not last_season.won_championship
         assert not last_season.made_playoffs
-        team = TeamPageScraper(get_resource("cavs.html")).team()
+        team = TeamPageScraper(get_resource("cavs.html")).get_content()
         championship_season = team.season("2015-16")
         assert championship_season.wins == 57
         assert championship_season.won_championship

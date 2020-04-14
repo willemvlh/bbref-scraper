@@ -1,14 +1,17 @@
 import concurrent.futures
-from typing import List, Iterator
+from typing import Iterator
 
 import jsonpickle
 
 from bballer.models.player import Player
-from bballer.scrapers.base import Scraper
 from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
+from bballer.scrapers.base import Scraper
 
 
 class TotalMinutesScraper(Scraper):
+    def get_content(self):
+        return self.get_player_urls()
+
     def __init__(self, year: int):
         url = f"https://www.basketball-reference.com/leagues/NBA_{year}_totals.html"
         super().__init__(url)
@@ -28,7 +31,7 @@ class BulkScraper:
         batches = [urls[i:i+10] for i in range(0, len(urls), 10)]
         with concurrent.futures.ThreadPoolExecutor() as executor:
             for batch in batches:
-                players = executor.map(lambda u: PlayerPageScraper(u).player(), batch)
+                players = executor.map(lambda u: PlayerPageScraper(u).get_content(), batch)
                 for p in players:
                     yield p
 

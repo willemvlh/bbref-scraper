@@ -12,8 +12,8 @@ class TestPlayerPageScraper:
     ben_wallace = PlayerPageScraper(get_resource("ben_wallace.html"))
 
     def test_equality(self):
-        this_player = self.carmelo_anthony.player()
-        assert (this_player != self.lebron_james.player())
+        this_player = self.carmelo_anthony.get_content()
+        assert (this_player != self.lebron_james.get_content())
         _set = {this_player, this_player}
         assert len(_set) == 1
 
@@ -41,7 +41,7 @@ class TestPlayerPageScraper:
         assert self.lebron_james._get_college() is None
 
     def test_player(self):
-        player = self.carmelo_anthony.player()
+        player = self.carmelo_anthony.get_content()
         assert len(player.seasons) > 10
         rookie_season = player.seasons[0]
         assert rookie_season.position == "SF"
@@ -70,7 +70,7 @@ class TestPlayerPageScraper:
         assert rookie_season.points == 1725
 
     def test_advanced_stats(self):
-        player = self.carmelo_anthony.player()
+        player = self.carmelo_anthony.get_content()
         s = player.seasons[0]
         assert s.advanced.assist_percentage == 13.8
         assert s.advanced.player_efficiency_rating == 17.6
@@ -98,7 +98,8 @@ class TestPlayerPageScraper:
         assert len(seasons) == 11  # ABA seasons must be discarded
 
     def test_game_log(self):
-        seasons = PlayerPageScraper("https://www.basketball-reference.com/players/m/mbengdj01.html").player().seasons
+        seasons = PlayerPageScraper(
+            "https://www.basketball-reference.com/players/m/mbengdj01.html").get_content().seasons
         gl = seasons[0].game_logs
         assert len([game for game in gl if game.played]) == seasons[0].games_played
 
@@ -117,6 +118,6 @@ class TestPlayerPageScraper:
         assert sum([season.points for season in self.julius_erving._get_playoffs_totals()]) == 3088
 
     def test_historical_player(self):
-        player = PlayerPageScraper("https://www.basketball-reference.com/players/h/hawkito01.html").player()
+        player = PlayerPageScraper("https://www.basketball-reference.com/players/h/hawkito01.html").get_content()
         assert player.name == "Tom Hawkins"
         assert player.date_of_birth == date(1936, 12, 22)

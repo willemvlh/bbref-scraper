@@ -19,6 +19,9 @@ class TeamSeasonScraper(Scraper):
 
 
 class TeamPageScraper(Scraper):
+    def get_content(self):
+        return self.team()
+
     def __init__(self, code_or_url: str):
         code_is_url = True if len(code_or_url) > 3 else False
         url = code_or_url if code_is_url else f"https://www.basketball-reference.com/teams/{code_or_url}/"

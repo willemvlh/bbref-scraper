@@ -3,8 +3,16 @@ from typing import List, Tuple
 from bballer.scrapers.base import Scraper
 
 
-class _SearchPageScraper(Scraper):
-    def get_search_results(self, table_id) -> List[Tuple]:
+class SearchPageScraper(Scraper):
+
+    def __init__(self, url: str):
+        super().__init__(url)
+
+    def get_content(self):
+        # Returns all search results, use get_results_in_table to specify table id (e.g. players or teams)
+        return self.get_results_in_table(True)
+
+    def get_results_in_table(self, table_id) -> List[Tuple]:
         if self._parsed.find("div", id="info"):
             # sometimes the search automatically redirects to a specific player page.
             redirected_url = self._parsed.find("link", rel="canonical").attrs["href"]
@@ -23,13 +31,13 @@ class Search:
 
     @classmethod
     def _new_scraper(cls, search_item):
-        return _SearchPageScraper(
+        return SearchPageScraper(
             f"https://www.basketball-reference.com/search/search.fcgi?search={search_item}")
 
     @classmethod
     def search_players(cls, name: str) -> List[Tuple]:
-        return cls._new_scraper(name).get_search_results("players")
+        return cls._new_scraper(name).get_results_in_table("players")
 
     @classmethod
     def search_teams(cls, name: str) -> List[Tuple]:
-        return cls._new_scraper(name).get_search_results("teams")
+        return cls._new_scraper(name).get_results_in_table("teams")

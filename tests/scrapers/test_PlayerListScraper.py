@@ -8,6 +8,6 @@ class TestPlayerListScraper(TestCase):
 
     def test_scrape(self):
         s = PlayerListScraper(get_resource("w.html"))
-        urls = s.get_player_urls()
+        urls = s.get_content()
         assert len(urls) == 364
         assert all([url.startswith("https://www.basketball-reference.com/players/") for url in urls])
