@@ -2,8 +2,9 @@ import logging
 import os
 import re
 
-import requests
 from bs4 import BeautifulSoup, NavigableString, Comment
+
+from bballer.scrapers.download import download
 
 
 class Scraper:
@@ -29,10 +30,7 @@ class Scraper:
 
     def _get_content(self):
         if self._url.startswith("http"):
-            logging.debug(f"Connecting to {self._url}")
-            r = requests.get(self._url)
-            r.raise_for_status()
-            return r.content
+            return download(self._url)
         elif os.path.isfile(self._url):
             logging.debug(f"About to open {self._url}")
             with open(self._url, "r", encoding="utf-8") as f:

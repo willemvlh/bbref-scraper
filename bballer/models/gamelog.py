@@ -1,5 +1,4 @@
 from datetime import date
-from functools import lru_cache
 
 from bballer.scrapers.GameScraper import GameScraper
 
@@ -40,7 +39,6 @@ class GameLog:
             return None
         return self.offensive_rebounds + self.defensive_rebounds
 
-    @lru_cache(None)
     def to_game(self):
         assert self.game_url is not None
         scr = GameScraper(self.game_url)
