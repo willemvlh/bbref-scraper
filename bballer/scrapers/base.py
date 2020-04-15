@@ -4,7 +4,7 @@ import re
 
 from bs4 import BeautifulSoup, NavigableString, Comment
 
-from bballer.scrapers.download import download
+from bballer.scrapers.download import Download
 
 
 class Scraper:
@@ -30,7 +30,7 @@ class Scraper:
 
     def _get_content(self):
         if self._url.startswith("http"):
-            return download(self._url)
+            return Download.download(self._url)
         elif os.path.isfile(self._url):
             logging.debug(f"About to open {self._url}")
             with open(self._url, "r", encoding="utf-8") as f:
