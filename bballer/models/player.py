@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import date
-from typing import List
+from typing import List, Optional
 
 from bballer.models.stats import StatLine
 
@@ -10,6 +10,18 @@ class Salary:
     amount: int
     season: str
     team: str
+
+
+@dataclass(frozen=True)
+class ContractYear:
+    season: str
+    amount: int
+    option: Optional[str]
+
+
+@dataclass(frozen=True)
+class Contract:
+    years: List[ContractYear]
 
 
 @dataclass(frozen=True)
@@ -26,6 +38,7 @@ class Player:
     draft_pick: int
     id: str
     shooting_hand: str
+    contract: Contract
     salaries: List[Salary]
 
     def __repr__(self):

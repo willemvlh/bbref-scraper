@@ -1,7 +1,7 @@
 import logging
 
 from bballer.scrapers.misc import BulkScraper
-from tests.scrapers.test_Scraper import get_resource
+from tests.scrapers.utils import get_resource
 
 
 class TestBulkScraper:

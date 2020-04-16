@@ -1,5 +1,5 @@
 from bballer.scrapers.TeamScraper import TeamPageScraper
-from tests.scrapers.test_Scraper import get_resource
+from tests.scrapers.utils import get_resource
 
 
 class TestTeamPageScraper:

@@ -2,7 +2,7 @@ from datetime import date
 
 from bballer.models.stats import StatLine
 from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
-from tests.scrapers.test_Scraper import get_resource
+from tests.scrapers.utils import get_resource
 
 
 class TestPlayerPageScraper:
@@ -10,6 +10,8 @@ class TestPlayerPageScraper:
     lebron_james = PlayerPageScraper(get_resource("lebron_james.html"))
     julius_erving = PlayerPageScraper(get_resource("julius_erving.html"))
     ben_wallace = PlayerPageScraper(get_resource("ben_wallace.html"))
+    chamberlain = PlayerPageScraper(get_resource("chamberlain.html"))
+    shayok = PlayerPageScraper(get_resource("shayok.html"))
 
     def test_equality(self):
         this_player = self.carmelo_anthony.get_content()
@@ -129,3 +131,30 @@ class TestPlayerPageScraper:
         assert all([sal.team and sal.team.startswith("http") for sal in anthony.salaries])
         assert all([sal.season for sal in anthony.salaries])
         assert sum([sal.amount for sal in anthony.salaries]) > 200000000
+
+    def test_salaries_none(self):
+        assert self.chamberlain.get_content().salaries == []
+
+    def test_contract(self):
+        james = self.lebron_james.get_content()
+
+        assert james.contract
+        assert len(james.contract.years) == 3
+        assert all([year.season for year in james.contract.years])
+        assert all([year.amount for year in james.contract.years])
+
+        first_year = james.contract.years[0]
+        assert first_year.season == "2019-20"
+        assert first_year.amount == 37436858
+        # assert first_year.option is None
+
+        third_year = james.contract.years[2]
+        assert third_year.season == "2021-22"
+        assert third_year.amount == 41002273
+        # assert third_year.option == "Player"
+
+        chamberlain = self.chamberlain.get_content()
+        assert not chamberlain.contract
+
+        shayok = self.shayok.get_content()
+        assert not shayok.contract

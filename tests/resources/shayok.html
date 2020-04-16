@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html data-version="klecko-" data-root="/home/bbr/build" itemscope itemtype="https://schema.org/WebSite" lang="en"
+      class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"/>
+    <link rel="dns-prefetch" href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011"/>
+
+    <!-- yes:cookie regular load the cached css -->
+    <script>
+        function gup(n) {n = n.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]'); var r = new RegExp('[\\?&]'+n+'=([^&#]*)'); var re = r.exec(location.search);   return re === null?'':decodeURIComponent(re[1].replace(/\+/g,' '));}; document.srdev = gup('srdev')
+    </script>
+    <link rel="preconnect" href="https://d2p3bygnnzw9w3.cloudfront.net" crossorigin>
+    <link rel="preconnect" href="https://d2cwpp38twqe55.cloudfront.net" crossorigin>
+    <link rel="stylesheet" href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004151/css/bbr/sr-min.css" type="text/css"
+          onload="if (document.srdev) { this.href = 'https://d2p3bygnnzw9w3.cloudfront.net/nocdn/dev/'.concat(document.srdev.substr(0,2),'/css/bbr/sr.css'); }"/>
+    <link rel="preload" href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004151/js/bbr/sr-min.js" as="script"
+          crossorigin>
+
+
+    <script class="allowed">var sr_is_production = true;
+function vjs_getUrlParameter(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var t=new RegExp("[\\?&]"+e+"=([^&#]*)").exec(location.search);return null===t?"":decodeURIComponent(t[1].replace(/\+/g," "))}document.lang="","/es/"===window.location.pathname.substr(0,4)?document.lang="es":"/pt/"===window.location.pathname.substr(0,4)?document.lang="pt":"/fr/"===window.location.pathname.substr(0,4)?document.lang="fr":"/it/"===window.location.pathname.substr(0,4)?document.lang="it":"/de/"===window.location.pathname.substr(0,4)?document.lang="de":(window.location.pathname.substr(0,4),document.lang="en"),vjs_getUrlParameter("lang")&&(document.lang=vjs_getUrlParameter("lang")),document.srdev=null,vjs_getUrlParameter("srdev")&&(document.srdev=vjs_getUrlParameter("srdev"));var log_performance=!0,is_new_jscss_version=!1,sr_detect_operaMini=-1<navigator.userAgent.indexOf("Opera Mini");sr_detect_operaMini&&((el=document.querySelector("html")).className=el.className.concat(" operamini"));var sr_detect_firefox=-1<navigator.userAgent.indexOf("Firefox");sr_detect_firefox&&((el=document.querySelector("html")).className=el.className.concat(" firefox"));var sr_detect_firefoxMobile=-1<navigator.userAgent.indexOf("Firefox")&&(-1<navigator.userAgent.indexOf("Mobile")||-1<navigator.userAgent.indexOf("Tablet"));sr_detect_firefoxMobile&&((el=document.querySelector("html")).className=el.className.concat(" firefox-mobile"));var el,sr_detect_ie=function(){var e=window.navigator.userAgent;if(0<e.indexOf("Trident/7.0"))return 11;if(0<e.indexOf("Trident/6.0"))return 10;if(0<e.indexOf("Trident/5.0"))return 9;for(var t=3,n=document.createElement("div"),r=n.getElementsByTagName("i");n.innerHTML="\x3c!--[if gt IE "+ ++t+"]><i></i><![endif]--\x3e",r[0];);return 4<t&&t}(),sr_detect_edge=!sr_detect_ie&&!!window.StyleMedia,sr_detect_safari=/Safari/.test(navigator.userAgent)&&/Apple Computer/.test(navigator.vendor),className="no-js";(el=document.querySelector("html")).classList?el.classList.remove(className):el.className=el.className.replace(new RegExp("(^|\\b)"+className.split(" ").join("|")+"(\\b|)","gi")," "),el.className=el.className.concat(" js"),function(a,u,f){function m(e,t){return typeof e===t}function p(e){return"function"!=typeof u.createElement?u.createElement(e):y?u.createElementNS.call(u,"http://www.w3.org/2000/svg",e):u.createElement.apply(u,arguments)}function o(e,t,n,r){var o,i,a,s,l="modernizr",c=p("div"),d=function(){var e=u.body;return e||((e=p(y?"svg":"body")).fake=!0),e}();if(parseInt(n,10))for(;n--;)(a=p("div")).id=r?r[n]:l+(n+1),c.appendChild(a);return(o=p("style")).type="text/css",o.id="s"+l,(d.fake?d:c).appendChild(o),d.appendChild(c),o.styleSheet?o.styleSheet.cssText=e:o.appendChild(u.createTextNode(e)),c.id=l,d.fake&&(d.style.background="",d.style.overflow="hidden",s=_.style.overflow,_.style.overflow="hidden",_.appendChild(d)),i=t(c,e),d.fake?(d.parentNode.removeChild(d),_.style.overflow=s,_.offsetHeight):c.parentNode.removeChild(c),!!i}function h(e){return e.replace(/([a-z])-([a-z])/g,function(e,t,n){return t+n.toUpperCase()}).replace(/^-/,"")}function s(e,t){return function(){return e.apply(t,arguments)}}function i(e){return e.replace(/([A-Z])/g,function(e,t){return"-"+t.toLowerCase()}).replace(/^ms-/,"-ms-")}function v(e,t){var n=e.length;if("CSS"in a&&"supports"in a.CSS){for(;n--;)if(a.CSS.supports(i(e[n]),t))return!0;return!1}if("CSSSupportsRule"in a){for(var r=[];n--;)r.push("("+i(e[n])+":"+t+")");return o("@supports ("+(r=r.join(" or "))+") { #modernizr { position: absolute; } }",function(e){return"absolute"==function(e,t,n){var r;if("getComputedStyle"in a){r=getComputedStyle.call(a,e,t);var o=a.console;if(null!==r)n&&(r=r.getPropertyValue(n));else if(o){o[o.error?"error":"log"].call(o,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else r=!t&&e.currentStyle&&e.currentStyle[n];return r}(e,null,"position")})}return f}function r(e,t,n,r,o){var i=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+z.join(i+" ")+i).split(" ");return m(t,"string")||m(t,"undefined")?function(e,t,n,r){function o(){a&&(delete T.style,delete T.modElem)}if(r=!m(r,"undefined")&&r,!m(n,"undefined")){var i=v(e,n);if(!m(i,"undefined"))return i}for(var a,s,l,c,d,u=["modernizr","tspan","samp"];!T.style&&u.length;)a=!0,T.modElem=p(u.shift()),T.style=T.modElem.style;for(l=e.length,s=0;s<l;s++)if(c=e[s],d=T.style[c],!~(""+c).indexOf("-")||(c=h(c)),T.style[c]!==f){if(r||m(n,"undefined"))return o(),"pfx"!=t||c;try{T.style[c]=n}catch(e){}if(T.style[c]!=d)return o(),"pfx"!=t||c}return o(),!1}(a,t,r,o):function(e,t,n){var r;for(var o in e)if(e[o]in t)return!1===n?e[o]:m(r=t[e[o]],"function")?s(r,n||t):r;return!1}(a=(e+" "+w.join(i+" ")+i).split(" "),t,n)}function e(e,t,n){return r(e,f,f,t,n)}var l=[],c=[],t={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var n=this;setTimeout(function(){t(n[e])},0)},addTest:function(e,t,n){c.push({name:e,fn:t,options:n})},addAsyncTest:function(e){c.push({name:null,fn:e})}},d=function(){};d.prototype=t,(d=new d).addTest("cookies",function(){try{u.cookie="cookietest=1";var e=-1!=u.cookie.indexOf("cookietest=");return u.cookie="cookietest=1; expires=Thu, 01-Jan-1970 00:00:01 GMT",e}catch(e){return!1}}),d.addTest("cors","XMLHttpRequest"in a&&"withCredentials"in new XMLHttpRequest),d.addTest("history",function(){var e=navigator.userAgent;return(-1===e.indexOf("Android 2.")&&-1===e.indexOf("Android 4.0")||-1===e.indexOf("Mobile Safari")||-1!==e.indexOf("Chrome")||-1!==e.indexOf("Windows Phone")||"file:"===location.protocol)&&(a.history&&"pushState"in a.history)}),d.addTest("localstorage",function(){var e="modernizr";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(e){return!1}}),d.addTest("sessionstorage",function(){var e="modernizr";try{return sessionStorage.setItem(e,e),sessionStorage.removeItem(e),!0}catch(e){return!1}});var g=t._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):["",""];t._prefixes=g;var _=u.documentElement,y="svg"===_.nodeName.toLowerCase();y||function(e,a){function u(e,t){var n=e.createElement("p"),r=e.getElementsByTagName("head")[0]||e.documentElement;return n.innerHTML="x<style>"+t+"</style>",r.insertBefore(n.lastChild,r.firstChild)}function f(){var e=g.elements;return"string"==typeof e?e.split(" "):e}function m(e){var t=v[e[d]];return t||(t={},h++,e[d]=h,v[h]=t),t}function r(e,t,n){return t=t||a,s?t.createElement(e):!(r=(n=n||m(t)).cache[e]?n.cache[e].cloneNode():c.test(e)?(n.cache[e]=n.createElem(e)).cloneNode():n.createElem(e)).canHaveChildren||l.test(e)||r.tagUrn?r:n.frag.appendChild(r);var r}function o(e){var t=m(e=e||a);return!g.shivCSS||n||t.hasCSS||(t.hasCSS=!!u(e,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),s||function(t,n){n.cache||(n.cache={},n.createElem=t.createElement,n.createFrag=t.createDocumentFragment,n.frag=n.createFrag()),t.createElement=function(e){return g.shivMethods?r(e,t,n):n.createElem(e)},t.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+f().join().replace(/[\w\-:]+/g,function(e){return n.createElem(e),n.frag.createElement(e),'c("'+e+'")'})+");return n}")(g,n.frag)}(e,t),e}function p(e){for(var t,n=e.attributes,r=n.length,o=e.ownerDocument.createElement(w+":"+e.nodeName);r--;)(t=n[r]).specified&&o.setAttribute(t.nodeName,t.nodeValue);return o.style.cssText=e.style.cssText,o}function t(s){function l(){clearTimeout(e._removeSheetTimer),c&&c.removeNode(!0),c=null}var c,d,e=m(s),t=s.namespaces,n=s.parentWindow;return!x||s.printShived||(void 0===t[w]&&t.add(w),n.attachEvent("onbeforeprint",function(){l();for(var e,t,n,r=s.styleSheets,o=[],i=r.length,a=Array(i);i--;)a[i]=r[i];for(;n=a.pop();)if(!n.disabled&&y.test(n.media)){try{t=(e=n.imports).length}catch(e){t=0}for(i=0;i<t;i++)a.push(e[i]);try{o.push(n.cssText)}catch(e){}}o=function(e){for(var t,n=e.split("{"),r=n.length,o=RegExp("(^|[\\s,>+~])("+f().join("|")+")(?=[[\\s,>+~#.:]|)","gi"),i="1"+w+"\\:2";r--;)(t=n[r]=n[r].split("}"))[t.length-1]=t[t.length-1].replace(o,i),n[r]=t.join("}");return n.join("{")}(o.reverse().join("")),d=function(e){for(var t,n=e.getElementsByTagName("*"),r=n.length,o=RegExp("^(?:"+f().join("|")+")","i"),i=[];r--;)t=n[r],o.test(t.nodeName)&&i.push(t.applyElement(p(t)));return i}(s),c=u(s,o)}),n.attachEvent("onafterprint",function(){(function(e){for(var t=e.length;t--;)e[t].removeNode()})(d),clearTimeout(e._removeSheetTimer),e._removeSheetTimer=setTimeout(l,500)}),s.printShived=!0),s}var n,s,i=e.html5||{},l=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)/i,c=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)/i,d="_html5shiv",h=0,v={};!function(){try{var e=a.createElement("a");e.innerHTML="<xyz></xyz>",n="hidden"in e,s=1==e.childNodes.length||function(){a.createElement("a");var e=a.createDocumentFragment();return void 0===e.cloneNode||void 0===e.createDocumentFragment||void 0===e.createElement}()}catch(e){s=n=!0}}();var g={elements:i.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video",version:"3.7.3",shivCSS:!1!==i.shivCSS,supportsUnknownElements:s,shivMethods:!1!==i.shivMethods,type:"default",shivDocument:o,createElement:r,createDocumentFragment:function(e,t){if(e=e||a,s)return e.createDocumentFragment();for(var n=(t=t||m(e)).frag.cloneNode(),r=0,o=f(),i=o.length;r<i;r++)n.createElement(o[r]);return n},addElements:function(e,t){var n=g.elements;"string"!=typeof n&&(n=n.join(" ")),"string"!=typeof e&&(e=e.join(" ")),g.elements=n+" "+e,o(t)}};e.html5=g,o(a);var _,y=/^|\b(?:all|print)\b/,w="html5shiv",x=!(s||(_=a.documentElement,void 0===a.namespaces||void 0===a.parentWindow||void 0===_.applyElement||void 0===_.removeNode||void 0===e.attachEvent));g.type+=" print",(g.shivPrint=t)(a),"object"==typeof module&&module.exports&&(module.exports=g)}(void 0!==a?a:this,u),d.addTest("canvas",function(){var e=p("canvas");return!(!e.getContext||!e.getContext("2d"))}),d.addTest("csspositionsticky",function(){var e="position:",t=p("a").style;return t.cssText=e+g.join("sticky;"+e).slice(0,-e.length),-1!==t.position.indexOf("sticky")});var n="Moz O ms Webkit",w=t._config.usePrefixes?n.toLowerCase().split(" "):[];t._domPrefixes=w;var x,M=(x=!("onblur"in u.documentElement),function(e,t){var n;return!!e&&(t&&"string"!=typeof t||(t=p(t||"div")),!(n=(e="on"+e)in t)&&x&&(t.setAttribute||(t=p("div")),t.setAttribute(e,""),n="function"==typeof t[e],t[e]!==f&&(t[e]=f),t.removeAttribute(e)),n)});t.hasEvent=M,d.addTest("pointerevents",function(){var e=!1,t=w.length;for(e=d.hasEvent("pointerdown");t--&&!e;)M(w[t]+"pointerdown")&&(e=!0);return e});var b=t.testStyles=o;d.addTest("unicode",function(){var t,n=p("span"),r=p("span");return b("#modernizr{font-family:Arial,sans;font-size:300em;}",function(e){n.innerHTML=y?"妇":"&#5987;",r.innerHTML=y?"☆":"&#9734;",e.appendChild(n),e.appendChild(r),t="offsetWidth"in n&&n.offsetWidth!==r.offsetWidth}),t}),d.addTest("touchevents",function(){var t;if("ontouchstart"in a||a.DocumentTouch&&u instanceof DocumentTouch)t=!0;else{var e=["@media (",g.join("touch-enabled),("),"heartz",")","{#modernizr{top:9px;position:absolute}}"].join("");b(e,function(e){t=9===e.offsetTop})}return t});var z=t._config.usePrefixes?n.split(" "):[];t._cssomPrefixes=z;function E(e){var t,n=g.length,r=a.CSSRule;if(void 0===r)return f;if(!e)return!1;if((t=(e=e.replace(/^@/,"")).replace(/-/g,"_").toUpperCase()+"_RULE")in r)return"@"+e;for(var o=0;o<n;o++){var i=g[o];if(i.toUpperCase()+"_"+t in r)return"@-"+i.toLowerCase()+"-"+e}return!1}t.atRule=E;var S={elem:p("modernizr")};d._q.push(function(){delete S.elem});var T={style:S.elem.style};d._q.unshift(function(){delete T.style}),t.testAllProps=r;var C=t.prefixed=function(e,t,n){return 0===e.indexOf("@")?E(e):(-1!=e.indexOf("-")&&(e=h(e)),t?r(e,t,n):r(e,"pfx"))};d.addTest("vibrate",!!C("vibrate",navigator)),d.addTest("matchmedia",!!C("matchMedia",a)),t.testAllProps=e,d.addTest("flexwrap",e("flexWrap","wrap",!0)),function(){var e,t,n,r,o,i;for(var a in c)if(c.hasOwnProperty(a)){if(e=[],(t=c[a]).name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(n=0;n<t.options.aliases.length;n++)e.push(t.options.aliases[n].toLowerCase());for(r=m(t.fn,"function")?t.fn():t.fn,o=0;o<e.length;o++)1===(i=e[o].split(".")).length?d[i[0]]=r:(!d[i[0]]||d[i[0]]instanceof Boolean||(d[i[0]]=new Boolean(d[i[0]])),d[i[0]][i[1]]=r),l.push((r?"":"no-")+i.join("-"))}}(),function(e){var t=_.className,n=d._config.classPrefix||"";if(y&&(t=t.baseVal),d._config.enableJSClass){var r=new RegExp("(^|\\s)"+n+"no-js(\\s|)");t=t.replace(r,"1"+n+"js2")}d._config.enableClasses&&(t+=" "+n+e.join(" "+n),y?_.className.baseVal=t:_.className=t)}(l),delete t.addTest,delete t.addAsyncTest;for(var N=0;N<d._q.length;N++)d._q[N]();a.Modernizr=d}(window,document),Modernizr.viewport_width=Math.max(document.documentElement.clientWidth,window.innerWidth||0),Modernizr.viewport_height=Math.max(document.documentElement.clientHeight,window.innerHeight||0),Modernizr.narrow=Modernizr.viewport_width<=704,Modernizr.constrained=Modernizr.viewport_width<=1200,Modernizr.site_menu=Modernizr.viewport_width<=1020?"button":"nav_bar",Modernizr.touch=Modernizr.touchevents||Modernizr.pointerevents&&(0<navigator.MaxTouchPoints||0<navigator.msMaxTouchPoints),Modernizr.phone=Modernizr.narrow&&Modernizr.touch,Modernizr.tablet=Modernizr.viewport_width<1075&&Modernizr.touch,Modernizr.desktop=!Modernizr.constrained&&!Modernizr.touch,Modernizr.laptop=!(Modernizr.desktop||Modernizr.tablet||Modernizr.phone);var patt=new RegExp("hideallads");Modernizr.adfree=patt.test(window.location.href);var sr_html=document.querySelector("html"),cn=sr_html.className;Modernizr.phone?sr_html.className=cn.concat(" phone"):Modernizr.tablet?sr_html.className=cn.concat(" tablet"):(Modernizr.desktop||Modernizr.laptop)&&(sr_html.className=cn.concat(" desktop"));var sr_host_parts=window.location.hostname.split(".");cn=sr_html.className;Modernizr.is_build=Modernizr.is_live=Modernizr.is_dev=!1,"www"===sr_host_parts[0]||"fbref"===sr_host_parts[0]?(Modernizr.is_live=!0,sr_html.className=cn.concat(" is_live")):sr_host_parts[0].startsWith("b")?(Modernizr.is_build=!0,sr_html.className=cn.concat(" is_build")):(sr_host_parts[0].startsWith("d")||sr_host_parts[0].startsWith("r"))&&(Modernizr.is_dev=!0,sr_html.className=cn.concat(" is_dev"));var sr_logger=function(){var e=null,t={enableLogger:function(){null!=e&&(window.console.log=e)},disableLogger:function(){e=console.log,window.console.log=function(){}}};return t}();!document.srdev&&sr_is_production&&sr_logger.disableLogger(),Modernizr.is_modern=(Modernizr.canvas||Modernizr.localstorage)&&!sr_detect_operaMini,Modernizr.is_modern?(document.documentElement.className+=" is_modern",Modernizr.is_not_modern=!1):(document.documentElement.className+=" is_not_modern",Modernizr.is_not_modern=!0),Modernizr.lang=document.lang||"",Modernizr.srdev=document.srdev;var sr_utilities_js_loader=[];function vjs_readCookie(e){for(var t=e+"=",n=document.cookie.split(";"),r=0;r<n.length;r++){for(var o=n[r];" "===o.charAt(0);)o=o.substring(1,o.length);if(0===o.indexOf(t))return decodeURIComponent(o.substring(t.length,o.length))}return null}function vjs_createCookie(e,t,n){var r="";if(n){var o=new Date;o.setTime(o.getTime()+24*n*60*60*1e3),r="; expires="+o.toGMTString()}else r="";var i=encodeURIComponent(e)+"="+encodeURIComponent(t)+r+"; path=/";document.cookie=i}!function(o){function e(e,t){"use strict";var n=o.document.getElementsByTagName("script")[0],r=o.document.createElement("script");return r.src=e,r.async=!0,n.parentNode.insertBefore(r,n),t&&"function"==typeof t&&(r.onload=t),r}"undefined"!=typeof module?module.exports=e:o.loadJS=e}("undefined"!=typeof global?global:this),String.prototype.vjs_isMatch=function(e){return null!==this.match(e)};var sr_time_begin=new Date,sr_perf_startTime=new Date,sr_perf_log="<strong>Performance:</strong>",sr_perf_lastTime=new Date;function vjs_ready(e){"loading"!=document.readyState?e():document.addEventListener("DOMContentLoaded",e)}
+
+
+    </script>
+
+    <script>
+var _sr_modern_url = ''.concat(document.srdev?'https://d2p3bygnnzw9w3.cloudfront.net/nocdn/dev/'.concat(document.srdev.substring(0, 2)):"https://d2p3bygnnzw9w3.cloudfront.net/req/202004151",
+                               "/js/bbr", "/sr",document.srdev?"":"-min",   			       ".js");
+var _sr_basic_url = "https://d2p3bygnnzw9w3.cloudfront.net/req/202004151/js/bbr/sr-basic".concat("-min", ".js");
+if (Modernizr.is_modern) { loadJS( _sr_modern_url, function() { vjs_ready(sr_fire_js); }); }
+else                     { loadJS( _sr_basic_url, function() { vjs_ready(sr_fire_js); }); }
+
+    </script>
+    <link rel="preload" href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004151/icons/sr_icons-min.svg?bbr" as="fetch"
+          crossorigin>
+    <link rel="preload" href="https://d2cwpp38twqe55.cloudfront.net/short/inc/main_nav_menu.json" as="fetch"
+          crossorigin>
+    <link rel="preload" href="https://d2p3bygnnzw9w3.cloudfront.net/req/201604190/images/chosen-sprite.png" as="image"
+          crossorigin>
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagservices.com" crossorigin>
+
+
+    <title>Marial Shayok Stats | Basketball-Reference.com</title>
+    <meta name="revised" content="01:06:25 13-Apr-2020"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="generated-by" content="build_player_page.pl"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="theme-color" content="#4d4438"/>
+    <meta name="msapplication-navbutton-color" content="#4d4438"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4d4438"/>
+
+
+    <meta name="keywords" content="stats, NBA, players, Marial Shayok, career">
+    <link rel="canonical" href="https://www.basketball-reference.com/players/s/shayoma01.html"/>
+    <meta itemprop="url" content="https://www.basketball-reference.com">
+    <meta itemprop="name" content="Basketball Reference">
+    <meta itemprop="alternateName" content="BkRef">
+    <meta name="Description"
+          content="Marial Shayok - Career stats, game logs, biographical info, awards, and achievements for the NBA, G-League, and NCAA.">
+    <meta property="fb:app_id" content="">
+    <meta property="og:url" content="https://www.basketball-reference.com/players/s/shayoma01.html">
+    <meta property="og:title" content="Marial Shayok Stats | Basketball-Reference.com">
+    <meta property="og:site_name" content="Basketball-Reference.com">
+    <meta property="og:type" content="    Athlete"/>
+    <meta property="og:description"
+          content="Marial Shayok - Career stats, game logs, biographical info, awards, and achievements for the NBA, G-League, and NCAA.">
+    <meta property="og:image"
+          content="http://ssref.net/scripts/image_resize.cgi?min=200&url=https://d2cwpp38twqe55.cloudfront.net/req/202004101/images/players/shayoma01.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@bball_ref">
+    <meta name="twitter:creator" content="@bball_ref">
+    <meta property="twitter:image"
+          content="http://ssref.net/scripts/image_resize.cgi?min=200&url=https://d2cwpp38twqe55.cloudfront.net/req/202004101/images/players/shayoma01.jpg">
+    <meta name="twitter:domain" content="Basketball-Reference.com">
+    <meta name="referrer" content="unsafe-url">
+
+
+    <!-- tiles, touch, favicons -->
+    <link rel="icon" sizes="48x48"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/favicon-48.png">
+    <link rel="apple-touch-icon" sizes="228x228"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-228x228-precomposed.png">
+    <link rel="apple-touch-icon" sizes="195x195"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-195x195-precomposed.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-180x180-precomposed.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-152x152-precomposed.png">
+    <link rel="apple-touch-icon" sizes="144x144"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon" sizes="128x128"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-128x128-precomposed.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-120x120-precomposed.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" sizes="76x76"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-76x76-precomposed.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" sizes="57x57"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/apple-touch-icon-57x57-precomposed.png">
+    <link rel="icon" sizes="32x32"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/favicon-32.png">
+    <!--[if IE]>
+    <link rel="shortcut icon" href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/favicon.ico">
+    <![endif]-->
+    <meta name="msapplication-TileColor" content="#905500"/>
+    <meta name="msapplication-TileImage"
+          content="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/favicons/bbr/ms-tile-144.png"/>
+    <link rel=search type="application/opensearchdescription+xml"
+          href="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/opensearch/opensearch-bbr.xml"
+          title=" Player and Team Search">
+
+
+    <script>
+    var freestar = freestar || {};
+    freestar.config = freestar.config || {};
+    freestar.config.enabled_slots = [ "div-gpt-ad-300x250-ATF","div-gpt-ad-728x90-ATF","div-gpt-ad-728x90-GeneralHeader","div-gpt-ad-728x90-BTF-1","div-gpt-ad-728x90-BTF-2","div-gpt-ad-728x90-BTF-3","div-gpt-ad-728x90-Footer" ];
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree || document.getElementById('sr_suppress_ads') || Modernizr.viewport_width < 1810) {
+    // do not include the rails
+    }
+    else {
+         freestar.config.enabled_slots.push('div-gpt-ad-160x600-1');
+         freestar.config.enabled_slots.push('div-gpt-ad-160x600-2');
+    } 
+
+
+    </script>
+    <script data-cfasync="false" type="text/javascript">
+    var fs_debug = window.location.search.indexOf('fsdebug') == -1 ? false : true;
+    freestar.hitTime = Date.now();
+    freestar.queue = freestar.queue || [];
+    freestar.config = freestar.config || {};
+    freestar.queue.push(function() {
+      // Include the line reflecting the area/section of the site you are on
+      googletag.pubads().setTargeting('sr_site_id', 'bbr');
+    });
+!function(a,b){
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+        return;
+    }  
+    var c=b.getElementsByTagName("script")[0],
+    d=b.createElement("script"),
+    e="https://a.pub.network/basketball-reference";
+    e+=fs_debug?"/qa/pubfig.min.js":"/pubfig.min.js",
+    d.async=!0,
+    d.src=e,
+    c.parentNode.insertBefore(d,c)
+}(window,document);
+
+    </script>
+
+
+</head>
+<body class="bbr">
+
+<div id="wrap">
+
+    <div id="header" role="banner">
+        <ul id="subnav" class="notranslate">
+            <li><a href="https://www.sports-reference.com/">
+                <svg height="15px" width="20px">
+                    <use xlink:href="#ic-sr-pennant"></use>
+                </svg>
+                Sports Reference</a></li>
+            <li><a href="https://www.baseball-reference.com/">Baseball</a></li>
+            <li><a href="https://www.pro-football-reference.com/">Football</a> <a
+                    href="https://www.sports-reference.com/cfb/">(college)</a></li>
+            <li class="current"><a href="https://www.basketball-reference.com/">Basketball</a> <a
+                    href="https://www.sports-reference.com/cbb/">(college)</a></li>
+            <li><a href="https://www.hockey-reference.com/">Hockey</a></li>
+            <li><a href="https://fbref.com/">Soccer</a></li>
+            <li><a href="https://www.sports-reference.com/blog/">Blog</a></li>
+
+            <li><a href="https://stathead.com/">Stathead</a></li>
+            <li><a href="https://widgets.sports-reference.com/">Widgets</a></li>
+
+            <li><a href="https://www.sports-reference.com/feedback/">Questions or Comments?</a></li>
+
+            <li class="user logged_in">Welcome <span class="username"></span>&nbsp;&#183;&nbsp;<a href="/my/">Your
+                Account</a></li>
+            <li class="user logged_in"><a class="logout" href="/my/?do=logout">Logout</a></li>
+            <li class="user not_logged_in"><a class="login" href="/my/">Login</a></li>
+            <li class="user not_logged_in"><a href="/my/">Create Account</a></li>
+
+
+        </ul>
+
+        <a href="/"><img src="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/logos/bbr-logo.svg"
+                         onerror="this.src='https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/logos/bbr-logo.png'; this.onerror = null;"
+                         alt="Basketball-Reference.com Logo &amp; Link to home page"/></a>
+        <div id="nav_trigger" role="button"><a href="#site_menu_link">MENU</a></div>
+        <div id="nav" role="navigation" aria-label="Basketball-Reference.com sections">
+            <ul id="main_nav" class="hoversmooth nohover">
+                <li id="header_players" class="current"><a href="/players/">Players</a></li>
+                <li id="header_teams"><a href="/teams/">Teams</a></li>
+                <li id="header_leagues"><a href="/leagues/">Seasons</a></li>
+                <li id="header_leaders"><a href="/leaders/">Leaders</a></li>
+                <li id="header_scores"><a href="/boxscores/">Scores</a></li>
+                <li id="header_playoffs" class=""><a href="/playoffs/">Playoffs</a></li>
+                <li id="header_draft" class=""><a href="/draft/">Draft</a></li>
+                <li id="header_playindex" class=""><a href="/play-index/">Play Index</a></li>
+                <li id="header_newsletter" class=""><a href="https://stathead.com/newsletter.cgi?site_sub=bbr">Newsletter</a>
+                </li>
+                <li><a data-scroll href="#site_menu_link" class="opener">Full Site Menu Below</a></li>
+            </ul>
+            <div class="breadcrumbs">You are here:
+                <div itemscope itemtype="https://schema.org/BreadcrumbList" class="crumbs"><span
+                        itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item"
+                                                                                                       href="/"><span
+                        itemprop="name">BBR Home Page</span></a> <meta itemprop="position" content="1"/></span> &gt;
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item"
+                                                                                                         href="/players/"><span
+                            itemprop="name">Players</span></a> <meta itemprop="position" content="2"/></span> &gt; <span
+                            itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a
+                            itemprop="item" href="/players/s/"><span itemprop="name">S</span></a> <meta
+                            itemprop="position" content="3"/></span> &gt; <strong>Marial Shayok</strong></div>
+            </div>
+            <ul class="usertools bullets-inline">
+                <li class="user logged_in">Welcome <span class="username"></span>&nbsp;&#183;&nbsp;<a href="/my/">Your
+                    Account</a></li>
+                <li class="user logged_in"><a class="logout" href="/my/?do=logout">Logout</a></li>
+                <li class="user not_logged_in"><a class="login" href="/my/">Login</a></li>
+                <li class="user not_logged_in"><a href="/my/">Create Account</a></li>
+
+            </ul><!-- ul.user -->
+        </div><!-- div#nav -->
+        <script>
+function sr_menus_setupMainNav_button_inline () {
+    if (sr_detect_operaMini || !("classList" in document.createElement("_"))) {
+	return false;
+    }
+    var nav_trigger = document.getElementById('nav_trigger');
+    if(!nav_trigger || !Modernizr.is_modern || nav_trigger.triggered) {
+	return false;
+    }
+    nav_trigger.triggered = true;
+    var nav = document.getElementById('nav');
+    var nav_trigger_a = nav_trigger.querySelector('a');
+    if (nav_trigger_a) {
+	nav_trigger_a.setAttribute('href','javascript:void(0)');
+	nav_trigger.onclick = function (event) {
+	    nav.classList.toggle('open');
+	    var is_open = nav.classList.contains('open');
+	    if (is_open) {
+		nav_trigger.classList.add('open');
+	    }
+	    else {
+		nav_trigger.classList.remove('open');
+	    }
+	    event.preventDefault();
+	    try { sr_record_analytics_event('MainNavButtonClick_inline',sr_record_directory(),sr_record_page());}
+	    catch(err) {}
+	};
+    }
+    return true;
+}
+sr_menus_setupMainNav_button_inline();
+
+        </script>
+        <div class="search" role="search" aria-label="Site Search for players, teams and sections">
+            <form method="get" name="f_big" action="/search/search.fcgi">
+                <div class="ac-outline">
+                    <div class="ac-wrapper"><input type="search" tabindex="-1" class="ac-hint" name="hint"
+                                                   placeholder="" autocomplete="off" autocorrect="off"
+                                                   autocapitalize="off" spellcheck="false" dir="auto">
+
+                        <input tabindex="1" type="search" class="ac-input completely" name="search"
+                               placeholder="Enter Person, Team, Section, etc"
+                               aria-label="Enter a player, team or section name" autocomplete="off" autocorrect="off"
+                               autocapitalize="off" spellcheck="false" dir="auto"/>
+                        <div class="ac-dropdown"></div>
+                    </div>
+                </div>
+
+                <input type="submit" value="Search" tabindex="2"/>
+                <input type="hidden" name="pid" value="" data-search-id>
+                <input type="hidden" name="idx" value="" data-search-idx>
+
+            </form>
+        </div><!-- div.search -->
+
+    </div><!-- div#header -->
+
+
+    <div id="info" class="players">
+        <div id="meta">
+
+
+            <div class="media-item"><img itemscope='image'
+                                         src='https://d2cwpp38twqe55.cloudfront.net/req/202004101/images/players/shayoma01.jpg'
+                                         alt='Photo of Marial Shayok'>
+            </div><!-- div.media-item -->
+            <div itemscope itemtype="https://schema.org/Person">
+                <h1 itemprop="name">Marial Shayok</h1>
+
+
+                <!-- all other pages -->
+
+
+                <p><strong>Pronunciation</strong>: \MARE-ee-ull SHAY-ock\</p>
+
+
+                <p>
+                    <strong>
+                        <strong>Marial Shayok</strong>
+                    </strong>
+
+                    &#9642;
+                    <a href="/friv/twitter.html">Twitter</a>:
+                    <a href="https://twitter.com/MarialShayok">MarialShayok</a>
+
+                </p>
+
+
+                <p>
+                    (Super Marial)
+                </p>
+
+
+                <p>
+                    <strong>
+                        Position:
+                    </strong>
+                    Shooting Guard
+
+
+                    &#9642;
+
+                    <strong>
+                        Shoots:
+                    </strong>
+                    Right
+                </p>
+
+
+                <p><span itemprop="height">6-5</span>,&nbsp;<span itemprop="weight">196lb</span>&nbsp;(196cm,&nbsp;88kg)
+                </p>
+
+
+                <p><strong>Team</strong>: <a href='/teams/PHI/2020.html'>Philadelphia 76ers</a></p>
+
+
+                <p>
+                    <strong>Born: </strong>
+                    <span itemprop="birthDate" id="necro-birth" data-birth="1995-07-26">
+      <a href='/friv/birthdays.fcgi?month=7&day=26'>July 26</a>,
+            <a href='/friv/birthyears.fcgi?year=1995'>1995</a>
+    </span>
+                    <span itemprop="birthPlace">
+    in&nbsp;Ottawa,&nbsp;<a href='/friv/birthplaces.fcgi?country=CA&state='>Canada</a></span>
+                    <span class="f-i f-ca">ca</span>
+                </p>
+
+
+                <p>
+                    <strong>
+
+                        Colleges:
+
+                    </strong>
+
+                    <a href='/friv/colleges.fcgi?college=virginia'>Virginia</a>,
+
+                    <a href='/friv/colleges.fcgi?college=iowast'>Iowa State</a>
+
+                </p>
+
+
+                <p>
+                    <strong>
+
+                        High School:
+
+                    </strong>
+
+                    Blair Academy in Blairstown, <a href='/friv/high_schools.fcgi?country=US&state=NJ'>New Jersey</a>
+
+                </p>
+
+
+                <p>
+                    <strong>
+                        Draft:
+                    </strong>
+                    <a href="/teams/PHI/draft.html">Philadelphia 76ers</a>, 2nd round (24th pick, 54th overall), <a
+                        href="/draft/NBA_2019.html">2019 NBA Draft</a>
+                </p>
+
+
+                <p>
+                    <strong>NBA Debut: </strong><a href="/boxscores/202002060MIL">February 6, 2020</a>
+                </p>
+
+
+                <p>
+                    <strong>
+                        Experience:
+                    </strong>
+                    Rookie
+                </p>
+
+
+                <button id="meta_more_button" class="opener" data-type="hide_after" data-class="open" data-id="info">
+                    More bio, uniform, draft, salary info
+                </button>
+
+
+            </div>
+        </div><!-- div#meta -->
+
+
+        <div class="uni_holder bbr">
+            <a href="/friv/numbers.cgi?number=35" class="poptip default" data-tip="Philadelphia 76ers, 2020">
+                <svg viewBox="0,0,42,52" class="jersey">
+                    <rect fill="#ff0000" height="52" width="42" y="0" x="0"></rect>
+                    <ellipse fill="white" stroke-width="2" stroke="#0000ff" ry="18" rx="7" cy="5" cx="0"></ellipse>
+                    <ellipse fill="white" stroke-width="2" stroke="#0000ff" ry="18" rx="7" cy="5" cx="42"></ellipse>
+                    <ellipse fill="white" stroke-width="2" stroke="#0000ff" ry="7" rx="7" cy="0" cx="21"></ellipse>
+                    <text x="9" y="39" fill="#ffffff">35</text>
+                </svg>
+
+            </a>
+        </div>
+
+
+        <div class="adblock ad300">
+
+            <!-- div#fs_fs_300_atf  -->
+            <div align="center" id="div-gpt-ad-300x250-ATF">
+                <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-300x250-ATF');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-300x250-ATF'); });
+    }
+
+                </script>
+            </div>
+            <!-- /div.#fs_fs_300_atf -->
+
+
+        </div>
+
+
+        <div class="stats_pullout">
+            <div>
+                <div>
+                    <h4>SUMMARY</h4>
+                    <p><strong>2019-20</strong></p>
+                    <p><strong>Career</strong></p>
+                </div>
+            </div>
+            <div class="p1">
+                <div>
+                    <h4 class="poptip" data-tip="Games">G</h4>
+                    <p>2</p>
+                    <p>2</p></div>
+
+                <div>
+                    <h4 class="poptip" data-tip="Points">PTS</h4>
+                    <p>1.5</p>
+                    <p>1.5</p></div>
+
+                <div>
+                    <h4 class="poptip" data-tip="Total Rebounds">TRB</h4>
+                    <p>1.5</p>
+                    <p>1.5</p></div>
+
+                <div>
+                    <h4 class="poptip" data-tip="Assists">AST</h4>
+                    <p>0.5</p>
+                    <p>0.5</p></div>
+            </div>
+            <div class="p2">
+                <div>
+                    <h4 class="poptip" data-tip="Field Goal Percentage">FG%</h4>
+                    <p>20.0</p>
+                    <p>20.0</p></div>
+
+                <div>
+                    <h4 class="poptip" data-tip="3-Point Field Goal Percentage">FG3%</h4>
+                    <p>33.3</p>
+                    <p>33.3</p></div>
+
+                <div>
+                    <h4 class="poptip" data-tip="Free Throw Percentage">FT%</h4>
+                    <p>-</p>
+                    <p>-</p></div>
+
+                <div>
+                    <h4 class="poptip"
+                        data-tip="<strong>Effective Field Goal Percentage</strong><br>This statistic adjusts for the fact that a 3-point field goal is worth one more point than a 2-point field goal.">
+                        eFG%</h4>
+                    <p>30.0</p>
+                    <p>30.0</p></div>
+            </div>
+            <div class="p3">
+                <div>
+                    <h4 class="poptip"
+                        data-tip="<b>Player Efficiency Rating</b><br>A measure of per-minute production standardized such that the league average is 15.">
+                        PER</h4>
+                    <p>-2.0</p>
+                    <p>-2.0</p></div>
+
+                <div>
+                    <h4 class="poptip"
+                        data-tip="<b>Win Shares</b><br>An estimate of the number of wins contributed by a player.">
+                        WS</h4>
+                    <p>0.0</p>
+                    <p>0.0</p></div>
+            </div>
+
+
+        </div>
+
+    </div><!-- div#info -->
+    <div id="srcom">
+
+        <div class="adblock ad728">
+
+            <!-- div#fs_fs_728_atf  -->
+            <div align="center" id="div-gpt-ad-728x90-ATF">
+                <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-728x90-ATF');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-728x90-ATF'); });
+    }
+
+                </script>
+            </div>
+            <!-- /div.#fs_fs_728_atf -->
+
+
+        </div>
+
+
+    </div><!-- div#srcom -->
+    <div id="inner_nav" role="navigation" aria-label="Sections on this page and/or other pages related to this page"
+         class="">
+        <ul class="hoversmooth">
+            <li class="current index "><a href="/players/s/shayoma01.html"><u>Marial Shayok Overview</u></a></li>
+            <li data-fade-selector="#inpage_nav" class="condensed hasmore "><span>More Shayok Pages</span>
+                <div>
+                    <p class="listhead"><strong>Game Logs</strong></p>
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/gamelog/2020">2019-20</a></li>
+                    </ul>
+
+                    <p class="listhead"><strong>Splits</strong></p>
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/splits/2020">2019-20</a></li>
+                        <li><a href="/players/s/shayoma01/splits/">Career</a></li>
+                    </ul>
+
+                    <p class="listhead"><strong>Shooting</strong></p>
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/shooting/2020">2019-20</a></li>
+                    </ul>
+
+                    <p class="listhead"><strong>Lineups</strong></p>
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/lineups/2020">2019-20</a></li>
+                    </ul>
+
+                    <p class="listhead"><strong>On/Off</strong></p>
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/on-off/2020">2019-20</a></li>
+                    </ul>
+
+                    <p class="listhead"><strong>Other Shayok Pages</strong></p>
+                    <ul class="">
+                        <li><a href="/play-index/pgl_finder.cgi?player_id=shayoma01">Game Finder</a></li>
+                        <li><a href="/play-index/pstreak.cgi?player_id=shayoma01">Streak Finder</a></li>
+                        <li><a href="/play-index/shot_finder.cgi?player_id=shayoma01">Shot Finder</a></li>
+                        <li><a href="/play-index/event_finder.cgi?player_id=shayoma01">Event Finder</a></li>
+                        <li><a href="/play-index/lineup_finder.cgi?player_id=shayoma01">Lineup Finder</a></li>
+                        <li><a href="/play-index/plus_minus_finder.cgi?player_id=shayoma01">Plus/Minus Finder</a></li>
+                        <li>
+                            <a href="/play-index/h2h_finder.cgi?player_id1_select=Marial Shayok&player_id1=shayoma01&idx=players">Head2Head
+                                Finder</a></li>
+                        <li>
+                            <a href="/friv/teammates_and_opponents.fcgi?pid_select=Marial Shayok&pid=shayoma01&idx=players&type=t">Teammates
+                                & Opponents</a></li>
+                    </ul>
+
+
+                    <ul class="">
+                        <li><a href='/play-index/pcm_finder.fcgi?&player_id1_select=Marial+Shayok&player_id1=shayoma01'>Compare
+                            Marial Shayok</a> to other players
+                        </li>
+                    </ul>
+
+                    <p class="listhead">More Marial Shayok pages at Sports Reference</p>
+                    <ul class="">
+                        <li><a href="https://www.sports-reference.com/cbb/players/marial-shayok-1.html">College
+                            Basketball at Sports-Reference.com</a></li>
+                        <li><a href="https://www.basketball-reference.com/gleague/players/s/shayoma01d.html">G-Lg Stats
+                            at Basketball-Reference.com</a></li>
+                    </ul>
+
+                </div>
+            </li>
+            <li data-fade-selector="#inpage_nav" class="full hasmore "><span>Game Logs</span>
+                <div><p class="desc">Game-by-game stat line for the player</p>
+
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/gamelog/2020">2019-20</a></li>
+                    </ul>
+
+                </div>
+            </li>
+            <li data-fade-selector="#inpage_nav" class="full hasmore "><span>Splits</span>
+                <div><p class="desc">Player stats broken down into various categories; i.e. home/away, monthly,
+                    etc...</p>
+
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/splits/2020">2019-20</a></li>
+                        <li><a href="/players/s/shayoma01/splits/">Career</a></li>
+                    </ul>
+
+                </div>
+            </li>
+            <li data-fade-selector="#inpage_nav" class="full hasmore "><span>Shooting</span>
+                <div><p class="desc">Player shooting history</p>
+
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/shooting/2020">2019-20</a></li>
+                    </ul>
+
+                </div>
+            </li>
+            <li data-fade-selector="#inpage_nav" class="full hasmore "><span>Lineups</span>
+                <div><p class="desc">Player lineups</p>
+
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/lineups/2020">2019-20</a></li>
+                    </ul>
+
+                </div>
+            </li>
+            <li data-fade-selector="#inpage_nav" class="full hasmore "><span>On/Off</span>
+                <div><p class="desc">Player on/off</p>
+
+                    <ul class="">
+                        <li><a href="/players/s/shayoma01/on-off/2020">2019-20</a></li>
+                    </ul>
+
+                </div>
+            </li>
+            <li data-fade-selector="#inpage_nav" class="full hasmore "><span>More</span>
+                <div>
+                    <p class="listhead">More Marial Shayok Basketball Reference pages</p>
+                    <ul class="">
+                        <li><a href="/play-index/pgl_finder.cgi?player_id=shayoma01">Game Finder</a></li>
+                        <li><a href="/play-index/pstreak.cgi?player_id=shayoma01">Streak Finder</a></li>
+                        <li><a href="/play-index/shot_finder.cgi?player_id=shayoma01">Shot Finder</a></li>
+                        <li><a href="/play-index/event_finder.cgi?player_id=shayoma01">Event Finder</a></li>
+                        <li><a href="/play-index/lineup_finder.cgi?player_id=shayoma01">Lineup Finder</a></li>
+                        <li><a href="/play-index/plus_minus_finder.cgi?player_id=shayoma01">Plus/Minus Finder</a></li>
+                        <li>
+                            <a href="/play-index/h2h_finder.cgi?player_id1_select=Marial Shayok&player_id1=shayoma01&idx=players">Head2Head
+                                Finder</a></li>
+                        <li>
+                            <a href="/friv/teammates_and_opponents.fcgi?pid_select=Marial Shayok&pid=shayoma01&idx=players&type=t">Teammates
+                                & Opponents</a></li>
+                    </ul>
+
+                    <p class="listhead">More Marial Shayok pages at Sports Reference</p>
+                    <ul class="">
+                        <li><a href="https://www.sports-reference.com/cbb/players/marial-shayok-1.html">College
+                            Basketball at Sports-Reference.com</a></li>
+                        <li><a href="https://www.basketball-reference.com/gleague/players/s/shayoma01d.html">G-Lg Stats
+                            at Basketball-Reference.com</a></li>
+                    </ul>
+
+                    <p class="listhead">Compare <a
+                            href='/play-index/pcm_finder.fcgi?&player_id1_select=Marial+Shayok&player_id1=shayoma01'>Marial
+                        Shayok</a> to other players</p>
+                    <ul class="">
+                    </ul>
+
+                </div>
+            </li>
+            <li data-fade-selector="#inpage_nav" class="groupstuff hasmore "><span>2019-20 76ers</span>
+                <div>
+                    <p class="listhead">
+                    <p class="listhead">
+                        <a href="/teams/PHI/2020.html">2019-20 76ers</a>
+                        <br>
+                        <span>(39-26, 6th place in <a href="/leagues/NBA_2020.html">NBA</a> Eastern Conference)</span>
+                    </p>
+                    </p>
+                    <ul class="">
+                    </ul>
+
+
+                    <section>
+                        <p>
+                        <p><strong>Last Game</strong>: <a href="/boxscores/202003110PHI.html">W 124-106 vs. DET</a>
+                        </p></p>
+
+                        <p><strong>Next Game</strong>: Monday, Mar. 16 vs. WAS</p>
+
+                        <p><a href="/teams/PHI/2020_games.html">Full Schedule and Results</a>
+                        </p>
+
+                    </section>
+
+
+                    <ul class=" grouplist">
+                        <li><a href="/players/o/oquinky01.html"> Kyle O'Quinn</a></li>
+                        <li><a href="/players/b/burksal01.html"> Alec Burks</a></li>
+                        <li><a href="/players/h/horfoal01.html"> Al Horford</a></li>
+                        <li><a href="/players/t/thybuma01.html"> Matisse Thybulle</a></li>
+                        <li><a href="/players/s/simmobe01.html"> Ben Simmons</a></li>
+                        <div id="more_grouplist">
+                            <li><a href="/players/s/smithzh01.html"> Zhaire Smith</a></li>
+                            <li><a href="/players/b/boldejo01.html"> Jonah Bolden</a></li>
+                            <li><a href="/players/r/robingl02.html"> Glenn Robinson</a></li>
+                            <li><a href="/players/s/scottmi01.html"> Mike Scott</a></li>
+                            <li><a href="/players/k/korkmfu01.html"> Furkan Korkmaz</a></li>
+                            <li><a href="/players/r/richajo01.html"> Josh Richardson</a></li>
+                            <li><a href="/players/e/embiijo01.html"> Joel Embiid</a></li>
+                            <li><a href="/players/n/netora01.html"> Raul Neto</a></li>
+                            <li><a href="/players/b/burketr01.html"> Trey Burke</a></li>
+                            <li><a href="/players/m/miltosh01.html"> Shake Milton</a></li>
+                            <li><a href="/players/p/pelleno01.html"> Norvel Pelle</a></li>
+                            <li><a href="/players/h/harrito02.html"> Tobias Harris</a></li>
+                        </div>
+                    </ul>
+                    <p class="opener" data-id="more_grouplist" data-textopen="less" data-textclosed="entire">Show <span>entire</span>
+                        roster</p>
+
+                </div>
+            </li>
+        </ul>
+    </div><!-- div#inner_nav -->
+
+    <div id="content" role="main">
+
+
+        <!-- fs_general_header -->
+        <div class="adblock">
+            <!-- div#fs_fs_general_header  -->
+            <div align="center" id="div-gpt-ad-728x90-GeneralHeader">
+                <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-728x90-GeneralHeader');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-728x90-GeneralHeader'); });
+    }
+
+                </script>
+            </div>
+            <!-- /div.#fs_fs_general_header -->
+
+        </div>
+
+
+        <div id="all_per_game" class="table_wrapper">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="per_game_link" data-label="Per Game"></span>
+                <h2>Per Game</h2>
+                <div class="section_heading_text">
+                    <ul>
+                        <li><small>
+                            <strong>Bold</strong> indicates league leader<br>
+                        </small>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="table_outer_container">
+                <div class="overthrow table_container" id="div_per_game">
+
+                    <table class="row_summable sortable stats_table" id="per_game" data-cols-to-freeze="1">
+                        <caption>Per Game Table</caption>
+                        <colgroup>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables."
+                                data-stat="season" scope="col" class=" poptip sort_default_asc center"
+                                data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables.">
+                                Season
+                            </th>
+                            <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col"
+                                class=" poptip sort_default_asc center"
+                                data-tip="Player's age on February 1 of the season">Age
+                            </th>
+                            <th aria-label="Team" data-stat="team_id" scope="col"
+                                class=" poptip sort_default_asc center" data-tip="Team">Tm
+                            </th>
+                            <th aria-label="League" data-stat="lg_id" scope="col"
+                                class=" poptip sort_default_asc center" data-tip="League">Lg
+                            </th>
+                            <th aria-label="Position" data-stat="pos" scope="col"
+                                class=" poptip sort_default_asc center" data-tip="Position">Pos
+                            </th>
+                            <th aria-label="Games" data-stat="g" scope="col" class=" poptip center" data-tip="Games">G
+                            </th>
+                            <th aria-label="Games Started" data-stat="gs" scope="col" class=" poptip center"
+                                data-tip="Games Started">GS
+                            </th>
+                            <th aria-label="Minutes Played Per Game" data-stat="mp_per_g" scope="col"
+                                class=" poptip center" data-tip="Minutes Played Per Game">MP
+                            </th>
+                            <th aria-label="Field Goals Per Game" data-stat="fg_per_g" scope="col"
+                                class=" poptip center" data-tip="Field Goals Per Game">FG
+                            </th>
+                            <th aria-label="Field Goal Attempts Per Game" data-stat="fga_per_g" scope="col"
+                                class=" poptip center" data-tip="Field Goal Attempts Per Game">FGA
+                            </th>
+                            <th aria-label="Field Goal Percentage" data-stat="fg_pct" scope="col" class=" poptip center"
+                                data-tip="Field Goal Percentage">FG%
+                            </th>
+                            <th aria-label="3-Point Field Goals Per Game" data-stat="fg3_per_g" scope="col"
+                                class=" poptip center" data-tip="3-Point Field Goals Per Game">3P
+                            </th>
+                            <th aria-label="3-Point Field Goal Attempts Per Game" data-stat="fg3a_per_g" scope="col"
+                                class=" poptip center" data-tip="3-Point Field Goal Attempts Per Game">3PA
+                            </th>
+                            <th aria-label="3-Point Field Goal Percentage" data-stat="fg3_pct" scope="col"
+                                class=" poptip center" data-tip="3-Point Field Goal Percentage">3P%
+                            </th>
+                            <th aria-label="2-Point Field Goals Per Game" data-stat="fg2_per_g" scope="col"
+                                class=" poptip center" data-tip="2-Point Field Goals Per Game">2P
+                            </th>
+                            <th aria-label="2-Point Field Goal Attempts Per Game" data-stat="fg2a_per_g" scope="col"
+                                class=" poptip center" data-tip="2-Point Field Goal Attempts Per Game">2PA
+                            </th>
+                            <th aria-label="2-Point Field Goal Percentage" data-stat="fg2_pct" scope="col"
+                                class=" poptip center" data-tip="2-Point Field Goal Percentage">2P%
+                            </th>
+                            <th aria-label="Effective Field Goal Percentage" data-stat="efg_pct" scope="col"
+                                class=" poptip center"
+                                data-tip="<strong>Effective Field Goal Percentage</strong><br>This statistic adjusts for the fact that a 3-point field goal is worth one more point than a 2-point field goal.">
+                                eFG%
+                            </th>
+                            <th aria-label="Free Throws Per Game" data-stat="ft_per_g" scope="col"
+                                class=" poptip center" data-tip="Free Throws Per Game">FT
+                            </th>
+                            <th aria-label="Free Throw Attempts Per Game" data-stat="fta_per_g" scope="col"
+                                class=" poptip center" data-tip="Free Throw Attempts Per Game">FTA
+                            </th>
+                            <th aria-label="Free Throw Percentage" data-stat="ft_pct" scope="col" class=" poptip center"
+                                data-tip="Free Throw Percentage">FT%
+                            </th>
+                            <th aria-label="Offensive Rebounds Per Game" data-stat="orb_per_g" scope="col"
+                                class=" poptip center" data-tip="Offensive Rebounds Per Game">ORB
+                            </th>
+                            <th aria-label="Defensive Rebounds Per Game" data-stat="drb_per_g" scope="col"
+                                class=" poptip center" data-tip="Defensive Rebounds Per Game">DRB
+                            </th>
+                            <th aria-label="Total Rebounds Per Game" data-stat="trb_per_g" scope="col"
+                                class=" poptip center" data-tip="Total Rebounds Per Game">TRB
+                            </th>
+                            <th aria-label="Assists Per Game" data-stat="ast_per_g" scope="col" class=" poptip center"
+                                data-tip="Assists Per Game">AST
+                            </th>
+                            <th aria-label="Steals Per Game" data-stat="stl_per_g" scope="col" class=" poptip center"
+                                data-tip="Steals Per Game">STL
+                            </th>
+                            <th aria-label="Blocks Per Game" data-stat="blk_per_g" scope="col" class=" poptip center"
+                                data-tip="Blocks Per Game">BLK
+                            </th>
+                            <th aria-label="Turnovers Per Game" data-stat="tov_per_g" scope="col" class=" poptip center"
+                                data-tip="Turnovers Per Game">TOV
+                            </th>
+                            <th aria-label="Personal Fouls Per Game" data-stat="pf_per_g" scope="col"
+                                class=" poptip center" data-tip="Personal Fouls Per Game">PF
+                            </th>
+                            <th aria-label="Points Per Game" data-stat="pts_per_g" scope="col" class=" poptip center"
+                                data-tip="Points Per Game">PTS
+                            </th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr id="per_game.2020" class="full_table">
+                            <th scope="row" class="left " data-stat="season"><a
+                                    href="/players/s/shayoma01/gamelog/2020/">2019-20</a></th>
+                            <td class="center " data-stat="age">24</td>
+                            <td class="left " data-stat="team_id"><a href="/teams/PHI/2020.html">PHI</a></td>
+                            <td class="left " data-stat="lg_id"><a href="/leagues/NBA_2020.html">NBA</a></td>
+                            <td class="center " data-stat="pos">SG</td>
+                            <td class="right " data-stat="g">2</td>
+                            <td class="right iz" data-stat="gs">0</td>
+                            <td class="right " data-stat="mp_per_g">5.0</td>
+                            <td class="right " data-stat="fg_per_g">0.5</td>
+                            <td class="right " data-stat="fga_per_g">2.5</td>
+                            <td class="right " data-stat="fg_pct">.200</td>
+                            <td class="right " data-stat="fg3_per_g">0.5</td>
+                            <td class="right " data-stat="fg3a_per_g">1.5</td>
+                            <td class="right " data-stat="fg3_pct">.333</td>
+                            <td class="right " data-stat="fg2_per_g">0.0</td>
+                            <td class="right " data-stat="fg2a_per_g">1.0</td>
+                            <td class="right " data-stat="fg2_pct">.000</td>
+                            <td class="right " data-stat="efg_pct">.300</td>
+                            <td class="right " data-stat="ft_per_g">0.0</td>
+                            <td class="right " data-stat="fta_per_g">0.0</td>
+                            <td class="right iz" data-stat="ft_pct"></td>
+                            <td class="right " data-stat="orb_per_g">0.0</td>
+                            <td class="right " data-stat="drb_per_g">1.5</td>
+                            <td class="right " data-stat="trb_per_g">1.5</td>
+                            <td class="right " data-stat="ast_per_g">0.5</td>
+                            <td class="right " data-stat="stl_per_g">0.0</td>
+                            <td class="right " data-stat="blk_per_g">0.0</td>
+                            <td class="right " data-stat="tov_per_g">0.5</td>
+                            <td class="right " data-stat="pf_per_g">0.0</td>
+                            <td class="right " data-stat="pts_per_g">1.5</td>
+                        </tr>
+
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th scope="row" class="left " data-stat="season">Career</th>
+                            <td class="center iz" data-stat="age"></td>
+                            <td class="left iz" data-stat="team_id"></td>
+                            <td class="left " data-stat="lg_id">NBA</td>
+                            <td class="center iz" data-stat="pos"></td>
+                            <td class="right " data-stat="g">2</td>
+                            <td class="right iz" data-stat="gs">0</td>
+                            <td class="right " data-stat="mp_per_g">5.0</td>
+                            <td class="right " data-stat="fg_per_g">0.5</td>
+                            <td class="right " data-stat="fga_per_g">2.5</td>
+                            <td class="right " data-stat="fg_pct">.200</td>
+                            <td class="right " data-stat="fg3_per_g">0.5</td>
+                            <td class="right " data-stat="fg3a_per_g">1.5</td>
+                            <td class="right " data-stat="fg3_pct">.333</td>
+                            <td class="right " data-stat="fg2_per_g">0.0</td>
+                            <td class="right " data-stat="fg2a_per_g">1.0</td>
+                            <td class="right " data-stat="fg2_pct">.000</td>
+                            <td class="right " data-stat="efg_pct">.300</td>
+                            <td class="right " data-stat="ft_per_g">0.0</td>
+                            <td class="right " data-stat="fta_per_g">0.0</td>
+                            <td class="right iz" data-stat="ft_pct"></td>
+                            <td class="right " data-stat="orb_per_g">0.0</td>
+                            <td class="right " data-stat="drb_per_g">1.5</td>
+                            <td class="right " data-stat="trb_per_g">1.5</td>
+                            <td class="right " data-stat="ast_per_g">0.5</td>
+                            <td class="right " data-stat="stl_per_g">0.0</td>
+                            <td class="right " data-stat="blk_per_g">0.0</td>
+                            <td class="right " data-stat="tov_per_g">0.5</td>
+                            <td class="right " data-stat="pf_per_g">0.0</td>
+                            <td class="right " data-stat="pts_per_g">1.5</td>
+                        </tr>
+
+                        </tfoot>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section_wrapper" id="all_stats-nba-com">
+            <div class="section_heading">
+                <span class="section_anchor" id="stats-nba-com_link" data-label="View on stats.nba.com"></span>
+                <h2>View on stats.nba.com</h2>
+                <div class="section_heading_text">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="section_content" id="div_stats-nba-com">
+                <div>&nbsp;&nbsp;&nbsp;&nbsp; <a target='_blank' href='http://stats.nba.com/player/1629621/'>Player
+                    Front</a>&nbsp;&nbsp;&nbsp;&nbsp; <a target='_blank'
+                                                         href='http://stats.nba.com/player/1629621/shooting/'>Shooting</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a target='_blank' href='http://stats.nba.com/player/1629621/advanced/'>Advanced</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    Tracking:&nbsp;&nbsp;&nbsp;&nbsp; <a target='_blank'
+                                                         href='http://stats.nba.com/player/1629621/shots-dash/'>Shots</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a target='_blank' href='http://stats.nba.com/player/1629621/rebounds-dash/'>Rebounds</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a target='_blank' href='http://stats.nba.com/player/1629621/passes-dash/'>Passes</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a target='_blank' href='http://stats.nba.com/player/1629621/defense-dash/'>Defense</a></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- fs_btf_1 -->
+        <div class="adblock">
+            <!-- div#fs_fs_btf_1  -->
+            <div align="center" id="div-gpt-ad-728x90-BTF-1">
+                <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-728x90-BTF-1');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-728x90-BTF-1'); });
+    }
+
+                </script>
+            </div>
+            <!-- /div.#fs_fs_btf_1 -->
+
+        </div>
+
+
+        <div class="section_wrapper setup_commented commented" id="all_608531172">
+            <div class="section_heading">
+                <span class="section_anchor" id="608531172_link" data-label="Player News"></span>
+                <h2>Player News</h2>
+                <div class="section_heading_text">
+                    <ul>
+                        <li><a href="/linker/newsfeed.cgi">Add Your Blog Posts Here</a></li>
+                        <li><a href="/players/news.fcgi?id=shayoma01">Player News Archive</a></li>
+                        <li><a href="/players/news.fcgi?id=shayoma01&amp;rss=1">Player News RSS Feed</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--     <div class="section_content" id="div_608531172">
+                    <ul class="news_stories">
+            <li><strong>4/4</strong> <a rel="nofollow noopener" target="_blank"  href="https://section215.com/2020/04/03/philadelphia-76ers-mac-mcclung-draft/" onclick="sr_record_analytics_event('newsfeed_click','Section 215', sr_record_directory(),'sr_tracker');">Section 215: Philadelphia 76ers: Should Mac McClung be on Elton Brand's radar?</a>:&nbsp;<em>After two successful seasons at Georgetown, Mac McClung has declared</em>...
+            </li><li><strong>3/31</strong> <a rel="nofollow noopener" target="_blank"  href="https://thesixersense.com/2020/03/31/philadelphia-76ers-olympics-postponement-affects-many/" onclick="sr_record_analytics_event('newsfeed_click','The Sixer Sense', sr_record_directory(),'sr_tracker');">The Sixer Sense: Olympics postponement affects many Philadelphia 76ers</a>:&nbsp;<em>The postponement of the Summer Olympic Games in Tokyo to 2021</em>...
+            </li><li><strong>3/23</strong> <a rel="nofollow noopener" target="_blank"  href="https://thesixersense.com/2020/03/22/philadelphia-76ers-marial-shayok-proven-enough/" onclick="sr_record_analytics_event('newsfeed_click','The Sixer Sense', sr_record_directory(),'sr_tracker');">The Sixer Sense: Philadelphia 76ers: Has Marial Shayok proven enough?</a>:&nbsp;<em>Has the Philadelphia 76ers&#039; second round pick from the 2019</em>...
+            </li><li><strong>3/18</strong> <a rel="nofollow noopener" target="_blank"  href="https://thesixersense.com/2020/03/18/philadelphia-76ers-importance-cheap-controllable-talent/" onclick="sr_record_analytics_event('newsfeed_click','The Sixer Sense', sr_record_directory(),'sr_tracker');">The Sixer Sense: Philadelphia 76ers: The importance of cheap, controllable talent</a>:&nbsp;<em>The Philadelphia 76ers went big this summer. Like, really big.
+            The</em>...
+            </li><li><strong>3/16</strong> <a rel="nofollow noopener" target="_blank"  href="https://thesixersense.com/2020/03/16/philadelphia-76ers-player-rankings-minor-roster-changes/" onclick="sr_record_analytics_event('newsfeed_click','The Sixer Sense', sr_record_directory(),'sr_tracker');">The Sixer Sense: Philadelphia 76ers Player Rankings: Minor roster changes</a>:&nbsp;<em>February brought some minor roster changes for the Philadelphia</em>...
+            </li></ul>
+
+                </div>
+            -->
+        </div>
+
+
+        <div id="all_totals" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="totals_link" data-label="Totals"></span>
+                <h2>Totals</h2>
+                <div class="section_heading_text">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_totals">
+
+              <table class="row_summable sortable stats_table" id="totals" data-cols-to-freeze="1"><caption>Totals Table</caption>
+               <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+               <thead>
+                  <tr>
+                     <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables." data-stat="season" scope="col" class=" poptip sort_default_asc center" data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables." >Season</th>
+                     <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col" class=" poptip sort_default_asc center" data-tip="Player's age on February 1 of the season" >Age</th>
+                     <th aria-label="Team" data-stat="team_id" scope="col" class=" poptip sort_default_asc center" data-tip="Team" >Tm</th>
+                     <th aria-label="League" data-stat="lg_id" scope="col" class=" poptip sort_default_asc center" data-tip="League" >Lg</th>
+                     <th aria-label="Position" data-stat="pos" scope="col" class=" poptip sort_default_asc center" data-tip="Position" >Pos</th>
+                     <th aria-label="Games" data-stat="g" scope="col" class=" poptip center" data-tip="Games" >G</th>
+                     <th aria-label="Games Started" data-stat="gs" scope="col" class=" poptip center" data-tip="Games Started" >GS</th>
+                     <th aria-label="Minutes Played" data-stat="mp" scope="col" class=" poptip center" data-tip="Minutes Played" >MP</th>
+                     <th aria-label="Field Goals" data-stat="fg" scope="col" class=" poptip center" data-tip="Field Goals" >FG</th>
+                     <th aria-label="Field Goal Attempts" data-stat="fga" scope="col" class=" poptip center" data-tip="Field Goal Attempts" >FGA</th>
+                     <th aria-label="Field Goal Percentage" data-stat="fg_pct" scope="col" class=" poptip center" data-tip="Field Goal Percentage" >FG%</th>
+                     <th aria-label="3-Point Field Goals" data-stat="fg3" scope="col" class=" poptip center" data-tip="3-Point Field Goals" >3P</th>
+                     <th aria-label="3-Point Field Goal Attempts" data-stat="fg3a" scope="col" class=" poptip center" data-tip="3-Point Field Goal Attempts" >3PA</th>
+                     <th aria-label="3-Point Field Goal Percentage" data-stat="fg3_pct" scope="col" class=" poptip center" data-tip="3-Point Field Goal Percentage" >3P%</th>
+                     <th aria-label="2-Point Field Goals" data-stat="fg2" scope="col" class=" poptip center" data-tip="2-Point Field Goals" >2P</th>
+                     <th aria-label="2-point Field Goal Attempts" data-stat="fg2a" scope="col" class=" poptip center" data-tip="2-point Field Goal Attempts" >2PA</th>
+                     <th aria-label="2-Point Field Goal Percentage" data-stat="fg2_pct" scope="col" class=" poptip center" data-tip="2-Point Field Goal Percentage" >2P%</th>
+                     <th aria-label="Effective Field Goal Percentage" data-stat="efg_pct" scope="col" class=" poptip center" data-tip="<strong>Effective Field Goal Percentage</strong><br>This statistic adjusts for the fact that a 3-point field goal is worth one more point than a 2-point field goal." >eFG%</th>
+                     <th aria-label="Free Throws" data-stat="ft" scope="col" class=" poptip center" data-tip="Free Throws" >FT</th>
+                     <th aria-label="Free Throw Attempts" data-stat="fta" scope="col" class=" poptip center" data-tip="Free Throw Attempts" >FTA</th>
+                     <th aria-label="Free Throw Percentage" data-stat="ft_pct" scope="col" class=" poptip center" data-tip="Free Throw Percentage" >FT%</th>
+                     <th aria-label="Offensive Rebounds" data-stat="orb" scope="col" class=" poptip center" data-tip="Offensive Rebounds" >ORB</th>
+                     <th aria-label="Defensive Rebounds" data-stat="drb" scope="col" class=" poptip center" data-tip="Defensive Rebounds" >DRB</th>
+                     <th aria-label="Total Rebounds" data-stat="trb" scope="col" class=" poptip center" data-tip="Total Rebounds" >TRB</th>
+                     <th aria-label="Assists" data-stat="ast" scope="col" class=" poptip center" data-tip="Assists" >AST</th>
+                     <th aria-label="Steals" data-stat="stl" scope="col" class=" poptip center" data-tip="Steals" >STL</th>
+                     <th aria-label="Blocks" data-stat="blk" scope="col" class=" poptip center" data-tip="Blocks" >BLK</th>
+                     <th aria-label="Turnovers" data-stat="tov" scope="col" class=" poptip center" data-tip="Turnovers" >TOV</th>
+                     <th aria-label="Personal Fouls" data-stat="pf" scope="col" class=" poptip center" data-tip="Personal Fouls" >PF</th>
+                     <th aria-label="Points" data-stat="pts" scope="col" class=" poptip center" data-tip="Points" >PTS</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+            <tr id="totals.2020" class="full_table" ><th scope="row" class="left " data-stat="season" ><a href="/players/s/shayoma01/gamelog/2020/">2019-20</a></th><td class="center " data-stat="age" >24</td><td class="left " data-stat="team_id" ><a href="/teams/PHI/2020.html">PHI</a></td><td class="left " data-stat="lg_id" ><a href="/leagues/NBA_2020.html">NBA</a></td><td class="center " data-stat="pos" >SG</td><td class="right " data-stat="g" >2</td><td class="right iz" data-stat="gs" >0</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="fg" >1</td><td class="right " data-stat="fga" >5</td><td class="right " data-stat="fg_pct" >.200</td><td class="right " data-stat="fg3" >1</td><td class="right " data-stat="fg3a" >3</td><td class="right " data-stat="fg3_pct" >.333</td><td class="right iz" data-stat="fg2" >0</td><td class="right " data-stat="fg2a" >2</td><td class="right " data-stat="fg2_pct" >.000</td><td class="right " data-stat="efg_pct" >.300</td><td class="right iz" data-stat="ft" >0</td><td class="right iz" data-stat="fta" >0</td><td class="right iz" data-stat="ft_pct" ></td><td class="right iz" data-stat="orb" >0</td><td class="right " data-stat="drb" >3</td><td class="right " data-stat="trb" >3</td><td class="right " data-stat="ast" >1</td><td class="right iz" data-stat="stl" >0</td><td class="right iz" data-stat="blk" >0</td><td class="right " data-stat="tov" >1</td><td class="right iz" data-stat="pf" >0</td><td class="right " data-stat="pts" >3</td></tr>
+
+               </tbody>
+               <tfoot><tr ><th scope="row" class="left " data-stat="season" >Career</th><td class="center iz" data-stat="age" ></td><td class="left iz" data-stat="team_id" ></td><td class="left " data-stat="lg_id" >NBA</td><td class="center iz" data-stat="pos" ></td><td class="right " data-stat="g" >2</td><td class="right iz" data-stat="gs" >0</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="fg" >1</td><td class="right " data-stat="fga" >5</td><td class="right " data-stat="fg_pct" >.200</td><td class="right " data-stat="fg3" >1</td><td class="right " data-stat="fg3a" >3</td><td class="right " data-stat="fg3_pct" >.333</td><td class="right iz" data-stat="fg2" >0</td><td class="right " data-stat="fg2a" >2</td><td class="right " data-stat="fg2_pct" >.000</td><td class="right " data-stat="efg_pct" >.300</td><td class="right iz" data-stat="ft" >0</td><td class="right iz" data-stat="fta" >0</td><td class="right iz" data-stat="ft_pct" ></td><td class="right iz" data-stat="orb" >0</td><td class="right " data-stat="drb" >3</td><td class="right " data-stat="trb" >3</td><td class="right " data-stat="ast" >1</td><td class="right iz" data-stat="stl" >0</td><td class="right iz" data-stat="blk" >0</td><td class="right " data-stat="tov" >1</td><td class="right iz" data-stat="pf" >0</td><td class="right " data-stat="pts" >3</td></tr>
+
+               </tfoot>
+
+            </table>
+
+                  </div>
+               </div>
+            -->
+        </div>
+
+
+        <!-- fs_btf_2 -->
+        <div class="adblock">
+            <!-- div#fs_fs_btf_2  -->
+            <div align="center" id="div-gpt-ad-728x90-BTF-2">
+                <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-728x90-BTF-2');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-728x90-BTF-2'); });
+    }
+
+                </script>
+            </div>
+            <!-- /div.#fs_fs_btf_2 -->
+
+        </div>
+
+
+        <div id="all_per_minute" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="per_minute_link" data-label="Per 36 Minutes"></span>
+                <h2>Per 36 Minutes</h2>
+                <div class="section_heading_text">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_per_minute">
+
+              <table class="row_summable sortable stats_table" id="per_minute" data-cols-to-freeze="1"><caption>Per 36 Minutes Table</caption>
+               <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+               <thead>
+                  <tr>
+                     <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables." data-stat="season" scope="col" class=" poptip sort_default_asc center" data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables." >Season</th>
+                     <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col" class=" poptip sort_default_asc center" data-tip="Player's age on February 1 of the season" >Age</th>
+                     <th aria-label="Team" data-stat="team_id" scope="col" class=" poptip sort_default_asc center" data-tip="Team" >Tm</th>
+                     <th aria-label="League" data-stat="lg_id" scope="col" class=" poptip sort_default_asc center" data-tip="League" >Lg</th>
+                     <th aria-label="Position" data-stat="pos" scope="col" class=" poptip sort_default_asc center" data-tip="Position" >Pos</th>
+                     <th aria-label="Games" data-stat="g" scope="col" class=" poptip center" data-tip="Games" >G</th>
+                     <th aria-label="Games Started" data-stat="gs" scope="col" class=" poptip center" data-tip="Games Started" >GS</th>
+                     <th aria-label="Minutes Played" data-stat="mp" scope="col" class=" poptip center" data-tip="Minutes Played" >MP</th>
+                     <th aria-label="Field Goals Per 36 Minutes" data-stat="fg_per_mp" scope="col" class=" poptip center" data-tip="Field Goals Per 36 Minutes" >FG</th>
+                     <th aria-label="Field Goal Attempts Per 36 Minutes" data-stat="fga_per_mp" scope="col" class=" poptip center" data-tip="Field Goal Attempts Per 36 Minutes" >FGA</th>
+                     <th aria-label="Field Goal Percentage" data-stat="fg_pct" scope="col" class=" poptip center" data-tip="Field Goal Percentage" >FG%</th>
+                     <th aria-label="3-Point Field Goals Per 36 Minutes" data-stat="fg3_per_mp" scope="col" class=" poptip center" data-tip="3-Point Field Goals Per 36 Minutes" >3P</th>
+                     <th aria-label="3-Point Field Goal Attempts Per 36 Minutes" data-stat="fg3a_per_mp" scope="col" class=" poptip center" data-tip="3-Point Field Goal Attempts Per 36 Minutes" >3PA</th>
+                     <th aria-label="3-Point Field Goal Percentage" data-stat="fg3_pct" scope="col" class=" poptip center" data-tip="3-Point Field Goal Percentage" >3P%</th>
+                     <th aria-label="2-Point Field Goals Per 36 Minutes" data-stat="fg2_per_mp" scope="col" class=" poptip center" data-tip="2-Point Field Goals Per 36 Minutes" >2P</th>
+                     <th aria-label="2-Point Field Goal Attempts Per 36 Minutes" data-stat="fg2a_per_mp" scope="col" class=" poptip center" data-tip="2-Point Field Goal Attempts Per 36 Minutes" >2PA</th>
+                     <th aria-label="2-Point Field Goal Percentage" data-stat="fg2_pct" scope="col" class=" poptip center" data-tip="2-Point Field Goal Percentage" >2P%</th>
+                     <th aria-label="Free Throws Per 36 Minutes" data-stat="ft_per_mp" scope="col" class=" poptip center" data-tip="Free Throws Per 36 Minutes" >FT</th>
+                     <th aria-label="Free Throw Attempts Per 36 Minutes" data-stat="fta_per_mp" scope="col" class=" poptip center" data-tip="Free Throw Attempts Per 36 Minutes" >FTA</th>
+                     <th aria-label="Free Throw Percentage" data-stat="ft_pct" scope="col" class=" poptip center" data-tip="Free Throw Percentage" >FT%</th>
+                     <th aria-label="Offensive Rebounds Per 36 Minutes" data-stat="orb_per_mp" scope="col" class=" poptip center" data-tip="Offensive Rebounds Per 36 Minutes" >ORB</th>
+                     <th aria-label="Defensive Rebounds Per 36 Minutes" data-stat="drb_per_mp" scope="col" class=" poptip center" data-tip="Defensive Rebounds Per 36 Minutes" >DRB</th>
+                     <th aria-label="Total Rebounds Per 36 Minutes" data-stat="trb_per_mp" scope="col" class=" poptip center" data-tip="Total Rebounds Per 36 Minutes" >TRB</th>
+                     <th aria-label="Assists Per 36 Minutes" data-stat="ast_per_mp" scope="col" class=" poptip center" data-tip="Assists Per 36 Minutes" >AST</th>
+                     <th aria-label="Steals Per 36 Minutes" data-stat="stl_per_mp" scope="col" class=" poptip center" data-tip="Steals Per 36 Minutes" >STL</th>
+                     <th aria-label="Blocks Per 36 Minutes" data-stat="blk_per_mp" scope="col" class=" poptip center" data-tip="Blocks Per 36 Minutes" >BLK</th>
+                     <th aria-label="Turnovers Per 36 Minutes" data-stat="tov_per_mp" scope="col" class=" poptip center" data-tip="Turnovers Per 36 Minutes" >TOV</th>
+                     <th aria-label="Personal Fouls Per 36 Minutes" data-stat="pf_per_mp" scope="col" class=" poptip center" data-tip="Personal Fouls Per 36 Minutes" >PF</th>
+                     <th aria-label="Points Per 36 Minutes" data-stat="pts_per_mp" scope="col" class=" poptip center" data-tip="Points Per 36 Minutes" >PTS</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+            <tr id="per_minute.2020" class="full_table" ><th scope="row" class="left " data-stat="season" ><a href="/players/s/shayoma01/gamelog/2020/">2019-20</a></th><td class="center " data-stat="age" >24</td><td class="left " data-stat="team_id" ><a href="/teams/PHI/2020.html">PHI</a></td><td class="left " data-stat="lg_id" ><a href="/leagues/NBA_2020.html">NBA</a></td><td class="center " data-stat="pos" >SG</td><td class="right " data-stat="g" >2</td><td class="right iz" data-stat="gs" >0</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="fg_per_mp" >3.6</td><td class="right " data-stat="fga_per_mp" >18.0</td><td class="right " data-stat="fg_pct" >.200</td><td class="right " data-stat="fg3_per_mp" >3.6</td><td class="right " data-stat="fg3a_per_mp" >10.8</td><td class="right " data-stat="fg3_pct" >.333</td><td class="right " data-stat="fg2_per_mp" >0.0</td><td class="right " data-stat="fg2a_per_mp" >7.2</td><td class="right " data-stat="fg2_pct" >.000</td><td class="right " data-stat="ft_per_mp" >0.0</td><td class="right " data-stat="fta_per_mp" >0.0</td><td class="right iz" data-stat="ft_pct" ></td><td class="right " data-stat="orb_per_mp" >0.0</td><td class="right " data-stat="drb_per_mp" >10.8</td><td class="right " data-stat="trb_per_mp" >10.8</td><td class="right " data-stat="ast_per_mp" >3.6</td><td class="right " data-stat="stl_per_mp" >0.0</td><td class="right " data-stat="blk_per_mp" >0.0</td><td class="right " data-stat="tov_per_mp" >3.6</td><td class="right " data-stat="pf_per_mp" >0.0</td><td class="right " data-stat="pts_per_mp" >10.8</td></tr>
+
+               </tbody>
+               <tfoot><tr ><th scope="row" class="left " data-stat="season" >Career</th><td class="center iz" data-stat="age" ></td><td class="left iz" data-stat="team_id" ></td><td class="left " data-stat="lg_id" >NBA</td><td class="center iz" data-stat="pos" ></td><td class="right " data-stat="g" >2</td><td class="right iz" data-stat="gs" >0</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="fg_per_mp" >3.6</td><td class="right " data-stat="fga_per_mp" >18.0</td><td class="right " data-stat="fg_pct" >.200</td><td class="right " data-stat="fg3_per_mp" >3.6</td><td class="right " data-stat="fg3a_per_mp" >10.8</td><td class="right " data-stat="fg3_pct" >.333</td><td class="right " data-stat="fg2_per_mp" >0.0</td><td class="right " data-stat="fg2a_per_mp" >7.2</td><td class="right " data-stat="fg2_pct" >.000</td><td class="right " data-stat="ft_per_mp" >0.0</td><td class="right " data-stat="fta_per_mp" >0.0</td><td class="right iz" data-stat="ft_pct" ></td><td class="right " data-stat="orb_per_mp" >0.0</td><td class="right " data-stat="drb_per_mp" >10.8</td><td class="right " data-stat="trb_per_mp" >10.8</td><td class="right " data-stat="ast_per_mp" >3.6</td><td class="right " data-stat="stl_per_mp" >0.0</td><td class="right " data-stat="blk_per_mp" >0.0</td><td class="right " data-stat="tov_per_mp" >3.6</td><td class="right " data-stat="pf_per_mp" >0.0</td><td class="right " data-stat="pts_per_mp" >10.8</td></tr>
+
+               </tfoot>
+
+            </table>
+
+                  </div>
+               </div>
+            -->
+        </div>
+
+
+        <div id="all_per_poss" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="per_poss_link" data-label="Per 100 Poss"></span>
+                <h2>Per 100 Poss</h2>
+                <div class="section_heading_text">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_per_poss">
+
+              <table class="row_summable sortable stats_table" id="per_poss" data-cols-to-freeze="1"><caption>Per 100 Poss Table</caption>
+               <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+               <thead>
+                  <tr>
+                     <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables." data-stat="season" scope="col" class=" poptip sort_default_asc center" data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables." >Season</th>
+                     <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col" class=" poptip sort_default_asc center" data-tip="Player's age on February 1 of the season" >Age</th>
+                     <th aria-label="Team" data-stat="team_id" scope="col" class=" poptip sort_default_asc center" data-tip="Team" >Tm</th>
+                     <th aria-label="League" data-stat="lg_id" scope="col" class=" poptip sort_default_asc center" data-tip="League" >Lg</th>
+                     <th aria-label="Position" data-stat="pos" scope="col" class=" poptip sort_default_asc center" data-tip="Position" >Pos</th>
+                     <th aria-label="Games" data-stat="g" scope="col" class=" poptip center" data-tip="Games" >G</th>
+                     <th aria-label="Games Started" data-stat="gs" scope="col" class=" poptip center" data-tip="Games Started" >GS</th>
+                     <th aria-label="Minutes Played" data-stat="mp" scope="col" class=" poptip center" data-tip="Minutes Played" >MP</th>
+                     <th aria-label="Field Goals Per 100 Team Possessions" data-stat="fg_per_poss" scope="col" class=" poptip center" data-tip="Field Goals Per 100 Team Possessions" >FG</th>
+                     <th aria-label="Field Goal Attempts Per 100 Team Possessions" data-stat="fga_per_poss" scope="col" class=" poptip center" data-tip="Field Goal Attempts Per 100 Team Possessions" >FGA</th>
+                     <th aria-label="Field Goal Percentage" data-stat="fg_pct" scope="col" class=" poptip center" data-tip="Field Goal Percentage" >FG%</th>
+                     <th aria-label="3-Point Field Goals Per 100 Team Possesssions" data-stat="fg3_per_poss" scope="col" class=" poptip center" data-tip="3-Point Field Goals Per 100 Team Possesssions" >3P</th>
+                     <th aria-label="3-Point Field Goal Attempts Per 100 Team Possessions" data-stat="fg3a_per_poss" scope="col" class=" poptip center" data-tip="3-Point Field Goal Attempts Per 100 Team Possessions" >3PA</th>
+                     <th aria-label="3-Point Field Goal Percentage" data-stat="fg3_pct" scope="col" class=" poptip center" data-tip="3-Point Field Goal Percentage" >3P%</th>
+                     <th aria-label="2-Point Field Goals Per 100 Team Possessions" data-stat="fg2_per_poss" scope="col" class=" poptip center" data-tip="2-Point Field Goals Per 100 Team Possessions" >2P</th>
+                     <th aria-label="2-Point Field Goal Attempts Per 100 Team Possessions" data-stat="fg2a_per_poss" scope="col" class=" poptip center" data-tip="2-Point Field Goal Attempts Per 100 Team Possessions" >2PA</th>
+                     <th aria-label="2-Point Field Goal Percentage" data-stat="fg2_pct" scope="col" class=" poptip center" data-tip="2-Point Field Goal Percentage" >2P%</th>
+                     <th aria-label="Free Throws Per 100 Team Possessions" data-stat="ft_per_poss" scope="col" class=" poptip center" data-tip="Free Throws Per 100 Team Possessions" >FT</th>
+                     <th aria-label="Free Throw Attempts Per 100 Team Possessions" data-stat="fta_per_poss" scope="col" class=" poptip center" data-tip="Free Throw Attempts Per 100 Team Possessions" >FTA</th>
+                     <th aria-label="Free Throw Percentage" data-stat="ft_pct" scope="col" class=" poptip center" data-tip="Free Throw Percentage" >FT%</th>
+                     <th aria-label="Offensive Rebounds Per 100 Team Possessions" data-stat="orb_per_poss" scope="col" class=" poptip center" data-tip="Offensive Rebounds Per 100 Team Possessions" >ORB</th>
+                     <th aria-label="Defensive Rebounds Per 100 Team Possessions" data-stat="drb_per_poss" scope="col" class=" poptip center" data-tip="Defensive Rebounds Per 100 Team Possessions" >DRB</th>
+                     <th aria-label="Total Rebounds Per 100 Team Possessions" data-stat="trb_per_poss" scope="col" class=" poptip center" data-tip="Total Rebounds Per 100 Team Possessions" >TRB</th>
+                     <th aria-label="Assists Per 100 Team Possessions" data-stat="ast_per_poss" scope="col" class=" poptip center" data-tip="Assists Per 100 Team Possessions" >AST</th>
+                     <th aria-label="Steals Per 100 Team Possessions" data-stat="stl_per_poss" scope="col" class=" poptip center" data-tip="Steals Per 100 Team Possessions" >STL</th>
+                     <th aria-label="Blocks Per 100 Team Possessions" data-stat="blk_per_poss" scope="col" class=" poptip center" data-tip="Blocks Per 100 Team Possessions" >BLK</th>
+                     <th aria-label="Turnovers Per 100 Team Possessions" data-stat="tov_per_poss" scope="col" class=" poptip center" data-tip="Turnovers Per 100 Team Possessions" >TOV</th>
+                     <th aria-label="Personal Fouls Per 100 Team Possessions" data-stat="pf_per_poss" scope="col" class=" poptip center" data-tip="Personal Fouls Per 100 Team Possessions" >PF</th>
+                     <th aria-label="Points Per 100 Team Possessions" data-stat="pts_per_poss" scope="col" class=" poptip center" data-tip="Points Per 100 Team Possessions" >PTS</th>
+                     <th aria-label="" data-stat="" scope="col" class=" poptip center" ></th>
+                     <th aria-label="Offensive Rating" data-stat="off_rtg" scope="col" class=" poptip center" data-tip="<b>Offensive Rating</b><br>An estimate of points produced (players) or scored (teams) per 100 possessions" >ORtg</th>
+                     <th aria-label="Defensive Rating" data-stat="def_rtg" scope="col" class=" poptip sort_default_asc center" data-tip="<b>Defensive Rating</b><br>An estimate of points allowed per 100 possessions" >DRtg</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+            <tr id="per_poss.2020" class="full_table" ><th scope="row" class="left " data-stat="season" ><a href="/players/s/shayoma01/gamelog/2020/">2019-20</a></th><td class="center " data-stat="age" >24</td><td class="left " data-stat="team_id" ><a href="/teams/PHI/2020.html">PHI</a></td><td class="left " data-stat="lg_id" ><a href="/leagues/NBA_2020.html">NBA</a></td><td class="center " data-stat="pos" >SG</td><td class="right " data-stat="g" >2</td><td class="right iz" data-stat="gs" >0</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="fg_per_poss" >4.9</td><td class="right " data-stat="fga_per_poss" >24.3</td><td class="right " data-stat="fg_pct" >.200</td><td class="right " data-stat="fg3_per_poss" >4.9</td><td class="right " data-stat="fg3a_per_poss" >14.6</td><td class="right " data-stat="fg3_pct" >.333</td><td class="right " data-stat="fg2_per_poss" >0.0</td><td class="right " data-stat="fg2a_per_poss" >9.7</td><td class="right " data-stat="fg2_pct" >.000</td><td class="right " data-stat="ft_per_poss" >0.0</td><td class="right " data-stat="fta_per_poss" >0.0</td><td class="right iz" data-stat="ft_pct" ></td><td class="right " data-stat="orb_per_poss" >0.0</td><td class="right " data-stat="drb_per_poss" >14.6</td><td class="right " data-stat="trb_per_poss" >14.6</td><td class="right " data-stat="ast_per_poss" >4.9</td><td class="right " data-stat="stl_per_poss" >0.0</td><td class="right " data-stat="blk_per_poss" >0.0</td><td class="right " data-stat="tov_per_poss" >4.9</td><td class="right " data-stat="pf_per_poss" >0.0</td><td class="right " data-stat="pts_per_poss" >14.6</td><td class="right iz" data-stat="" ></td><td class="right " data-stat="off_rtg" >61</td><td class="right " data-stat="def_rtg" >110</td></tr>
+
+               </tbody>
+               <tfoot><tr ><th scope="row" class="left " data-stat="season" >Career</th><td class="center iz" data-stat="age" ></td><td class="left iz" data-stat="team_id" ></td><td class="left " data-stat="lg_id" >NBA</td><td class="center iz" data-stat="pos" ></td><td class="right " data-stat="g" >2</td><td class="right iz" data-stat="gs" >0</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="fg_per_poss" >4.9</td><td class="right " data-stat="fga_per_poss" >24.3</td><td class="right " data-stat="fg_pct" >.200</td><td class="right " data-stat="fg3_per_poss" >4.9</td><td class="right " data-stat="fg3a_per_poss" >14.6</td><td class="right " data-stat="fg3_pct" >.333</td><td class="right " data-stat="fg2_per_poss" >0.0</td><td class="right " data-stat="fg2a_per_poss" >9.7</td><td class="right " data-stat="fg2_pct" >.000</td><td class="right " data-stat="ft_per_poss" >0.0</td><td class="right " data-stat="fta_per_poss" >0.0</td><td class="right iz" data-stat="ft_pct" ></td><td class="right " data-stat="orb_per_poss" >0.0</td><td class="right " data-stat="drb_per_poss" >14.6</td><td class="right " data-stat="trb_per_poss" >14.6</td><td class="right " data-stat="ast_per_poss" >4.9</td><td class="right " data-stat="stl_per_poss" >0.0</td><td class="right " data-stat="blk_per_poss" >0.0</td><td class="right " data-stat="tov_per_poss" >4.9</td><td class="right " data-stat="pf_per_poss" >0.0</td><td class="right " data-stat="pts_per_poss" >14.6</td><td class="right iz" data-stat="" ></td><td class="right " data-stat="off_rtg" >61</td><td class="right " data-stat="def_rtg" >110</td></tr>
+
+               </tfoot>
+
+            </table>
+
+                  </div>
+               </div>
+            -->
+        </div>
+
+
+        <div id="all_advanced" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="advanced_link" data-label="Advanced"></span>
+                <h2>Advanced</h2>
+                <div class="section_heading_text">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_advanced">
+
+              <table class="row_summable sortable stats_table" id="advanced" data-cols-to-freeze="1"><caption>Advanced Table</caption>
+               <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+               <thead>
+                  <tr>
+                     <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables." data-stat="season" scope="col" class=" poptip sort_default_asc center" data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables." >Season</th>
+                     <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col" class=" poptip sort_default_asc center" data-tip="Player's age on February 1 of the season" >Age</th>
+                     <th aria-label="Team" data-stat="team_id" scope="col" class=" poptip sort_default_asc center" data-tip="Team" >Tm</th>
+                     <th aria-label="League" data-stat="lg_id" scope="col" class=" poptip sort_default_asc center" data-tip="League" >Lg</th>
+                     <th aria-label="Position" data-stat="pos" scope="col" class=" poptip sort_default_asc center" data-tip="Position" >Pos</th>
+                     <th aria-label="Games" data-stat="g" scope="col" class=" poptip center" data-tip="Games" >G</th>
+                     <th aria-label="Minutes Played" data-stat="mp" scope="col" class=" poptip center" data-tip="Minutes Played" >MP</th>
+                     <th aria-label="Player Efficiency Rating" data-stat="per" scope="col" class=" poptip center" data-tip="<b>Player Efficiency Rating</b><br>A measure of per-minute production standardized such that the league average is 15." >PER</th>
+                     <th aria-label="True Shooting Percentage" data-stat="ts_pct" scope="col" class=" poptip center" data-tip="<strong>True Shooting Percentage</strong><br>A measure of shooting efficiency that takes into account 2-point field goals, 3-point field goals, and free throws." >TS%</th>
+                     <th aria-label="3-Point Attempt Rate" data-stat="fg3a_per_fga_pct" scope="col" class=" poptip center" data-tip="<strong>3-Point Attempt Rate</strong><br>Percentage of FG Attempts from 3-Point Range" >3PAr</th>
+                     <th aria-label="Free Throw Attempt Rate" data-stat="fta_per_fga_pct" scope="col" class=" poptip center" data-tip="<strong>Free Throw Attempt Rate</strong><br>Number of FT Attempts Per FG Attempt" >FTr</th>
+                     <th aria-label="Offensive Rebound Percentage" data-stat="orb_pct" scope="col" class=" poptip center" data-tip="<b>Offensive Rebound Percentage</b><br>An estimate of the percentage of available offensive rebounds a player grabbed while he was on the floor." >ORB%</th>
+                     <th aria-label="Defensive Rebound Percentage" data-stat="drb_pct" scope="col" class=" poptip center" data-tip="<b>Defensive Rebound Percentage</b><br>An estimate of the percentage of available defensive rebounds a player grabbed while he was on the floor." >DRB%</th>
+                     <th aria-label="Total Rebound Percentage" data-stat="trb_pct" scope="col" class=" poptip center" data-tip="<b>Total Rebound Percentage</b><br>An estimate of the percentage of available rebounds a player grabbed while he was on the floor." >TRB%</th>
+                     <th aria-label="Assist Percentage" data-stat="ast_pct" scope="col" class=" poptip center" data-tip="<b>Assist Percentage</b><br>An estimate of the percentage of teammate field goals a player assisted while he was on the floor." >AST%</th>
+                     <th aria-label="Steal Percentage" data-stat="stl_pct" scope="col" class=" poptip center" data-tip="<b>Steal Percentage</b><br>An estimate of the percentage of opponent possessions that end with a steal by the player while he was on the floor." >STL%</th>
+                     <th aria-label="Block Percentage" data-stat="blk_pct" scope="col" class=" poptip center" data-tip="<b>Block Percentage</b><br>An estimate of the percentage of opponent two-point field goal attempts blocked by the player while he was on the floor." >BLK%</th>
+                     <th aria-label="Turnover Percentage" data-stat="tov_pct" scope="col" class=" poptip sort_default_asc center" data-tip="<b>Turnover Percentage</b><br>An estimate of turnovers committed per 100 plays." >TOV%</th>
+                     <th aria-label="Usage Percentage" data-stat="usg_pct" scope="col" class=" poptip center" data-tip="<b>Usage Percentage</b><br>An estimate of the percentage of team plays used by a player while he was on the floor." >USG%</th>
+                     <th aria-label="&nbsp;" data-stat="ws-dum" scope="col" class=" poptip center" >&nbsp;</th>
+                     <th aria-label="Offensive Win Shares" data-stat="ows" scope="col" class=" poptip center" data-tip="<b>Offensive Win Shares</b><br>An estimate of the number of wins contributed by a player due to his offense." >OWS</th>
+                     <th aria-label="Defensive Win Shares" data-stat="dws" scope="col" class=" poptip center" data-tip="<b>Defensive Win Shares</b><br>An estimate of the number of wins contributed by a player due to his defense." >DWS</th>
+                     <th aria-label="Win Shares" data-stat="ws" scope="col" class=" poptip center" data-tip="<b>Win Shares</b><br>An estimate of the number of wins contributed by a player." >WS</th>
+                     <th aria-label="Win Shares Per 48 Minutes" data-stat="ws_per_48" scope="col" class=" poptip center" data-tip="<b>Win Shares Per 48 Minutes</b><br>An estimate of the number of wins contributed by a player per 48 minutes (league average is approximately .100)" >WS/48</th>
+                     <th aria-label="&nbsp;" data-stat="bpm-dum" scope="col" class=" poptip center" >&nbsp;</th>
+                     <th aria-label="OBPM" data-stat="obpm" scope="col" class=" poptip center" data-tip="<b>Offensive Box Plus/Minus</b><br>A box score estimate of the offensive points per 100 possessions a player contributed above a league-average player, translated to an average team." >OBPM</th>
+                     <th aria-label="DBPM" data-stat="dbpm" scope="col" class=" poptip center" data-tip="<b>Defensive Box Plus/Minus</b><br>A box score estimate of the defensive points per 100 possessions a player contributed above a league-average player, translated to an average team." >DBPM</th>
+                     <th aria-label="BPM" data-stat="bpm" scope="col" class=" poptip center" data-tip="<b>Box Plus/Minus</b><br>A box score estimate of the points per 100 possessions a player contributed above a league-average player, translated to an average team." >BPM</th>
+                     <th aria-label="VORP" data-stat="vorp" scope="col" class=" poptip center" data-tip="<b>Value over Replacement Player</b><br>A box score estimate of the points per 100 TEAM possessions that a player contributed above a replacement-level (-2.0) player, translated to an average team and prorated to an 82-game season.<br><br>Multiply by 2.70 to convert to wins over replacement." >VORP</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+            <tr id="advanced.2020" class="full_table" ><th scope="row" class="left " data-stat="season" ><a href="/players/s/shayoma01/gamelog/2020/">2019-20</a></th><td class="center " data-stat="age" >24</td><td class="left " data-stat="team_id" ><a href="/teams/PHI/2020.html">PHI</a></td><td class="left " data-stat="lg_id" ><a href="/leagues/NBA_2020.html">NBA</a></td><td class="center " data-stat="pos" >SG</td><td class="right " data-stat="g" >2</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="per" >-2.0</td><td class="right " data-stat="ts_pct" >.300</td><td class="right " data-stat="fg3a_per_fga_pct" >.600</td><td class="right " data-stat="fta_per_fga_pct" >.000</td><td class="right " data-stat="orb_pct" >0.0</td><td class="right " data-stat="drb_pct" >33.1</td><td class="right " data-stat="trb_pct" >16.6</td><td class="right " data-stat="ast_pct" >13.4</td><td class="right " data-stat="stl_pct" >0.0</td><td class="right " data-stat="blk_pct" >0.0</td><td class="right " data-stat="tov_pct" >16.7</td><td class="right " data-stat="usg_pct" >25.9</td><td class="right iz" data-stat="ws-dum" ></td><td class="right " data-stat="ows" >-0.1</td><td class="right " data-stat="dws" >0.0</td><td class="right " data-stat="ws" >0.0</td><td class="right " data-stat="ws_per_48" >-0.227</td><td class="right iz" data-stat="bpm-dum" ></td><td class="right " data-stat="obpm" >-8.7</td><td class="right " data-stat="dbpm" >-2.6</td><td class="right " data-stat="bpm" >-11.3</td><td class="right " data-stat="vorp" >0.0</td></tr>
+
+               </tbody>
+               <tfoot><tr ><th scope="row" class="left " data-stat="season" >Career</th><td class="center iz" data-stat="age" ></td><td class="left iz" data-stat="team_id" ></td><td class="left " data-stat="lg_id" >NBA</td><td class="center iz" data-stat="pos" ></td><td class="right " data-stat="g" >2</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="per" >-2.0</td><td class="right " data-stat="ts_pct" >.300</td><td class="right " data-stat="fg3a_per_fga_pct" >.600</td><td class="right " data-stat="fta_per_fga_pct" >.000</td><td class="right " data-stat="orb_pct" >0.0</td><td class="right " data-stat="drb_pct" >33.1</td><td class="right " data-stat="trb_pct" >16.6</td><td class="right " data-stat="ast_pct" >13.4</td><td class="right " data-stat="stl_pct" >0.0</td><td class="right " data-stat="blk_pct" >0.0</td><td class="right " data-stat="tov_pct" >16.7</td><td class="right " data-stat="usg_pct" >25.9</td><td class="right iz" data-stat="ws-dum" ></td><td class="right " data-stat="ows" >-0.1</td><td class="right " data-stat="dws" >0.0</td><td class="right " data-stat="ws" >0.0</td><td class="right " data-stat="ws_per_48" >-0.227</td><td class="right iz" data-stat="bpm-dum" ></td><td class="right " data-stat="obpm" >-8.7</td><td class="right " data-stat="dbpm" >-2.6</td><td class="right " data-stat="bpm" >-11.3</td><td class="right " data-stat="vorp" >0.0</td></tr>
+
+               </tfoot>
+
+            </table>
+
+                  </div>
+               </div>
+            -->
+        </div>
+
+
+        <!-- fs_btf_3 -->
+        <div class="adblock">
+            <!-- div#fs_fs_btf_3  -->
+            <div align="center" id="div-gpt-ad-728x90-BTF-3">
+                <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-728x90-BTF-3');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-728x90-BTF-3'); });
+    }
+
+                </script>
+            </div>
+            <!-- /div.#fs_fs_btf_3 -->
+
+        </div>
+
+
+        <div id="all_shooting" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="shooting_link" data-label="Shooting"></span>
+                <h2>Shooting</h2>
+                <div class="section_heading_text">
+                    <ul>
+                        <li><span class='note'>
+Shot location data available for the 2000-01 through 2019-20 seasons.<br>
+Shot location stats are unofficial. Minor differences with official season totals may exist.
+</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_shooting">
+
+              <table class="row_summable sortable stats_table" id="shooting" data-cols-to-freeze="1"><caption>Shooting Table</caption>
+               <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+               <thead>
+
+                  <tr class="over_header">
+                     <th aria-label="" data-stat="" colspan="21" class=" over_header center" ></th>
+                     <th aria-label="" data-stat="over_over_2p" colspan="3" class=" over_header center" >2-Pt Field Goals</th>
+                     <th aria-label="" data-stat="over_over_3p" colspan="5" class=" over_header center" >3-Pt Field Goals</th>
+                  </tr>
+
+
+
+                  <tr class="over_header">
+                     <th aria-label="" data-stat="" colspan="9" class=" over_header center" ></th>
+                     <th aria-label="" data-stat="header_pct_fga" colspan="6" class=" over_header center" >% of FGA by Distance</th>
+                     <th aria-label="" data-stat="header_fg_pct" colspan="6" class=" over_header center" >FG% by Distance</th><th></th>
+                     <th aria-label="" data-stat="header_dunks" colspan="2" class=" over_header center" >Dunks</th><th></th>
+                     <th aria-label="" data-stat="header_corner" colspan="2" class=" over_header center" >Corner</th>
+                     <th aria-label="" data-stat="header_heaves" colspan="2" class=" over_header center" >Heaves</th>
+                  </tr>
+
+
+
+                  <tr>
+                     <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables." data-stat="season" scope="col" class=" poptip sort_default_asc center" data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables." >Season</th>
+                     <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col" class=" poptip sort_default_asc center" data-tip="Player's age on February 1 of the season" >Age</th>
+                     <th aria-label="Team" data-stat="team_id" scope="col" class=" poptip sort_default_asc center" data-tip="Team" >Tm</th>
+                     <th aria-label="League" data-stat="lg_id" scope="col" class=" poptip sort_default_asc center" data-tip="League" >Lg</th>
+                     <th aria-label="Position" data-stat="pos" scope="col" class=" poptip sort_default_asc center" data-tip="Position" >Pos</th>
+                     <th aria-label="Games" data-stat="g" scope="col" class=" poptip center" data-tip="Games" >G</th>
+                     <th aria-label="Minutes Played" data-stat="mp" scope="col" class=" poptip center" data-tip="Minutes Played" >MP</th>
+                     <th aria-label="Field Goal Percentage" data-stat="fg_pct" scope="col" class=" poptip center" data-tip="Field Goal Percentage" >FG%</th>
+                     <th aria-label="Average distance (ft.) of FGA" data-stat="avg_dist" scope="col" class=" poptip center" data-tip="Average distance (ft.) of FGA" >Dist.</th>
+                     <th aria-label="% of FGAs that are 2-Pt FGAs." data-stat="fg2a_pct_fga" scope="col" class=" poptip center" data-tip="% of FGAs that are 2-Pt FGAs." data-over-header="% of FGA by Distance" >2P</th>
+                     <th aria-label="% of FGAs that are 0-3 feet from the basket." data-stat="pct_fga_00_03" scope="col" class=" poptip center" data-tip="% of FGAs that are 0-3 feet from the basket." data-over-header="% of FGA by Distance" >0-3</th>
+                     <th aria-label="% of FGAs that are 3-10 feet from the basket." data-stat="pct_fga_03_10" scope="col" class=" poptip center" data-tip="% of FGAs that are 3-10 feet from the basket." data-over-header="% of FGA by Distance" >3-10</th>
+                     <th aria-label="% of FGAs that are 10-16 feet from the basket." data-stat="pct_fga_10_16" scope="col" class=" poptip center" data-tip="% of FGAs that are 10-16 feet from the basket." data-over-header="% of FGA by Distance" >10-16</th>
+                     <th aria-label="% of FGAs that are 2-Pt shotsand 16+ feet from the basket." data-stat="pct_fga_16_xx" scope="col" class=" poptip center" data-tip="% of FGAs that are 2-Pt shots<br>and 16+ feet from the basket." data-over-header="% of FGA by Distance" >16-3pt</th>
+                     <th aria-label="% of FGAs that are 3-Pt FGAs." data-stat="fg3a_pct_fga" scope="col" class=" poptip center" data-tip="% of FGAs that are 3-Pt FGAs." data-over-header="% of FGA by Distance" >3P</th>
+                     <th aria-label="2-Point Field Goal Percentage" data-stat="fg2_pct" scope="col" class=" poptip center" data-tip="2-Point Field Goal Percentage" data-over-header="FG% by Distance" >2P</th>
+                     <th aria-label="FG% on FGAs that are 0-3 feet from the basket." data-stat="fg_pct_00_03" scope="col" class=" poptip center" data-tip="FG% on FGAs that are 0-3 feet from the basket." data-over-header="FG% by Distance" >0-3</th>
+                     <th aria-label="FG% on FGAs that are 3-10 feet from the basket." data-stat="fg_pct_03_10" scope="col" class=" poptip center" data-tip="FG% on FGAs that are 3-10 feet from the basket." data-over-header="FG% by Distance" >3-10</th>
+                     <th aria-label="FG% on FGAs that are 10-16 feet from the basket." data-stat="fg_pct_10_16" scope="col" class=" poptip center" data-tip="FG% on FGAs that are 10-16 feet from the basket." data-over-header="FG% by Distance" >10-16</th>
+                     <th aria-label="FG% on 2-Pt FGAs that are 16+ feet from the basket." data-stat="fg_pct_16_xx" scope="col" class=" poptip center" data-tip="FG% on 2-Pt FGAs that are 16+ feet from the basket." data-over-header="FG% by Distance" >16-3pt</th>
+                     <th aria-label="3-Point Field Goal Percentage" data-stat="fg3_pct" scope="col" class=" poptip center" data-tip="3-Point Field Goal Percentage" data-over-header="FG% by Distance" >3P</th>
+                     <th aria-label="% of 2-Pt FGs that are assisted." data-stat="fg2_pct_ast" scope="col" class=" poptip center" data-tip="% of 2-Pt FGs that are assisted." >%Ast'd</th>
+                     <th aria-label="% of all FGAs that are dunk attempts." data-stat="pct_fg2_dunk" scope="col" class=" poptip center" data-tip="% of all FGAs that are dunk attempts." data-over-header="Dunks" >%FGA</th>
+                     <th aria-label="FGs that are dunks." data-stat="fg2_dunk" scope="col" class=" poptip center" data-tip="Number of successful throwdowns.<br>Some discrepancies for 2000-01 totals. Reliably reported as of the 2001-02 season." data-over-header="Dunks" >Md.</th>
+                     <th aria-label="% of 3-Pt FGs that are assisted." data-stat="fg3_pct_ast" scope="col" class=" poptip center" data-tip="% of 3-Pt FGs that are assisted." >%Ast'd</th>
+                     <th aria-label="% of 3PAs from the corner." data-stat="pct_fg3a_corner" scope="col" class=" poptip center" data-tip="% of 3PAs from the corner." data-over-header="Corner" >%3PA</th>
+                     <th aria-label="3P% on 3PAs from the corner." data-stat="fg3_pct_corner" scope="col" class=" poptip center" data-tip="3P% on 3PAs from the corner." data-over-header="Corner" >3P%</th>
+                     <th aria-label="Heave attempts (beyond half-court)" data-stat="fg3a_heave" scope="col" class=" poptip center" data-tip="Heave attempts (beyond half-court)" data-over-header="Heaves" >Att.</th>
+                     <th aria-label="Heaves made (beyond half-court)" data-stat="fg3_heave" scope="col" class=" poptip center" data-tip="Heaves made (beyond half-court)" data-over-header="Heaves" >Md.</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+            <tr id="shooting.2020" class="full_table" ><th scope="row" class="left " data-stat="season" ><a href="/players/s/shayoma01/gamelog/2020/">2019-20</a></th><td class="center " data-stat="age" >24</td><td class="left " data-stat="team_id" ><a href="/teams/PHI/2020.html">PHI</a></td><td class="left " data-stat="lg_id" ><a href="/leagues/NBA_2020.html">NBA</a></td><td class="center " data-stat="pos" >SG</td><td class="right " data-stat="g" >2</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="fg_pct" >.200</td><td class="right " data-stat="avg_dist" >19.0</td><td class="right " data-stat="fg2a_pct_fga" >.400</td><td class="right " data-stat="pct_fga_00_03" >.200</td><td class="right " data-stat="pct_fga_03_10" >.000</td><td class="right " data-stat="pct_fga_10_16" >.000</td><td class="right " data-stat="pct_fga_16_xx" >.200</td><td class="right " data-stat="fg3a_pct_fga" >.600</td><td class="right " data-stat="fg2_pct" >.000</td><td class="right " data-stat="fg_pct_00_03" >.000</td><td class="right iz" data-stat="fg_pct_03_10" ></td><td class="right iz" data-stat="fg_pct_10_16" ></td><td class="right " data-stat="fg_pct_16_xx" >.000</td><td class="right " data-stat="fg3_pct" >.333</td><td class="right iz" data-stat="fg2_pct_ast" ></td><td class="right " data-stat="pct_fg2_dunk" >.000</td><td class="right iz" data-stat="fg2_dunk" >0</td><td class="right " data-stat="fg3_pct_ast" >1.000</td><td class="right " data-stat="pct_fg3a_corner" >.667</td><td class="right " data-stat="fg3_pct_corner" >.000</td><td class="right iz" data-stat="fg3a_heave" >0</td><td class="right iz" data-stat="fg3_heave" >0</td></tr>
+
+               </tbody>
+               <tfoot><tr ><th scope="row" class="left " data-stat="season" >Career</th><td class="center iz" data-stat="age" ></td><td class="left iz" data-stat="team_id" ></td><td class="left " data-stat="lg_id" >NBA</td><td class="center iz" data-stat="pos" ></td><td class="right " data-stat="g" >2</td><td class="right " data-stat="mp" >10</td><td class="right " data-stat="fg_pct" >.200</td><td class="right " data-stat="avg_dist" >19.0</td><td class="right " data-stat="fg2a_pct_fga" >.400</td><td class="right " data-stat="pct_fga_00_03" >.200</td><td class="right " data-stat="pct_fga_03_10" >.000</td><td class="right " data-stat="pct_fga_10_16" >.000</td><td class="right " data-stat="pct_fga_16_xx" >.200</td><td class="right " data-stat="fg3a_pct_fga" >.600</td><td class="right " data-stat="fg2_pct" >.000</td><td class="right " data-stat="fg_pct_00_03" >.000</td><td class="right iz" data-stat="fg_pct_03_10" ></td><td class="right iz" data-stat="fg_pct_10_16" ></td><td class="right " data-stat="fg_pct_16_xx" >.000</td><td class="right " data-stat="fg3_pct" >.333</td><td class="right iz" data-stat="fg2_pct_ast" ></td><td class="right " data-stat="pct_fg2_dunk" >.000</td><td class="right iz" data-stat="fg2_dunk" >0</td><td class="right " data-stat="fg3_pct_ast" >1.000</td><td class="right " data-stat="pct_fg3a_corner" >.667</td><td class="right " data-stat="fg3_pct_corner" >.000</td><td class="right iz" data-stat="fg3a_heave" >0</td><td class="right iz" data-stat="fg3_heave" >0</td></tr>
+
+               </tfoot>
+
+            </table>
+
+                  </div>
+               </div>
+            -->
+        </div>
+
+
+        <div id="all_pbp" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="pbp_link" data-label="Play-by-Play"></span>
+                <h2>Play-by-Play</h2>
+                <div class="section_heading_text">
+                    <ul>
+                        <li><span class='note'>
+Play-by-play data available for the 2000-01 through 2019-20 seasons.<br>
+Play-by-play stats are unofficial. Minor differences with official season totals may exist.
+</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_pbp">
+
+              <table class="row_summable sortable stats_table" id="pbp" data-cols-to-freeze="1"><caption>Play-by-Play Table</caption>
+               <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+               <thead>
+
+                  <tr class="over_header">
+                     <th aria-label="" data-stat="" colspan="7" class=" over_header center" ></th>
+                     <th aria-label="" data-stat="header_pos_estimates" colspan="5" class=" over_header center" >Position Estimate</th>
+                     <th aria-label="" data-stat="header_plus_minus" colspan="2" class=" over_header center" >+/- Per 100 Poss.</th>
+                     <th aria-label="" data-stat="header_turnovers" colspan="2" class=" over_header center" >Turnovers</th>
+                     <th aria-label="" data-stat="header_fouls" colspan="2" class=" over_header center" >Fouls Committed</th>
+                     <th aria-label="" data-stat="header_drawn" colspan="2" class=" over_header center" >Fouls Drawn</th>
+                     <th aria-label="" data-stat="header_misc2" colspan="3" class=" over_header center" >Misc.</th>
+                  </tr>
+
+
+
+                  <tr>
+                     <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables." data-stat="season" scope="col" class=" poptip sort_default_asc center" data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables." >Season</th>
+                     <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col" class=" poptip sort_default_asc center" data-tip="Player's age on February 1 of the season" >Age</th>
+                     <th aria-label="Team" data-stat="team_id" scope="col" class=" poptip sort_default_asc center" data-tip="Team" >Tm</th>
+                     <th aria-label="League" data-stat="lg_id" scope="col" class=" poptip sort_default_asc center" data-tip="League" >Lg</th>
+                     <th aria-label="Position" data-stat="pos" scope="col" class=" poptip sort_default_asc center" data-tip="Position" >Pos</th>
+                     <th aria-label="Games" data-stat="g" scope="col" class=" poptip center" data-tip="Games" >G</th>
+                     <th aria-label="Minutes Played" data-stat="mp" scope="col" class=" poptip center" data-tip="Minutes Played" >MP</th>
+                     <th aria-label="Percentage of MP at PG" data-stat="pct_1" scope="col" class=" poptip center" data-tip="Percentage of MP at PG" data-over-header="Position Estimate" >PG%</th>
+                     <th aria-label="Percentage of MP at SG" data-stat="pct_2" scope="col" class=" poptip center" data-tip="Percentage of MP at SG" data-over-header="Position Estimate" >SG%</th>
+                     <th aria-label="Percentage of MP at SF" data-stat="pct_3" scope="col" class=" poptip center" data-tip="Percentage of MP at SF" data-over-header="Position Estimate" >SF%</th>
+                     <th aria-label="Percentage of MP at PF" data-stat="pct_4" scope="col" class=" poptip center" data-tip="Percentage of MP at PF" data-over-header="Position Estimate" >PF%</th>
+                     <th aria-label="Percentage of MP at C" data-stat="pct_5" scope="col" class=" poptip center" data-tip="Percentage of MP at C" data-over-header="Position Estimate" >C%</th>
+                     <th aria-label="Plus/Minus On" data-stat="plus_minus_on" scope="col" class=" poptip center" data-tip="Plus/Minus Per 100 Possessions (On Court)" data-over-header="+/- Per 100 Poss." >OnCourt</th>
+                     <th aria-label="Plus/Minus Net" data-stat="plus_minus_net" scope="col" class=" poptip center" data-tip="Plus/Minus Net Per 100 Possessions" data-over-header="+/- Per 100 Poss." >On-Off</th>
+                     <th aria-label="Turnovers By Bad Pass" data-stat="tov_bad_pass" scope="col" class=" poptip center" data-tip="Turnovers By Bad Pass" data-over-header="Turnovers" >BadPass</th>
+                     <th aria-label="Lost Ball Turnovers" data-stat="tov_lost_ball" scope="col" class=" poptip center" data-tip="Lost Ball Turnovers" data-over-header="Turnovers" >LostBall</th>
+                     <th aria-label="Shooting Fouls" data-stat="fouls_shooting" scope="col" class=" poptip center" data-tip="Shooting Fouls" data-over-header="Fouls Committed" >Shoot</th>
+                     <th aria-label="Offensive Fouls" data-stat="fouls_offensive" scope="col" class=" poptip center" data-tip="Offensive Fouls" data-over-header="Fouls Committed" >Off.</th>
+                     <th aria-label="Shooting Fouls Drawn" data-stat="drawn_shooting" scope="col" class=" poptip center" data-tip="Shooting Fouls Drawn" data-over-header="Fouls Drawn" >Shoot</th>
+                     <th aria-label="Offensive Fouls Drawn" data-stat="drawn_offensive" scope="col" class=" poptip center" data-tip="Offensive Fouls Drawn" data-over-header="Fouls Drawn" >Off.</th>
+                     <th aria-label="Points Generated by Assists" data-stat="astd_pts" scope="col" class=" poptip center" data-tip="<b>Points Generated by Assists</b><br>All points scored for which the player is awarded an assist" data-over-header="Misc." >PGA</th>
+                     <th aria-label="And1" data-stat="and1s" scope="col" class=" poptip center" data-tip="Field goals on which the player is fouled" data-over-header="Misc." >And1</th>
+                     <th aria-label="Field goal attempts that are blocked" data-stat="own_shots_blk" scope="col" class=" poptip center" data-tip="Field goal attempts that are blocked" data-over-header="Misc." >Blkd</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+            <tr id="pbp.2020" class="full_table" ><th scope="row" class="left " data-stat="season" ><a href="/players/s/shayoma01/gamelog/2020/">2019-20</a></th><td class="center " data-stat="age" >24</td><td class="left " data-stat="team_id" ><a href="/teams/PHI/2020.html">PHI</a></td><td class="left " data-stat="lg_id" ><a href="/leagues/NBA_2020.html">NBA</a></td><td class="center " data-stat="pos" >SG</td><td class="right " data-stat="g" >2</td><td class="right " data-stat="mp" >10</td><td class="right iz" data-stat="pct_1" ></td><td class="right " data-stat="pct_2" >69%</td><td class="right " data-stat="pct_3" >27%</td><td class="right " data-stat="pct_4" >4%</td><td class="right iz" data-stat="pct_5" ></td><td class="right decrease" data-stat="plus_minus_on" >-38.7</td><td class="right decrease" data-stat="plus_minus_net" >-41.0</td><td class="right iz" data-stat="tov_bad_pass" >0</td><td class="right iz" data-stat="tov_lost_ball" >0</td><td class="right iz" data-stat="fouls_shooting" >0</td><td class="right iz" data-stat="fouls_offensive" >0</td><td class="right iz" data-stat="drawn_shooting" >0</td><td class="right iz" data-stat="drawn_offensive" >0</td><td class="right " data-stat="astd_pts" >2</td><td class="right iz" data-stat="and1s" >0</td><td class="right iz" data-stat="own_shots_blk" >0</td></tr>
+
+               </tbody>
+               <tfoot><tr ><th scope="row" class="left " data-stat="season" >Career</th><td class="center iz" data-stat="age" ></td><td class="left iz" data-stat="team_id" ></td><td class="left " data-stat="lg_id" >NBA</td><td class="center iz" data-stat="pos" ></td><td class="right " data-stat="g" >2</td><td class="right " data-stat="mp" >10</td><td class="right iz" data-stat="pct_1" ></td><td class="right " data-stat="pct_2" >69%</td><td class="right " data-stat="pct_3" >27%</td><td class="right " data-stat="pct_4" >4%</td><td class="right iz" data-stat="pct_5" ></td><td class="right " data-stat="plus_minus_on" >-38.7</td><td class="right " data-stat="plus_minus_net" >-41.0</td><td class="right iz" data-stat="tov_bad_pass" >0</td><td class="right iz" data-stat="tov_lost_ball" >0</td><td class="right iz" data-stat="fouls_shooting" >0</td><td class="right iz" data-stat="fouls_offensive" >0</td><td class="right iz" data-stat="drawn_shooting" >0</td><td class="right iz" data-stat="drawn_offensive" >0</td><td class="right " data-stat="astd_pts" >2</td><td class="right iz" data-stat="and1s" >0</td><td class="right iz" data-stat="own_shots_blk" >0</td></tr>
+
+               </tfoot>
+
+            </table>
+
+                  </div>
+               </div>
+            -->
+        </div>
+
+
+        <div id="all_year-and-career-highs" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="year-and-career-highs_link" data-label=" Game Highs"></span>
+                <h2> Game Highs</h2>
+                <div class="section_heading_text">
+                    <ul>
+                        <li><span class='note'>Click Season link for player's season game log<br>Click value for box score or list of games<br>Search <a
+                                href='https://basketball-reference.com/play-index/pgl_finder.cgi?player_id=shayoma01'>Marial Shayok's game log history</a></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_year-and-career-highs">
+
+              <table class="sortable stats_table" id="year-and-career-highs" data-cols-to-freeze="1"><caption> Game Highs Table</caption>
+               <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+               <thead>
+
+                  <tr class="over_header">
+                     <th aria-label="" data-stat="" colspan="4" class=" over_header center" ></th>
+                     <th aria-label="" data-stat="highs" colspan="19" class=" over_header center" >Game Highs</th>
+                  </tr>
+
+
+
+                  <tr>
+                     <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables." data-stat="season" scope="col" class=" poptip sort_default_asc center" data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables." >Season</th>
+                     <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col" class=" poptip sort_default_asc center" data-tip="Player's age on February 1 of the season" >Age</th>
+                     <th aria-label="Team" data-stat="team_id" scope="col" class=" poptip sort_default_asc center" data-tip="Team" >Tm</th>
+                     <th aria-label="League" data-stat="lg_id" scope="col" class=" poptip sort_default_asc center" data-tip="League" >Lg</th>
+                     <th aria-label="Minutes Played" data-stat="mp" scope="col" class=" poptip center" data-tip="Minutes Played" data-over-header="Game Highs" >MP</th>
+                     <th aria-label="Field Goals" data-stat="fg" scope="col" class=" poptip center" data-tip="Field Goals" data-over-header="Game Highs" >FG</th>
+                     <th aria-label="Field Goal Attempts" data-stat="fga" scope="col" class=" poptip center" data-tip="Field Goal Attempts" data-over-header="Game Highs" >FGA</th>
+                     <th aria-label="3-Point Field Goals" data-stat="fg3" scope="col" class=" poptip center" data-tip="3-Point Field Goals" data-over-header="Game Highs" >3P</th>
+                     <th aria-label="3-Point Field Goal Attempts" data-stat="fg3a" scope="col" class=" poptip center" data-tip="3-Point Field Goal Attempts" data-over-header="Game Highs" >3PA</th>
+                     <th aria-label="2-Point Field Goals" data-stat="fg2" scope="col" class=" poptip center" data-tip="2-Point Field Goals" data-over-header="Game Highs" >2P</th>
+                     <th aria-label="2-point Field Goal Attempts" data-stat="fg2a" scope="col" class=" poptip center" data-tip="2-point Field Goal Attempts" data-over-header="Game Highs" >2PA</th>
+                     <th aria-label="Free Throws" data-stat="ft" scope="col" class=" poptip center" data-tip="Free Throws" data-over-header="Game Highs" >FT</th>
+                     <th aria-label="Free Throw Attempts" data-stat="fta" scope="col" class=" poptip center" data-tip="Free Throw Attempts" data-over-header="Game Highs" >FTA</th>
+                     <th aria-label="Offensive Rebounds" data-stat="orb" scope="col" class=" poptip center" data-tip="Offensive Rebounds" data-over-header="Game Highs" >ORB</th>
+                     <th aria-label="Defensive Rebounds" data-stat="drb" scope="col" class=" poptip center" data-tip="Defensive Rebounds" data-over-header="Game Highs" >DRB</th>
+                     <th aria-label="Total Rebounds" data-stat="trb" scope="col" class=" poptip center" data-tip="Total Rebounds" data-over-header="Game Highs" >TRB</th>
+                     <th aria-label="Assists" data-stat="ast" scope="col" class=" poptip center" data-tip="Assists" data-over-header="Game Highs" >AST</th>
+                     <th aria-label="Steals" data-stat="stl" scope="col" class=" poptip center" data-tip="Steals" data-over-header="Game Highs" >STL</th>
+                     <th aria-label="Blocks" data-stat="blk" scope="col" class=" poptip center" data-tip="Blocks" data-over-header="Game Highs" >BLK</th>
+                     <th aria-label="Turnovers" data-stat="tov" scope="col" class=" poptip center" data-tip="Turnovers" data-over-header="Game Highs" >TOV</th>
+                     <th aria-label="Personal Fouls" data-stat="pf" scope="col" class=" poptip center" data-tip="Personal Fouls" data-over-header="Game Highs" >PF</th>
+                     <th aria-label="Points" data-stat="pts" scope="col" class=" poptip center" data-tip="Points" data-over-header="Game Highs" >PTS</th>
+                     <th aria-label="Game Score" data-stat="game_score" scope="col" class=" poptip right" data-tip="Game Score" data-over-header="Game Highs" >GmSc</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+            <tr id="per_game.2020" class="full_table" ><th scope="row" class="left " data-stat="season" ><a href="/players/s/shayoma01/gamelog/2020/">2019-20</a></th><td class="center " data-stat="age" >24</td><td class="left " data-stat="team_id" ><a href="/teams/PHI/2020.html">PHI</a></td><td class="left " data-stat="lg_id" ><a href="/leagues/NBA_2020.html">NBA</a></td><td class="right " data-stat="mp" ><a href="/boxscores/202002060MIL.html">7:29</a></td><td class="right " data-stat="fg" ><a href="/boxscores/202002060MIL.html">1</a></td><td class="right " data-stat="fga" ><a href="/boxscores/202002060MIL.html">3</a></td><td class="right " data-stat="fg3" ><a href="/boxscores/202002060MIL.html">1</a></td><td class="right " data-stat="fg3a" ><a href="/boxscores/202002060MIL.html">3</a></td><td class="right iz" data-stat="fg2" >0</td><td class="right " data-stat="fg2a" ><a href="/boxscores/202002070PHI.html">2</a></td><td class="right iz" data-stat="ft" >0</td><td class="right iz" data-stat="fta" >0</td><td class="right iz" data-stat="orb" >0</td><td class="right " data-stat="drb" ><a href="/boxscores/202002070PHI.html">2</a></td><td class="right " data-stat="trb" ><a href="/boxscores/202002070PHI.html">2</a></td><td class="right " data-stat="ast" ><a href="/boxscores/202002070PHI.html">1</a></td><td class="right iz" data-stat="stl" >0</td><td class="right iz" data-stat="blk" >0</td><td class="right " data-stat="tov" ><a href="/boxscores/202002060MIL.html">1</a></td><td class="right iz" data-stat="pf" >0</td><td class="right " data-stat="pts" ><a href="/boxscores/202002060MIL.html">3</a></td><td class="right " data-stat="game_score" ><a href="/boxscores/202002060MIL.html">0.6</a></td></tr>
+
+               </tbody>
+               <tfoot><tr ><th scope="row" class="left " data-stat="season" >Career</th><td class="center iz" data-stat="age" ></td><td class="left iz" data-stat="team_id" ></td><td class="left iz" data-stat="lg_id" ></td><td class="right " data-stat="mp" >7:29</td><td class="right " data-stat="fg" >1</td><td class="right " data-stat="fga" >3</td><td class="right " data-stat="fg3" >1</td><td class="right " data-stat="fg3a" >3</td><td class="right iz" data-stat="fg2" >0</td><td class="right " data-stat="fg2a" >2</td><td class="right iz" data-stat="ft" >0</td><td class="right iz" data-stat="fta" >0</td><td class="right iz" data-stat="orb" >0</td><td class="right " data-stat="drb" >2</td><td class="right " data-stat="trb" >2</td><td class="right " data-stat="ast" >1</td><td class="right iz" data-stat="stl" >0</td><td class="right iz" data-stat="blk" >0</td><td class="right " data-stat="tov" >1</td><td class="right iz" data-stat="pf" >0</td><td class="right " data-stat="pts" >3</td><td class="right " data-stat="game_score" >0.6</td></tr>
+
+               </tfoot>
+
+            </table>
+
+                  </div>
+               </div>
+               <div class="footer no_hide_long" id="tfooter_year-and-career-highs">
+
+                <span class='note'>Values are the highest value achieved in a game for that stat for a particular season<br>Click on game score entries for top individual games</span></div>
+            -->
+        </div>
+
+
+        <div id="all_all_college_stats" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="all_college_stats_link" data-label="College"></span>
+                <h2>College</h2>
+                <div class="section_heading_text">
+                    <ul>
+                        <li><small><u>underline</u> indicates incomplete record</small></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_all_college_stats">
+
+              <table class="sortable stats_table" id="all_college_stats" data-cols-to-freeze="1"><caption>College Table</caption>
+               <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+               <thead>
+
+                  <tr class="over_header">
+                     <th aria-label="" data-stat="" colspan="3" class=" over_header center" ></th>
+                     <th aria-label="" data-stat="totals" colspan="16" class=" over_header center" >Totals</th>
+                     <th aria-label="" data-stat="header_shooting" colspan="3" class=" over_header center" >Shooting</th>
+                     <th aria-label="" data-stat="header_per_g" colspan="4" class=" over_header center" >Per Game</th>
+                  </tr>
+
+
+
+                  <tr>
+                     <th aria-label="If listed as single number, the year the season ended.&#x2605; - Indicates All-Star for league.Only on regular season tables." data-stat="season" scope="col" class=" poptip sort_default_asc center" data-tip="If listed as single number, the year the season ended.<br>&#x2605; - Indicates All-Star for league.<br>Only on regular season tables." >Season</th>
+                     <th aria-label="Player's age on February 1 of the season" data-stat="age" scope="col" class=" poptip sort_default_asc center" data-tip="Player's age on February 1 of the season" >Age</th>
+                     <th aria-label="College" data-stat="college_id" scope="col" class=" poptip sort_default_asc center" >College</th>
+                     <th aria-label="Games" data-stat="g" scope="col" class=" poptip center" data-tip="Games" >G</th>
+                     <th aria-label="Minutes Played" data-stat="mp" scope="col" class=" poptip center" data-tip="Minutes Played" >MP</th>
+                     <th aria-label="Field Goals" data-stat="fg" scope="col" class=" poptip center" data-tip="Field Goals" >FG</th>
+                     <th aria-label="Field Goal Attempts" data-stat="fga" scope="col" class=" poptip center" data-tip="Field Goal Attempts" >FGA</th>
+                     <th aria-label="3-Point Field Goals" data-stat="fg3" scope="col" class=" poptip center" data-tip="3-Point Field Goals" >3P</th>
+                     <th aria-label="3-Point Field Goal Attempts" data-stat="fg3a" scope="col" class=" poptip center" data-tip="3-Point Field Goal Attempts" >3PA</th>
+                     <th aria-label="Free Throws" data-stat="ft" scope="col" class=" poptip center" data-tip="Free Throws" >FT</th>
+                     <th aria-label="Free Throw Attempts" data-stat="fta" scope="col" class=" poptip center" data-tip="Free Throw Attempts" >FTA</th>
+                     <th aria-label="Offensive Rebounds" data-stat="orb" scope="col" class=" poptip center" data-tip="Offensive Rebounds" >ORB</th>
+                     <th aria-label="Total Rebounds" data-stat="trb" scope="col" class=" poptip center" data-tip="Total Rebounds" >TRB</th>
+                     <th aria-label="Assists" data-stat="ast" scope="col" class=" poptip center" data-tip="Assists" >AST</th>
+                     <th aria-label="Steals" data-stat="stl" scope="col" class=" poptip center" data-tip="Steals" >STL</th>
+                     <th aria-label="Blocks" data-stat="blk" scope="col" class=" poptip center" data-tip="Blocks" >BLK</th>
+                     <th aria-label="Turnovers" data-stat="tov" scope="col" class=" poptip center" data-tip="Turnovers" >TOV</th>
+                     <th aria-label="Personal Fouls" data-stat="pf" scope="col" class=" poptip center" data-tip="Personal Fouls" >PF</th>
+                     <th aria-label="Points" data-stat="pts" scope="col" class=" poptip center" data-tip="Points" >PTS</th>
+                     <th aria-label="Field Goal Percentage" data-stat="fg_pct" scope="col" class=" poptip center" data-tip="Field Goal Percentage" data-over-header="Shooting" >FG%</th>
+                     <th aria-label="3-Point Field Goal Percentage" data-stat="fg3_pct" scope="col" class=" poptip center" data-tip="3-Point Field Goal Percentage" data-over-header="Shooting" >3P%</th>
+                     <th aria-label="Free Throw Percentage" data-stat="ft_pct" scope="col" class=" poptip center" data-tip="Free Throw Percentage" data-over-header="Shooting" >FT%</th>
+                     <th aria-label="Minutes Played Per Game" data-stat="mp_per_g" scope="col" class=" poptip center" data-tip="Minutes Played Per Game" data-over-header="Per Game" >MP</th>
+                     <th aria-label="Points Per Game" data-stat="pts_per_g" scope="col" class=" poptip center" data-tip="Points Per Game" data-over-header="Per Game" >PTS</th>
+                     <th aria-label="Total Rebounds Per Game" data-stat="trb_per_g" scope="col" class=" poptip center" data-tip="Total Rebounds Per Game" data-over-header="Per Game" >TRB</th>
+                     <th aria-label="Assists Per Game" data-stat="ast_per_g" scope="col" class=" poptip center" data-tip="Assists Per Game" data-over-header="Per Game" >AST</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+            <tr ><th scope="row" class="left " data-stat="season" >2014-15</th><td class="center " data-stat="age" >19</td><td class="left " data-stat="college_id" ><a href="/friv/colleges.cgi?college=virginia" title="Virginia">VIRGINIA</a></td><td class="right " data-stat="g" >34</td><td class="right " data-stat="mp" >496</td><td class="right " data-stat="fg" >47</td><td class="right " data-stat="fga" >116</td><td class="right " data-stat="fg3" >19</td><td class="right " data-stat="fg3a" >50</td><td class="right " data-stat="ft" >17</td><td class="right " data-stat="fta" >27</td><td class="right " data-stat="orb" >8</td><td class="right " data-stat="trb" >61</td><td class="right " data-stat="ast" >35</td><td class="right " data-stat="stl" >19</td><td class="right " data-stat="blk" >10</td><td class="right " data-stat="tov" >21</td><td class="right " data-stat="pf" >44</td><td class="right " data-stat="pts" >130</td><td class="right " data-stat="fg_pct" >.405</td><td class="right " data-stat="fg3_pct" >.380</td><td class="right " data-stat="ft_pct" >.630</td><td class="right " data-stat="mp_per_g" >14.6</td><td class="right " data-stat="pts_per_g" >3.8</td><td class="right " data-stat="trb_per_g" >1.8</td><td class="right " data-stat="ast_per_g" >1.0</td></tr>
+            <tr ><th scope="row" class="left " data-stat="season" >2015-16</th><td class="center " data-stat="age" >20</td><td class="left " data-stat="college_id" ><a href="/friv/colleges.cgi?college=virginia" title="Virginia">VIRGINIA</a></td><td class="right " data-stat="g" >35</td><td class="right " data-stat="mp" >526</td><td class="right " data-stat="fg" >58</td><td class="right " data-stat="fga" >118</td><td class="right " data-stat="fg3" >17</td><td class="right " data-stat="fg3a" >39</td><td class="right " data-stat="ft" >17</td><td class="right " data-stat="fta" >31</td><td class="right " data-stat="orb" >8</td><td class="right " data-stat="trb" >66</td><td class="right " data-stat="ast" >39</td><td class="right " data-stat="stl" >11</td><td class="right " data-stat="blk" >5</td><td class="right " data-stat="tov" >28</td><td class="right " data-stat="pf" >52</td><td class="right " data-stat="pts" >150</td><td class="right " data-stat="fg_pct" >.492</td><td class="right " data-stat="fg3_pct" >.436</td><td class="right " data-stat="ft_pct" >.548</td><td class="right " data-stat="mp_per_g" >15.0</td><td class="right " data-stat="pts_per_g" >4.3</td><td class="right " data-stat="trb_per_g" >1.9</td><td class="right " data-stat="ast_per_g" >1.1</td></tr>
+            <tr ><th scope="row" class="left " data-stat="season" >2016-17</th><td class="center " data-stat="age" >21</td><td class="left " data-stat="college_id" ><a href="/friv/colleges.cgi?college=virginia" title="Virginia">VIRGINIA</a></td><td class="right " data-stat="g" >34</td><td class="right " data-stat="mp" >702</td><td class="right " data-stat="fg" >121</td><td class="right " data-stat="fga" >272</td><td class="right " data-stat="fg3" >19</td><td class="right " data-stat="fg3a" >58</td><td class="right " data-stat="ft" >43</td><td class="right " data-stat="fta" >54</td><td class="right " data-stat="orb" >12</td><td class="right " data-stat="trb" >82</td><td class="right " data-stat="ast" >33</td><td class="right " data-stat="stl" >30</td><td class="right " data-stat="blk" >10</td><td class="right " data-stat="tov" >36</td><td class="right " data-stat="pf" >46</td><td class="right " data-stat="pts" >304</td><td class="right " data-stat="fg_pct" >.445</td><td class="right " data-stat="fg3_pct" >.328</td><td class="right " data-stat="ft_pct" >.796</td><td class="right " data-stat="mp_per_g" >20.6</td><td class="right " data-stat="pts_per_g" >8.9</td><td class="right " data-stat="trb_per_g" >2.4</td><td class="right " data-stat="ast_per_g" >1.0</td></tr>
+            <tr ><th scope="row" class="left " data-stat="season" >2018-19</th><td class="center " data-stat="age" >23</td><td class="left " data-stat="college_id" ><a href="/friv/colleges.cgi?college=iowast" title="Iowa State">IOWAST</a></td><td class="right " data-stat="g" >34</td><td class="right " data-stat="mp" >1118</td><td class="right " data-stat="fg" >229</td><td class="right " data-stat="fga" >462</td><td class="right " data-stat="fg3" >71</td><td class="right " data-stat="fg3a" >184</td><td class="right " data-stat="ft" >108</td><td class="right " data-stat="fta" >123</td><td class="right " data-stat="orb" >47</td><td class="right " data-stat="trb" >167</td><td class="right " data-stat="ast" >67</td><td class="right " data-stat="stl" >32</td><td class="right " data-stat="blk" >8</td><td class="right " data-stat="tov" >91</td><td class="right " data-stat="pf" >70</td><td class="right " data-stat="pts" >637</td><td class="right " data-stat="fg_pct" >.496</td><td class="right " data-stat="fg3_pct" >.386</td><td class="right " data-stat="ft_pct" >.878</td><td class="right " data-stat="mp_per_g" >32.9</td><td class="right " data-stat="pts_per_g" >18.7</td><td class="right " data-stat="trb_per_g" >4.9</td><td class="right " data-stat="ast_per_g" >2.0</td></tr>
+
+               </tbody>
+               <tfoot><tr ><th scope="row" class="left " data-stat="season" >Career</th><td class="center iz" data-stat="age" ></td><td class="left iz" data-stat="college_id" ></td><td class="right " data-stat="g" >137</td><td class="right " data-stat="mp" >2842</td><td class="right " data-stat="fg" >455</td><td class="right " data-stat="fga" >968</td><td class="right " data-stat="fg3" >126</td><td class="right " data-stat="fg3a" >331</td><td class="right " data-stat="ft" >185</td><td class="right " data-stat="fta" >235</td><td class="right " data-stat="orb" >75</td><td class="right " data-stat="trb" >376</td><td class="right " data-stat="ast" >174</td><td class="right " data-stat="stl" >92</td><td class="right " data-stat="blk" >33</td><td class="right " data-stat="tov" >176</td><td class="right " data-stat="pf" >212</td><td class="right " data-stat="pts" >1221</td><td class="right " data-stat="fg_pct" >.470</td><td class="right " data-stat="fg3_pct" >.381</td><td class="right " data-stat="ft_pct" >.787</td><td class="right " data-stat="mp_per_g" >20.7</td><td class="right " data-stat="pts_per_g" >8.9</td><td class="right " data-stat="trb_per_g" >2.7</td><td class="right " data-stat="ast_per_g" >1.3</td></tr>
+
+               </tfoot>
+
+            </table>
+
+                  </div>
+               </div>
+            -->
+        </div>
+
+
+        <div class="section_wrapper setup_commented commented" id="all_transactions">
+            <div class="section_heading">
+                <span class="section_anchor" id="transactions_link" data-label="Transactions"></span>
+                <h2>Transactions</h2>
+                <div class="section_heading_text">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--     <div class="section_content" id="div_transactions">
+                    <span class=' nba-transactions'><p class="transaction "><strong>June 20, 2019</strong>: Drafted by the <a data-attr-to="PHI" href="/teams/PHI/2019.html">Philadelphia 76ers</a> in the 2nd round (54th pick) of the 2019 NBA Draft.</p>
+            </span><span class=' nba-transactions'><p class="transaction "><strong>July 7, 2019</strong>: Signed a two-way contract with the <a data-attr-to="PHI" href="/teams/PHI/2020.html">Philadelphia 76ers</a></p>
+            </span>
+
+                </div>
+            -->
+        </div>
+
+
+        <div id="all_contracts_phi" class="table_wrapper setup_commented commented">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="contracts_phi_link" data-label="Contract"></span>
+                <h2>Contract</h2>
+                <div class="section_heading_text">
+                    <ul>
+                        <li><small><span class="salary-fa">Free Agent</span>/<span class="salary-pl">Player</span>/<span
+                                class="salary-tm">Team</span>/<span class="salary-et">Early Termination</span> </small>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="placeholder"></div>
+            <!--
+               <div class="table_outer_container">
+                  <div class="overthrow table_container" id="div_contracts_phi">
+
+              <table class="suppress_all sortable stats_table" id="contracts_phi" data-cols-to-freeze="1"><caption>Contract Table</caption>
+                  <tr class="thead">
+                     <th aria-label="Team" data-stat="Team" class=" center" >Team</th>
+                  </tr>
+
+
+            <tr>
+            <td><a href="/contracts/.html"></a></td>
+            </tr>
+
+            </tbody></table>
+
+                  </div>
+               </div>
+               <div class="footer no_hide_long" id="tfooter_contracts_phi">
+
+                <div><ul class='bullets'>
+            <li>Signed two-way contract Sunday, July 7, 2019.</li>
+            </ul></div>
+            </div>
+            -->
+        </div>
+
+
+        <!-- global.nonempty_tables_num: 13, table_count: 13 -->
+        <!-- no Local/Partials/NoteBottom.tt2 -->
+        <div id="bottom_nav" class="section_wrapper">
+            <div class="section_heading"><span data-no-inpage="1" class="section_anchor" id="inner_nav_bottom_link"
+                                               data-label="More Shayok Pages"></span>
+                <h2>More Shayok Pages</h2></div>
+            <div class="section_content" id="bottom_nav_container">
+
+                <p><a href="/players/s/shayoma01.html"><u>Marial Shayok Overview</u></a></p>
+                <p class="listhead"><strong>Game Logs</strong></p>
+                <ul class="">
+                    <li><a href="/players/s/shayoma01/gamelog/2020">2019-20</a></li>
+                </ul>
+                <p class="listhead"><strong>Splits</strong></p>
+                <ul class="">
+                    <li><a href="/players/s/shayoma01/splits/2020">2019-20</a></li>
+                    <li><a href="/players/s/shayoma01/splits/">Career</a></li>
+                </ul>
+                <p class="listhead"><strong>Shooting</strong></p>
+                <ul class="">
+                    <li><a href="/players/s/shayoma01/shooting/2020">2019-20</a></li>
+                </ul>
+                <p class="listhead"><strong>Lineups</strong></p>
+                <ul class="">
+                    <li><a href="/players/s/shayoma01/lineups/2020">2019-20</a></li>
+                </ul>
+                <p class="listhead"><strong>On/Off</strong></p>
+                <ul class="">
+                    <li><a href="/players/s/shayoma01/on-off/2020">2019-20</a></li>
+                </ul>
+                <p class="listhead"><strong>Other Shayok Pages</strong></p>
+                <ul class="">
+                    <li><a href="/play-index/pgl_finder.cgi?player_id=shayoma01">Game Finder</a></li>
+                    <li><a href="/play-index/pstreak.cgi?player_id=shayoma01">Streak Finder</a></li>
+                    <li><a href="/play-index/shot_finder.cgi?player_id=shayoma01">Shot Finder</a></li>
+                    <li><a href="/play-index/event_finder.cgi?player_id=shayoma01">Event Finder</a></li>
+                    <li><a href="/play-index/lineup_finder.cgi?player_id=shayoma01">Lineup Finder</a></li>
+                    <li><a href="/play-index/plus_minus_finder.cgi?player_id=shayoma01">Plus/Minus Finder</a></li>
+                    <li>
+                        <a href="/play-index/h2h_finder.cgi?player_id1_select=Marial Shayok&player_id1=shayoma01&idx=players">Head2Head
+                            Finder</a></li>
+                    <li>
+                        <a href="/friv/teammates_and_opponents.fcgi?pid_select=Marial Shayok&pid=shayoma01&idx=players&type=t">Teammates
+                            & Opponents</a></li>
+                </ul>
+                <ul class="">
+                    <li><a href='/play-index/pcm_finder.fcgi?&player_id1_select=Marial+Shayok&player_id1=shayoma01'>Compare
+                        Marial Shayok</a> to other players
+                    </li>
+                </ul>
+                <p class="listhead">More Marial Shayok pages at Sports Reference</p>
+                <ul class="">
+                    <li><a href="https://www.sports-reference.com/cbb/players/marial-shayok-1.html">College Basketball
+                        at Sports-Reference.com</a></li>
+                    <li><a href="https://www.basketball-reference.com/gleague/players/s/shayoma01d.html">G-Lg Stats at
+                        Basketball-Reference.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- fs_footer -->
+        <div class="adblock">
+            <!-- div#fs_fs_footer  -->
+            <div align="center" id="div-gpt-ad-728x90-Footer">
+                <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-728x90-Footer');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-728x90-Footer'); });
+    }
+
+                </script>
+            </div>
+            <!-- /div.#fs_fs_footer -->
+
+        </div>
+
+
+    </div><!-- div#content -->
+    <div id="footer" role="contentinfo">
+        <div id="footer_header">
+            <ul class="bullets-inline">
+                <li class="user logged_in">Welcome <span class="username"></span>&nbsp;&#183;&nbsp;<a href="/my/">Your
+                    Account</a></li>
+                <li class="user logged_in"><a class="logout" href="/my/?do=logout">Logout</a></li>
+                <li class="user not_logged_in"><a class="login" href="/my/">Login</a></li>
+                <li class="user not_logged_in"><a href="/my/">Create Account</a></li>
+
+            </ul>
+            <div class="breadcrumbs" itemscope itemtype="https://schema.org/Other">You are here: <span
+                    itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item"
+                                                                                                   href="/"><span
+                    itemprop="name">BBR Home Page</span></a> <meta itemprop="position" content="1"/></span> &gt; <span
+                    itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item"
+                                                                                                   href="/players/"><span
+                    itemprop="name">Players</span></a> <meta itemprop="position" content="2"/></span> &gt; <span
+                    itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item"
+                                                                                                   href="/players/s/"><span
+                    itemprop="name">S</span></a> <meta itemprop="position" content="3"/></span> &gt; <strong>Marial
+                Shayok</strong></div>
+        </div><!-- div#footer_header -->
+        <div id="site_menu" role="navigation" aria-label="complete site index">
+
+
+            <div class="section_heading">
+                <span class="section_anchor" id="site_menu_link" data-label="Full Site Menu"></span>
+                <h2>Full Site Menu</h2>
+                <div class="section_heading_text">
+                    <ul>
+                        <li><a data-scroll href="#header">Return to Top</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <ul>
+                <li>
+                    <a href="/players/">Players</a>
+                    <div><strong>In the News</strong>:
+                        <!-- Begin:In the News -->
+                        <a title="LeBron James" href="/players/j/jamesle01.html">L. James</a>,
+                        <a title="Kevin Durant" href="/players/d/duranke01.html">K. Durant</a>,
+                        <a title="Kobe Bryant" href="/players/b/bryanko01.html">K. Bryant</a>,
+                        <a title="Chris Paul" href="/players/p/paulch01.html">C. Paul</a>,
+                        <a title="Trae Young" href="/players/y/youngtr01.html">T. Young</a>,
+                        <a title="Zach LaVine" href="/players/l/lavinza01.html">Z. LaVine</a>
+                        <!-- End:In the News -->
+                        <a href="/players/">...</a>
+                    </div>
+
+                    <div><strong>All-Time Greats</strong>:
+                        <!-- Begin:All-Time Greats -->
+                        <a title="John Stockton" href="/players/s/stockjo01.html">J. Stockton</a>,
+                        <a title="Dwyane Wade" href="/players/w/wadedw01.html">D. Wade</a>,
+                        <a title="Tim Duncan" href="/players/d/duncati01.html">T. Duncan</a>,
+                        <a title="Shaquille O'Neal" href="/players/o/onealsh01.html">S. O'Neal</a>,
+                        <a title="Dirk Nowitzki" href="/players/n/nowitdi01.html">D. Nowitzki</a>,
+                        <a title="Jerry West" href="/players/w/westje01.html">J. West</a>
+                        <!-- End:All-Time Greats -->
+                        <a href="/players/">...</a>
+                    </div>
+
+                    <div><strong>Active Greats</strong>:
+                        <!-- Begin:Active Greats -->
+                        <a title="LeBron James" href="/players/j/jamesle01.html">L. James</a>,
+                        <a title="LeBron James" href="/players/j/jamesle01.html">L. James</a>,
+                        <a title="Russell Westbrook" href="/players/w/westbru01.html">R. Westbrook</a>,
+                        <a title="James Harden" href="/players/h/hardeja01.html">J. Harden</a>,
+                        <a title="Kevin Durant" href="/players/d/duranke01.html">K. Durant</a>,
+                        <a title="Chris Paul" href="/players/p/paulch01.html">C. Paul</a>
+                        <!-- End:Active Greats -->
+                        <a href="/players/">...</a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/teams/">Teams</a>
+                    <!-- Begin:Teams -->
+                    <div class="division">
+                        <strong>Atlantic</strong>:
+                        <a href="/teams/TOR/2020.html">Toronto</a>,
+                        <a href="/teams/BOS/2020.html">Boston</a>,
+                        <a href="/teams/NYK/2020.html">New York</a>,
+                        <a href="/teams/BRK/2020.html">Brooklyn</a>,
+                        <a href="/teams/PHI/2020.html">Philadelphia</a>
+                    </div>
+
+                    <div class="division">
+                        <strong>Central</strong>:
+                        <a href="/teams/CLE/2020.html">Cleveland</a>,
+                        <a href="/teams/IND/2020.html">Indiana</a>,
+                        <a href="/teams/DET/2020.html">Detroit</a>,
+                        <a href="/teams/CHI/2020.html">Chicago</a>,
+                        <a href="/teams/MIL/2020.html">Milwaukee</a>
+                    </div>
+
+                    <div class="division">
+                        <strong>Southeast</strong>:
+                        <a href="/teams/MIA/2020.html">Miami</a>,
+                        <a href="/teams/ATL/2020.html">Atlanta</a>,
+                        <a href="/teams/CHO/2020.html">Charlotte</a>,
+                        <a href="/teams/WAS/2020.html">Washington</a>,
+                        <a href="/teams/ORL/2020.html">Orlando</a>
+                    </div>
+
+                    <div class="division">
+                        <strong>Northwest</strong>:
+                        <a href="/teams/OKC/2020.html">Oklahoma City</a>,
+                        <a href="/teams/POR/2020.html">Portland</a>,
+                        <a href="/teams/UTA/2020.html">Utah</a>,
+                        <a href="/teams/DEN/2020.html">Denver</a>,
+                        <a href="/teams/MIN/2020.html">Minnesota</a>
+                    </div>
+
+                    <div class="division">
+                        <strong>Pacific</strong>:
+                        <a href="/teams/GSW/2020.html">Golden State</a>,
+                        <a href="/teams/LAC/2020.html">Los Angeles Clippers</a>,
+                        <a href="/teams/SAC/2020.html">Sacramento</a>,
+                        <a href="/teams/PHO/2020.html">Phoenix</a>,
+                        <a href="/teams/LAL/2020.html">Los Angeles Lakers</a>
+                    </div>
+
+                    <div class="division">
+                        <strong>Southwest</strong>:
+                        <a href="/teams/SAS/2020.html">San Antonio</a>,
+                        <a href="/teams/DAL/2020.html">Dallas</a>,
+                        <a href="/teams/MEM/2020.html">Memphis</a>,
+                        <a href="/teams/HOU/2020.html">Houston</a>,
+                        <a href="/teams/NOP/2020.html">New Orleans</a>
+                    </div>
+                    <!-- End:Teams -->
+                </li>
+
+                <li>
+                    <a href="/leagues/">Seasons</a>
+                    <div>
+                        <!-- Begin:Seasons -->
+                        <a href="/leagues/NBA_2020.html">2019-20</a>,
+                        <a href="/leagues/NBA_2019.html">2018-19</a>,
+                        <a href="/leagues/NBA_2018.html">2017-18</a>,
+                        <a href="/leagues/NBA_2017.html">2016-17</a>,
+                        <a href="/leagues/NBA_2016.html">2015-16</a>,
+                        <a href="/leagues/NBA_2015.html">2014-15</a>
+                        <!-- End:Seasons -->
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/leaders/">Leaders</a>
+                    <div>
+                        <a href="/leaders/pts_season.html">Season Points</a>,
+                        <a href="/leaders/trb_career.html">Career Rebounds</a>,
+                        <a href="/leaders/ast_active.html">Active Assists</a>,
+                        <a href="/leaders/stl_yearly.html">Yearly Steals</a>,
+                        <a href="/leaders/blk_progress.html">Progressive Blocks</a>
+                        ...
+                    </div>
+                    <div>
+                        Or, view <a href='/trailers/'>"Trailers"</a> for <a href='/trailers/fg_pct_season.html'>Season
+                        Field Goal Pct</a>, or <a href='/trailers/blk_per_g_career.html'>Career Blocks Per Game</a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/boxscores/">NBA Scores</a>
+                    <div>
+                        <a href="/boxscores/">Yesterday's Games</a> and <a href="/boxscores/">Scores from any date in
+                        BAA/NBA or ABA history</a>
+                    </div>
+                </li>
+
+                <li>
+                    <!-- Begin:Schedules -->
+                    <a href='/leagues/NBA_2020_games.html'>NBA Schedules</a>
+                    <div>
+                        <a href="/teams/MIL/2020_games.html">Team Schedules</a> and <a
+                            href="/leagues/NBA_2020_games.html">League Schedules</a>
+                    </div>
+                    <!-- End:Schedules -->
+                </li>
+
+
+                <li>
+                    <!-- Begin:Standings -->
+                    <a href="/leagues/NBA_2020_standings.html">NBA Standings</a>
+                    <div>
+                        <a href="/leagues/NBA_2020_standings.html">Today's Standings</a> and <a
+                            href="/friv/standings.fcgi">Standings for any date in history</a>
+                    </div>
+                    <!-- End:Standings -->
+                </li>
+
+                <li>
+                    <a href="/play-index/">Play Index</a>
+                    <div><strong>Player Finders</strong>:
+                        <a href="/play-index/psl_finder.cgi">Season Finder</a>,
+                        <a href="/play-index/pgl_finder.cgi">Game Finder</a>,
+                        <a href="/play-index/pstreak.cgi">Streak Finder</a>
+                    </div>
+                    <div><strong>Team Finders</strong>:
+                        <a href="/play-index/tsl_finder.cgi">Season Finder</a>,
+                        <a href="/play-index/tgl_finder.cgi">Game Finder</a>,
+                        <a href="/play-index/tstreak.cgi">Team Streak Finder</a>,
+                        <a href="/play-index/tscore.cgi">Team Score Finder</a>,
+                        <a href="/play-index/rivals.cgi">Team Rivalry Finder</a>
+                    </div>
+                    <div><strong>Other Finders</strong>:
+                        <a href="/play-index/draft_finder.cgi">Draft Finder</a>,
+                        <a href="/play-index/h2h_finder.cgi">Head2Head Finder</a>,
+                        <a href="/play-index/pcm_finder.fcgi">Player Comparison Finder</a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/coaches/">Coaches</a>
+                    <div>
+                        <a href="/coaches/gueriri01c.html">Richie Guerin</a>,
+                        <a href="/coaches/tomjaru01c.html">Rudy Tomjanovich</a>,
+                        <a href="/coaches/obrieji99c.html">Jim O'Brien</a>,
+                        <a href="/coaches/fratemi99c.html">Mike Fratello</a>,
+                        <a href="/coaches/gentral99c.html">Alvin Gentry</a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/awards/">Awards</a>
+                    <div>
+                        <a href="/awards/mvp.html">NBA MVP</a>,
+                        <a href="/awards/all_league.html">All-NBA</a>,
+                        <a href="/awards/dpoy.html">Defensive Player of the Year</a>,
+                        <a href="/awards/roy.html">Rookie of the Year</a>,
+                        <a href="/awards/all_rookie.html">All-Rookie</a>,
+                        <a href="/awards/hof.html">Hall of Fame</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/contracts/">NBA Contracts</a>
+                    <div>
+                        <a href="/contracts/">Main Index</a>,
+                        <a href="/contracts/ATL.html">Team Payrolls</a>,
+                        <a href="/contracts/players.html">Player Contracts</a>,
+                        <a href="/contracts/glossary.html">Glossary</a>,
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/playoffs/">Playoffs</a>
+                    <div>
+                        <a href="/playoffs/NBA_2019.html">2019 NBA Playoffs</a>,
+                        <a href="/playoffs/NBA_2018.html">2018 NBA Playoffs</a>,
+                        <a href="/playoffs/NBA_2017.html">2017 NBA Playoffs</a>,
+                        <a href="/playoffs/NBA_2016.html">2016 NBA Playoffs</a>,
+                        <a href="/playoffs/">Playoffs Series History</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/allstar/">All-Star Games</a>
+                    <div>
+                        <a href="/allstar/NBA_2020.html">2020 All-Star Game</a>,
+                        <a href="/allstar/NBA_2019.html">2019 All-Star Game</a>,
+                        <a href="/allstar/NBA_2018.html">2018 All-Star Game</a>,
+                        <a href="/allstar/NBA_2017.html">2017 All-Star Game</a>,
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/draft/">NBA Draft</a>
+                    <div>
+                        <a href="/draft/NBA_2019.html">2019 Draft</a>,
+                        <a href="/draft/NBA_2018.html">2018 Draft</a>,
+                        <a href="/draft/NBA_2017.html">2017 Draft</a>,
+                        <a href="/draft/NBA_2016.html">2016 Draft</a>,
+                        <a href="/draft/NBA_2015.html">2015 Draft</a>,
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/friv/">Frivolities</a>
+
+                    <div>
+                        <a href="/friv/birthdays.fcgi">Birthdays</a>,
+                        <a href="/friv/colleges.fcgi">Colleges</a>,
+                        <a href="/friv/high_schools.fcgi">High Schools</a>,
+                        <a href="/friv/milestones.fcgi">Milestone Watch</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/executives/">Executives</a>
+                    <div>
+                        <a href='/executives/buforrc99x.html'>R.C. Buford</a>,
+                        <a href='/executives/embrywa01x.html'>Wayne Embry</a>,
+                        <a href='/executives/kastest99x.html'>Stan Kasten</a>,
+                        <a href='/executives/aingeda01x.html'>Danny Ainge</a>,
+                        <a href='/executives/nelsodo01x.html'>Don Nelson</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/referees/">Referees</a>
+                    <div>
+                        <a href='/referees/fortejo99r.html'>Joe Forte</a>,
+                        <a href='/referees/brothto99r.html'>Tony Brothers</a>,
+                        <a href='/referees/crawfda99r.html'>Dan Crawford</a>,
+                        <a href='/referees/olesiro99r.html'>Ron Olesiak</a>,
+                        <a href='/referees/jonesda99r.html'>David Jones</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/gleague/">G League Stats</a>
+                    <div>
+                        <a href='/gleague/players/'>Players</a>,
+                        <a href='/gleague/teams/'>Teams</a>,
+                        <a href='/gleague/years/'>Seasons</a>,
+                        <a href='/gleague/leaders/'>Leaders</a>,
+                        <a href='/gleague/awards/'>Awards</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/international/">International Basketball Stats</a>
+                    <div>
+                        <a href="/international/players/">Players</a>,
+                        <a href="/international/teams/">Teams</a>,
+                        <a href="/international/years/">Seasons</a>,
+                        <a href="/international/leaders/">Leaders</a>,
+                        <a href="/international/awards/">Awards</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/wnba/">WNBA</a>
+                    <div>
+                        <a href="/wnba/players/">Players</a>,
+                        <a href="/wnba/teams/">Teams</a>,
+                        <a href="/wnba/years/">Seasons</a>,
+                        <a href="/wnba/leaders/">Leaders</a>,
+                        <a href="/wnba/awards/">Awards</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/olympics/">Olympics Stats</a>
+                    <div>
+                        <a href="/olympics/athletes/">Athletes</a>,
+                        <a href="/olympics/teams/">Teams</a>,
+                        <a href="/olympics/years/">Years</a>,
+                        <a href="/olympics/games/">Games</a>,
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/nbl/">NBL</a>
+                    <div>
+                        <a href="/nbl/players/">Players</a>,
+                        <a href="/nbl/teams/">Teams</a>,
+                        <a href="/nbl/years/">Seasons</a>,
+                        <a href="/nbl/leaders/">Leaders</a>,
+                        <a href="/nbl/awards/">Awards</a>
+                        ...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/about/">About</a>
+                    <div>
+                        <a href="/about/glossary.html">Glossary</a>,
+                        <a href="/about/contact.html">Contact and Media Information</a>,
+                        ...
+                    </div>
+                </li>
+            </ul>
+
+
+        </div><!-- div#site_menu -->
+        <div id="social" class="icon_group noload">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="_link" data-label="We're Social...for Statheads"
+                      data-no-inpage="1"></span>
+                <h2>We're Social...for Statheads</h2>
+            </div>
+            <a href="tel://888-512-8907" data-tip="Call us on Telephone" data-label="Telephone" class="poptip">
+                <svg class="icon phone">
+                    <use xlink:href="#ic-phone"></use>
+                </svg>
+            </a>
+            <a href="//www.sports-reference.com/blog/" data-tip="The Sports Reference Blog" data-label="Our Blog"
+               class="poptip">
+                <svg class="icon wordpress">
+                    <use xlink:href="#ic-wordpress"></use>
+                </svg>
+            </a>
+            <a href="https://www.sports-reference.com/blog/feed/" data-tip="Our Blog's RSS Feed" data-label="RSS Feed"
+               class="poptip">
+                <svg class="icon rss">
+                    <use xlink:href="#ic-rss"></use>
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/Basketball.Reference" data-tip="Basketball-Reference.com at Facebook"
+               data-label="Facebook" class="poptip">
+                <svg class="icon facebook">
+                    <use xlink:href="#ic-facebook"></use>
+                </svg>
+            </a>
+            <a href="https://twitter.com/bball_ref" data-tip="Basketball-Reference.com at Twitter" data-label="Twitter"
+               class="poptip">
+                <svg class="icon twitter">
+                    <use xlink:href="#ic-twitter"></use>
+                </svg>
+            </a>
+            <a href="https://instagram.com/basketball.reference" data-tip="Basketball-Reference.com at Instagram"
+               data-label="Instagram" class="poptip">
+                <svg class="icon instagram">
+                    <use xlink:href="#ic-instagram"></use>
+                </svg>
+            </a>
+            <a href="https://reddit.com/r/SportsReference" data-tip="Reddit/r/SportsReference" data-label="Reddit/r/SR"
+               class="poptip">
+                <svg class="icon reddit">
+                    <use xlink:href="#ic-reddit"></use>
+                </svg>
+            </a>
+            <a href="https://www.youtube.com/user/sportsreference" data-tip="YouTube/SportsReference"
+               data-label="YouTube" class="poptip">
+                <svg class="icon youtube">
+                    <use xlink:href="#ic-youtube"></use>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/company/sports-reference-llc" data-tip="Follow SR on LinkedIn"
+               data-label="LinkedIn" class="poptip">
+                <svg class="icon linkedin">
+                    <use xlink:href="#ic-linkedin"></use>
+                </svg>
+            </a>
+            <a href="https://www.paypal.me/sportsref" data-tip="Send us money via PayPal" data-label="PayPal"
+               class="poptip">
+                <svg class="icon paypal">
+                    <use xlink:href="#ic-paypal"></use>
+                </svg>
+            </a>
+
+            <p>Every <a href="https://www.sports-reference.com/blog/sports-reference-social-media/">Sports Reference
+                Social Media Account</a></p>
+            <p><strong>Site Last Updated:</strong> Tuesday, April 14, 11:49AM
+            </p>
+            <p><a href="https://www.sports-reference.com/feedback/" class="button alt">Question, Comment, Feedback, or
+                Correction?</a></p>
+
+            <p><a style="background-color:#8e4496; color: #fff;"
+                  href="https://stathead.com/?&utm_medium=sr&utm_source=bbr&utm_campaign=site-footer"
+                  class="button alt">Are you a Stathead, too? Subscribe to our Newsletter</a></p>
+
+            <p><a style="background-color:#155ca9; color: #fff;"
+                  href="https://www.sports-reference.com/this-week.html?&utm_medium=sr&utm_source=bbr&utm_campaign=site-footer-twisr"
+                  class="button alt">This Week in Sports Reference<br><em>Find out when we add a feature or make a
+                change</em></a></p>
+
+            <p>
+                <a href="https://www.sports-reference.com/blog/ways-sports-reference-can-help-your-website/?utm_medium=sr&utm_source=bbr&utm_campaign=site-footer-ways-help">Do
+                    you have a sports website? Or write about sports? We have tools and resources that can help you use
+                    sports data. Find out more.</a></p>
+
+
+        </div><!-- div#social -->
+
+        <div id="tips_tricks">
+
+            <div class="section_heading">
+                <span class="section_anchor" id="tips_link" data-label="FAQs, Tip &amp; Tricks"
+                      data-no-inpage="1"></span>
+                <h2>FAQs, Tip &amp; Tricks</h2>
+            </div>
+            <ul>
+                <!-- no Local/FooterTipsTricks.tt2 -->
+                <li><a href="//www.sports-reference.com/blog/category/tips-and-tricks/">Tips and Tricks from our
+                    Blog.</a></li>
+                <li><a href="/linker/">Do you have a blog? Join our linker program.</a></li>
+                <li><a href="//www.sports-reference.com/blog/category/how-to-videos/">Watch our How-To Videos to Become
+                    a Stathead</a></li>
+                <li><a href="//www.baseball-reference.com/play-index/">Subscribe to the Play Index and get access to
+                    more data than you can imagine</a></li>
+            </ul>
+        </div><!-- div#tips_tricks -->
+
+        <div id="credits">
+            <p>All logos are the trademark &amp; property of their owners and not Sports Reference LLC. We present them
+                here for purely educational purposes.
+                <a href="https://www.sports-reference.com/blog/2016/06/redesign-team-and-league-logos-courtesy-sportslogos-net/">Our
+                    reasoning for presenting offensive logos.</a></p>
+            <p>
+
+                Logos were compiled by the amazing <a href="http://sportslogos.net/">SportsLogos.net.</a></p>
+
+
+            <div class="notice">
+                <p>Primary Data Provided By
+                    <a href="https://www.sportradar.com/" rel="nofollow"><img alt="SportRadar" border=0 width=275
+                                                                              src="https://d2p3bygnnzw9w3.cloudfront.net/req/202004011/images/klecko/sportradar.png"
+                                                                              style="background-color:#666; padding:.5em; border-radius:.25em"></a>
+                    the official stats partner of the NBA.</p>
+                <p>Basketball-Reference utilizes <strong>Official NBA data</strong> for current NBA, WNBA, and G-League
+                    seasons.</p>
+            </div>
+
+            <p>Copyright &copy; 2000-2020 <a href="//www.sports-reference.com/">Sports Reference LLC</a>. All rights
+                reserved.</p>
+
+        </div><!-- div#credits -->
+        <ul id="site_dirs" class="notranslate bullets-inline">
+            <li><a href="https://www.sports-reference.com/">
+                <svg height="15px" width="20px">
+                    <use xlink:href="#ic-sr-pennant"></use>
+                </svg>
+                Sports Reference</a></li>
+            <li><a href="https://www.baseball-reference.com/">Baseball</a></li>
+            <li><a href="https://www.pro-football-reference.com/">Football</a> <a
+                    href="https://www.sports-reference.com/cfb/">(college)</a></li>
+            <li class="current"><a href="https://www.basketball-reference.com/">Basketball</a> <a
+                    href="https://www.sports-reference.com/cbb/">(college)</a></li>
+            <li><a href="https://www.hockey-reference.com/">Hockey</a></li>
+            <li><a href="https://fbref.com/">Soccer</a></li>
+            <li><a href="https://www.sports-reference.com/blog/">Blog</a></li>
+
+            <li><a href="https://stathead.com/">Stathead</a></li>
+            <li><a href="https://widgets.sports-reference.com/">Widgets</a></li>
+
+
+        </ul>
+
+        <div id="about"><a href="//www.sports-reference.com/about.html">About</a> &bull; <a
+                href="//www.sports-reference.com/privacy.html">Privacy Statement</a> &bull; <a
+                href="//www.sports-reference.com/termsofuse.html">Conditions &amp; Terms of Service</a> &bull; <a
+                href="//www.sports-reference.com/advertise.html">Advertise With Us</a> &bull; <a
+                href="//www.sports-reference.com/data_use.html">Use of Data</a></div><!-- div#about -->
+
+    </div><!-- div#footer -->
+</div><!-- div#wrap -->
+<!-- yes sticky url:  https://www.basketball-reference.com/players/s/shayoma01.html -->
+<div id="fs-select-footer"></div>
+
+
+<!-- rails -->
+
+<div class="adblock rails  left"><!-- div#fs_fs_rails_left  -->
+    <div align="center" id="div-gpt-ad-160x600-1">
+        <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-160x600-1');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-160x600-1'); });
+    }
+
+        </script>
+    </div>
+    <!-- /div.#fs_fs_rails_left -->
+</div>
+<div class="adblock rails right"><!-- div#fs_fs_rails_right  -->
+    <div align="center" id="div-gpt-ad-160x600-2">
+        <script data-cfasync="false" type='text/javascript'>
+    if (sr_detect_ie || sr_detect_edge || Modernizr.adfree) {
+    }
+    else {
+        console.log('push ad:div-gpt-ad-160x600-2');
+        freestar.queue.push(function() { googletag.display('div-gpt-ad-160x600-2'); });
+    }
+
+        </script>
+    </div>
+    <!-- /div.#fs_fs_rails_right -->
+</div>
+
+
+<!-- Google Analytics -->
+<script>
+     var sr_cookie = vjs_readCookie('SR_user') || ''; var sr_is_ad_free = sr_cookie.vjs_isMatch('Z6SON8tTdJid'); var sr_is_user = sr_cookie !== null && sr_cookie !== ''; var sr_seen_modal = vjs_readCookie('modal_ad') !== null; (function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r; i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date(); a=s.createElement(o),m=s.getElementsByTagName(o)[0]; a.async=1; a.src=g; m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-1890630-2', 'auto'); ga('require', 'linkid', 'linkid.js'); ga('require', 'ecommerce', 'ecommerce.js'); ga('send', 'pageview'); ga('create', 'UA-1890630-20', 'auto', {'name': 'combined_tracker', 'allowLinker': true }); ga('combined_tracker.send', 'pageview'); var sr_device = 'unk'; if (Modernizr.phone) { sr_device = 'phone'; } else if (Modernizr.tablet) { sr_device = 'tablet'; } else if (Modernizr.laptop) { sr_device = 'laptop'; } else if (Modernizr.desktop) { sr_device = 'desktop'; } ga('create', 'UA-1890630-9', 'auto', {'name': 'sr_tracker', 'allowLinker': true }); ga('sr_tracker.require', 'displayfeatures'); ga('sr_tracker.set', 'dimension1',''); ga('sr_tracker.set', 'dimension2',sr_is_ad_free); ga('sr_tracker.set', 'dimension3',sr_is_user); ga('sr_tracker.set', 'dimension4',sr_seen_modal); ga('sr_tracker.set', 'dimension5',sr_device); ga('sr_tracker.set', 'dimension6',Modernizr.is_modern?'yes':'no'); ga('sr_tracker.set', 'dimension7',Modernizr.viewport_width); /* note that this requires the Assets/AdBlockTest.tt2 to be included above. */ ga('sr_tracker.set', 'dimension8',(typeof sr_test == 'undefined')?'no-test':( sr_test ? 'non-blocking':'blocking')); ga('sr_tracker.send', 'pageview'); /* cribbed from: http://www.axllent.org/docs/view/track-outbound-links-with-analytics-js/ */ function _gaLt(event) { if (!ga.hasOwnProperty("loaded") || ga.loaded != true) { return; } var el = event.srcElement || event.target; /* if a link has been clicked */ if (el && el.href) { var link = el.href; /* Only if it is an external link */ if (link.indexOf(location.host) == -1 && !link.match(/^javascript\:/i)) { /* Is target set and not _(self|parent|top)? */ var target = (el.target && !el.target.match(/^_(self|parent|top)/i)) ? el.target : false; /* If target opens a new window then just track */ if (el.target && !el.target.match(/^_(self|parent|top)/i)) { ga("send", "event", "Outgoing Links", link, document.location.pathname + document.location.search); } }; } } window.addEventListener ? window.addEventListener("load", function() { document.body.addEventListener("click", _gaLt, !1)}, !1) : window.attachEvent && window.attachEvent("onload", function() { document.body.attachEvent("onclick", _gaLt) });
+</script><!-- End Google Analytics -->
+</body><!-- SR -->
+</html>
+
+
+
+

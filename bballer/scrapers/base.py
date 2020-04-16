@@ -80,10 +80,10 @@ class Scraper:
         if element:
             return element.find_next_sibling(string=lambda x: isinstance(x, NavigableString)).strip()
 
-    def get_commented_table_with_id(self, _id):
+    def get_commented_table_with_id(self, id_regex):
         # tables are embedded as comments in the document, so we have to fish
-        comment = self._parsed.find(string=lambda x: isinstance(x, Comment) and f"id=\"{_id}\"" in x)
+        comment = self._parsed.find(string=lambda x: isinstance(x, Comment) and re.search(f"id=\"{id_regex}\"", x))
         if not comment:
             return
         parsed = BeautifulSoup(comment, features="html.parser")
-        return parsed.find("table", id=_id)
+        return parsed.find("table", id=re.compile(id_regex))

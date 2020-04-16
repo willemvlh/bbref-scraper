@@ -1,7 +1,7 @@
 from unittest.case import TestCase
 
 from bballer.scrapers.PlayerListScraper import PlayerListScraper
-from tests.scrapers.test_Scraper import get_resource
+from tests.scrapers.utils import get_resource
 
 
 class TestPlayerListScraper(TestCase):

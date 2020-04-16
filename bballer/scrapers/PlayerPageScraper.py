@@ -2,8 +2,9 @@ import logging
 import os
 import re
 from datetime import date
+from typing import List
 
-from bballer.models.player import Player, Salary
+from bballer.models.player import Player, Salary, Contract, ContractYear
 from bballer.models.stats import StatLine, AdvancedStatLine
 from bballer.scrapers.base import Scraper
 from bballer.scrapers.utilities import to_absolute_url
@@ -33,11 +34,12 @@ class PlayerPageScraper(Scraper):
         position = max(positions, key=positions.count) if positions else None
         shooting_hand = self._get_shooting_hand()
         salaries = self._get_salaries()
+        contract = self._get_contract()
         logging.debug(f"Processed {name}")
         return Player(id=id_, name=name, seasons=seasons, playoffs=playoffs, college=college,
                       date_of_birth=date_of_birth,
                       career_stats=career_stats, height=height, weight=weight, draft_pick=draft_pick, position=position,
-                      shooting_hand=shooting_hand, salaries=salaries)
+                      shooting_hand=shooting_hand, salaries=salaries, contract=contract)
 
     def _get_id(self):
         if os.path.isfile(self._url):
@@ -184,3 +186,23 @@ class PlayerPageScraper(Scraper):
             amount = int(self.get_data_stat_in_element("salary", row, "csk"))
             salaries.append(Salary(season=season, team=team_url, amount=amount))
         return salaries
+
+    def _get_contract(self):
+        table = self.get_commented_table_with_id("contracts_.*")
+        if not table:
+            return None
+        rows = self.get_commented_table_with_id("contracts_.*").find_all("tr")
+        if not len(rows):
+            return None
+        header_row = rows[0]
+        if len(header_row.find_all()) == 1:
+            return None
+        contract_row = rows[1]
+        years: List[ContractYear] = []
+        seasons = [td.get_text() for td in header_row.find_all("th")]
+        for td in [td for td in contract_row.find_all("td")[1:]]:
+            season = len([sibling for sibling in td.previous_siblings if sibling.name == "td"])
+            amount = int(re.sub("[$,]", "", td.get_text()))
+            year = ContractYear(season=seasons[season], amount=amount, option=None)
+            years.append(year)
+        return Contract(years=years)
