@@ -42,10 +42,10 @@ class TeamPageScraper(Scraper):
         return Team(name=name, code=code, seasons=seasons, wins=wins, losses=losses)
 
     def _get_name(self):
-        return self.safe_get_item_prop("name", element="h1")
+        return self.get_item_prop("name", element="h1")
 
     def _get_wins_and_losses(self) -> Tuple[int, int]:
-        record = self.get_text_sibling("strong", "Record:")
+        record = self.get_first_text_sibling("strong", "Record:")
         wins_losses = re.findall(r"\d{1,5}-\d{1,5}", record)
         if not wins_losses:
             return 0, 0

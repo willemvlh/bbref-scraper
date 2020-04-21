@@ -50,10 +50,10 @@ class PlayerPageScraper(Scraper):
         return id_
 
     def _get_physicals(self):
-        return self.safe_get_item_prop("height"), int(self.safe_get_item_prop("weight").rstrip("lb"))
+        return self.get_item_prop("height"), int(self.get_item_prop("weight").rstrip("lb"))
 
     def _get_name(self) -> str:
-        return self.safe_get_item_prop("name", element="h1")
+        return self.get_item_prop("name", element="h1")
 
     def _get_career_stats(self):
         if self._reg_season_table:
@@ -155,7 +155,7 @@ class PlayerPageScraper(Scraper):
                                 value_over_replacement_player=vorp)
 
     def _get_dob(self):
-        date_str = self.safe_get_item_prop("birthDate", attr="data-birth")
+        date_str = self.get_item_prop("birthDate", attr="data-birth")
         return date.fromisoformat(date_str)
 
     def _get_draft_pick(self):
@@ -168,7 +168,7 @@ class PlayerPageScraper(Scraper):
                     return int("".join([c for c in matches[0] if c.isdigit()]))
 
     def _get_shooting_hand(self) -> str:
-        return self.get_text_sibling("strong", "Shoots:")
+        return self.get_first_text_sibling("strong", "Shoots:")
 
     def _get_season_from_row(self, row):
         s = self.get_data_stat_in_element("season", row)

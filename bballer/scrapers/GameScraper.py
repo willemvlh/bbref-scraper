@@ -11,7 +11,6 @@ class GameScraper(Scraper):
 
     def get_content(self):
         game = Game()
-
         teams = self.find_teams()
         game.away_team = teams[0]
         game.home_team = teams[1]
@@ -51,7 +50,6 @@ class GameScraper(Scraper):
         return list(zip(mapped_rows[0], mapped_rows[1]))
 
     def find_statlines(self):
-        statlines = []
         tables = self.find_all("table", id=lambda x: x.endswith("game-basic"))
         rows = [[tr for tr in table.find_all("tr") if tr.parent.name == "tbody" and tr.find("th", scope="row")] for
                 table in tables]
