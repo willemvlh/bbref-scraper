@@ -1,5 +1,5 @@
 from datetime import date
-from typing import List, Optional
+from typing import Iterator
 
 from bballer.models.gamelog import GameLog
 from bballer.scrapers.base import Scraper
@@ -11,12 +11,13 @@ class GameLogScraper(Scraper):
     def get_content(self):
         return self._get_game_logs()
 
-    def _get_game_logs(self) -> Optional[List[GameLog]]:
+    def _get_game_logs(self) -> Iterator[GameLog]:
         table = self.find("table", id="pgl_basic")
         if not table:
             return
         rows = table.find("tbody").find_all("tr")
-        return [self._parse_row(row) for row in rows if "class" not in row.attrs]
+        for row in [r for r in rows if "class" not in r.attrs]:
+            yield self._parse_row(row)
 
     def _parse_row(self, row):
         gl = GameLog()

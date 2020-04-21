@@ -44,13 +44,13 @@ class TestGameLogScraper:
         from bballer import player
         pl = player.get_by_name("DJ Mbenga")
         s = pl.seasons[1]
-        for r in [gl.rebounds for gl in s.game_logs]:
+        for r in [gl.rebounds for gl in s.game_logs()]:
             assert r is None or isinstance(r, int)
 
     def test_scrape(self):
         url = "https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2008/"
         scr = GameLogScraper(url)
-        logs = scr._get_game_logs()
+        logs = list(scr._get_game_logs())
         assert len(logs) == 70
         first_game = logs[0]
         assert not first_game.played

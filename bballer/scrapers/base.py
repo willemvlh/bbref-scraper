@@ -19,7 +19,6 @@ class Scraper:
 
     def get_content(self):
         raise NotImplementedError
-        # TODO: implement method in subclasses that returns the scraped and processed object
 
     def _get_page(self):
         content = self._get_content()

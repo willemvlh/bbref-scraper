@@ -80,7 +80,6 @@ class StatLine:
     def two_fg_percentage(self):
         return self.two_fg_made / self.two_fg_attempted
 
-    @property
     def game_logs(self):
         if not self._game_logs:
             scr = GameLogScraper(

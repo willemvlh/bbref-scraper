@@ -102,7 +102,7 @@ class TestPlayerPageScraper:
     def test_game_log(self):
         seasons = PlayerPageScraper(
             "https://www.basketball-reference.com/players/m/mbengdj01.html").get_content().seasons
-        gl = seasons[0].game_logs
+        gl = seasons[0].game_logs()
         assert len([game for game in gl if game.played]) == seasons[0].games_played
 
     def test_get_physicals(self):
