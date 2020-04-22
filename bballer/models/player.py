@@ -29,11 +29,11 @@ class Player:
     name: str
     date_of_birth: date
     college: str
-    height: str
-    weight: int
+    _height: int
+    _weight: int
     position: str
-    seasons: List[StatLine]
-    playoffs: List[StatLine]
+    seasons: List[StatLine]  # todo: should be generator
+    playoffs: List[StatLine]  # todo: should be generator
     career_stats: StatLine
     draft_pick: int
     id: str
@@ -49,3 +49,19 @@ class Player:
 
     def __eq__(self, other):
         return other.__class__ == self.__class__ and other.id == self.id
+
+    @property
+    def height_in(self) -> int:
+        return self._height
+
+    @property
+    def height_cm(self) -> int:
+        return self._height and round(self._height * 2.54)
+
+    @property
+    def weight_kg(self):
+        return self._weight and round(self._weight / 2.205)
+
+    @property
+    def weight_lb(self):
+        return self._weight

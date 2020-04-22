@@ -44,6 +44,10 @@ class TestPlayerPageScraper:
 
     def test_player(self):
         player = self.carmelo_anthony.get_content()
+        assert player.height_cm == 203
+        assert player.height_in == 80
+        assert player.weight_kg == 109
+        assert player.weight_lb == 240
         assert len(player.seasons) > 10
         rookie_season = player.seasons[0]
         assert rookie_season.position == "SF"
@@ -104,9 +108,6 @@ class TestPlayerPageScraper:
             "https://www.basketball-reference.com/players/m/mbengdj01.html").get_content().seasons
         gl = seasons[0].game_logs()
         assert len([game for game in gl if game.played]) == seasons[0].games_played
-
-    def test_get_physicals(self):
-        assert self.carmelo_anthony._get_physicals() == ("6-8", 240)
 
     def test_get_draft_pick(self):
         assert self.carmelo_anthony._get_draft_pick() == 3

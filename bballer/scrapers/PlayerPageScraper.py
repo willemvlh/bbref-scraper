@@ -28,7 +28,7 @@ class PlayerPageScraper(Scraper):
         college = self._get_college()
         date_of_birth = self._get_dob()
         career_stats = self._get_career_stats()
-        height, weight = self._get_physicals()
+        height, weight = self._get_physical()
         draft_pick = self._get_draft_pick()
         positions = [season.position for season in seasons]
         position = max(positions, key=positions.count) if positions else None
@@ -38,8 +38,8 @@ class PlayerPageScraper(Scraper):
         logging.debug(f"Processed {name}")
         return Player(id=id_, name=name, seasons=seasons, playoffs=playoffs, college=college,
                       date_of_birth=date_of_birth,
-                      career_stats=career_stats, height=height, weight=weight, draft_pick=draft_pick, position=position,
-                      shooting_hand=shooting_hand, salaries=salaries, contract=contract)
+                      career_stats=career_stats, _height=height, _weight=weight, draft_pick=draft_pick,
+                      position=position, shooting_hand=shooting_hand, salaries=salaries, contract=contract)
 
     def _get_id(self):
         if os.path.isfile(self._url):
@@ -49,8 +49,13 @@ class PlayerPageScraper(Scraper):
             raise ValueError("Player has no id!")
         return id_
 
-    def _get_physicals(self):
-        return self.get_item_prop("height"), int(self.get_item_prop("weight").rstrip("lb"))
+    def _get_physical(self):
+        height = self.get_item_prop("height")
+        if height:
+            feet, inch = tuple([int(x) for x in height.split("-")])
+            height = feet * 12 + inch
+        weight = int(self.get_item_prop("weight").rstrip("lb"))
+        return height, weight
 
     def _get_name(self) -> str:
         return self.get_item_prop("name", element="h1")

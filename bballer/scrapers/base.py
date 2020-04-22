@@ -77,7 +77,7 @@ class Scraper:
         @param attr: if specified, returns the value of the attribute with this name instead of the text value of the
         element.
         @param element: if specified, the name of the element.
-        @return: the text value of the matching element.
+        @return: the text value of the matching element or None.
         """
         # todo: refactor to bring in line with get_data_stat_in_element
         el = self._parsed.find(element, attrs={"itemprop": prop})

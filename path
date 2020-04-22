@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="6ZWP5S2" name="pytest" skipped="0" tests="43" time="33.503" timestamp="2020-04-22T23:03:00.980915"><testcase classname="tests.test_Search.TestSearch" file="tests\test_Search.py" line="6" name="test_search_players" time="0.777"></testcase><testcase classname="tests.test_Search.TestSearch" file="tests\test_Search.py" line="12" name="test_search_players_redirect" time="1.197"><system-out>[(&apos;LeBron James&apos;, &apos;https://www.basketball-reference.com/players/j/jamesle01.html&apos;)]
+</system-out></testcase><testcase classname="tests.test_Search.TestSearch" file="tests\test_Search.py" line="18" name="test_team_search" time="0.727"></testcase><testcase classname="tests.test_player" file="tests\test_player.py" line="4" name="test_get_by_name" time="2.807"></testcase><testcase classname="tests.test_player" file="tests\test_player.py" line="9" name="test_get_by_id" time="0.610"></testcase><testcase classname="tests.test_player" file="tests\test_player.py" line="14" name="test_search" time="1.317"></testcase><testcase classname="tests.test_player" file="tests\test_player.py" line="19" name="test_get_by_url" time="0.628"></testcase><testcase classname="tests.test_team" file="tests\test_team.py" line="3" name="test_get_by_name" time="1.554"></testcase><testcase classname="tests.test_team" file="tests\test_team.py" line="7" name="test_get_by_name_wrong" time="0.710"></testcase><testcase classname="tests.test_team" file="tests\test_team.py" line="12" name="test_get_by_code" time="0.153"></testcase><testcase classname="tests.test_team" file="tests\test_team.py" line="17" name="test_get_by_url" time="0.149"></testcase><testcase classname="tests.test_team" file="tests\test_team.py" line="22" name="test_search" time="0.795"></testcase><testcase classname="tests.scrapers.test_BulkScraper.TestBulkScraper" file="tests\scrapers\test_BulkScraper.py" line="8" name="test_scrape" time="1.376"><system-err>DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\carmelo_anthony.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\carmelo_anthony.html
+DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\carmelo_anthony.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+DEBUG:root:Processed Carmelo Anthony
+DEBUG:root:Processed LeBron James
+</system-err></testcase><testcase classname="tests.scrapers.test_BulkScraper.TestBulkScraper" file="tests\scrapers\test_BulkScraper.py" line="15" name="test_double_scrape" time="0.688"><system-err>DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+DEBUG:root:Processed LeBron James
+</system-err></testcase><testcase classname="tests.scrapers.test_GameScraper.TestGameScraper" file="tests\scrapers\test_GameScraper.py" line="8" name="test_game_scraper" time="1.290"><system-err>DEBUG:root:Difference is 2.869300127029419s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/search/search.fcgi?search=Cavaliers
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/boxscores/201611010CLE.html
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /boxscores/201611010CLE.html HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.6912059783935547
+DEBUG:root:Scraping https://www.basketball-reference.com/boxscores/201611010CLE.html
+</system-err></testcase><testcase classname="tests.scrapers.test_GameScraper.TestGameLogScraper" file="tests\scrapers\test_GameScraper.py" line="42" name="test_rebounds" time="3.154"><system-err>DEBUG:root:Difference is 1.2912099361419678s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/boxscores/201611010CLE.html
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/search/search.fcgi?search=DJ Mbenga
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /search/search.fcgi?search=DJ%20Mbenga HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.6987690925598145
+DEBUG:root:Scraping https://www.basketball-reference.com/search/search.fcgi?search=DJ Mbenga
+DEBUG:root:Difference is 0.7317650318145752s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/search/search.fcgi?search=DJ Mbenga
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/players/m/mbengdj01.html
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /players/m/mbengdj01.html HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.8562240600585938
+DEBUG:root:Scraping https://www.basketball-reference.com/players/m/mbengdj01.html
+DEBUG:root:Processed D.J. Mbenga
+DEBUG:root:Difference is 1.1781840324401855s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/players/m/mbengdj01.html
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2006
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /players/m/mbengdj01/gamelog/2006 HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.8073470592498779
+DEBUG:root:Scraping https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2006
+</system-err></testcase><testcase classname="tests.scrapers.test_GameScraper.TestGameLogScraper" file="tests\scrapers\test_GameScraper.py" line="49" name="test_scrape" time="2.271"><system-err>DEBUG:root:Difference is 1.2453861236572266s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2006
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2008/
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /players/m/mbengdj01/gamelog/2008/ HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.7211120128631592
+DEBUG:root:Scraping https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2008/
+DEBUG:root:Difference is 1.0491068363189697s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2008/
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/boxscores/200711200NYK.html
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /boxscores/200711200NYK.html HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.695842981338501
+DEBUG:root:Scraping https://www.basketball-reference.com/boxscores/200711200NYK.html
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerListScraper.TestPlayerListScraper" file="tests\scrapers\test_PlayerListScraper.py" line="8" name="test_scrape" time="0.302"><system-err>DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\w.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\w.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\w.html
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="15" name="test_equality" time="0.794"><system-err>DEBUG:root:Processed Carmelo Anthony
+DEBUG:root:Processed LeBron James
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="21" name="test__get_name" time="0.003"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="24" name="test_get_dob" time="0.001"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="29" name="test_get_career_stats" time="0.013"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="34" name="test_get_id" time="0.000"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="37" name="test_get_shooting_hand" time="0.003"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="40" name="test_get_college" time="0.022"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="44" name="test_player" time="0.379"><system-err>DEBUG:root:Processed Carmelo Anthony
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="77" name="test_advanced_stats" time="0.388"><system-err>DEBUG:root:Processed Carmelo Anthony
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="101" name="test_seasons" time="0.129"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="105" name="test_game_log" time="1.374"><system-err>DEBUG:root:Scraping https://www.basketball-reference.com/players/m/mbengdj01.html
+DEBUG:root:Processed D.J. Mbenga
+DEBUG:root:Difference is 3.604886054992676s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/boxscores/200711200NYK.html
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2005
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /players/m/mbengdj01/gamelog/2005 HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.856813907623291
+DEBUG:root:Scraping https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2005
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="111" name="test_get_draft_pick" time="0.016"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="115" name="test_all_star" time="0.125"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="118" name="test_get_playoff_totals" time="0.325"></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="122" name="test_historical_player" time="1.122"><system-err>DEBUG:root:Difference is 1.5188140869140625s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/players/m/mbengdj01/gamelog/2005
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/players/h/hawkito01.html
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /players/h/hawkito01.html HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.8345468044281006
+DEBUG:root:Scraping https://www.basketball-reference.com/players/h/hawkito01.html
+DEBUG:root:Processed Tom Hawkins
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="127" name="test_salaries" time="0.373"><system-err>DEBUG:root:Processed Carmelo Anthony
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="135" name="test_salaries_none" time="0.274"><system-err>DEBUG:root:Processed Wilt Chamberlain
+</system-err></testcase><testcase classname="tests.scrapers.test_PlayerPageScraper.TestPlayerPageScraper" file="tests\scrapers\test_PlayerPageScraper.py" line="138" name="test_contract" time="0.710"><system-err>DEBUG:root:Processed LeBron James
+DEBUG:root:Processed Wilt Chamberlain
+DEBUG:root:Processed Marial Shayok
+</system-err></testcase><testcase classname="tests.scrapers.test_TeamPageScraper.TestTeamPageScraper" file="tests\scrapers\test_TeamPageScraper.py" line="6" name="test_team" time="0.198"><system-err>DEBUG:root:Scraping https://www.basketball-reference.com/teams/CLE/
+</system-err></testcase><testcase classname="tests.scrapers.test_TeamPageScraper.TestTeamPageScraper" file="tests\scrapers\test_TeamPageScraper.py" line="12" name="test_team_with_url" time="0.155"><system-err>DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+</system-err></testcase><testcase classname="tests.scrapers.test_TeamPageScraper.TestTeamPageScraper" file="tests\scrapers\test_TeamPageScraper.py" line="22" name="test_roster" time="1.186"><system-err>DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Difference is 2.9945569038391113s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/players/h/hawkito01.html
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/teams/CLE/2020.html
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /teams/CLE/2020.html HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.9418880939483643
+DEBUG:root:Scraping https://www.basketball-reference.com/teams/CLE/2020.html
+</system-err></testcase><testcase classname="tests.scrapers.test_TeamPageScraper.TestTeamPageScraper" file="tests\scrapers\test_TeamPageScraper.py" line="27" name="test_season" time="0.301"><system-err>DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\cavs.html
+</system-err></testcase><testcase classname="tests.scrapers.test_TeamSeasonScraper.TestTeamSeasonScraper" file="tests\scrapers\test_TeamSeasonScraper.py" line="5" name="test_roster_scrape" time="1.056"><system-err>DEBUG:root:Difference is 1.3398571014404297s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/teams/CLE/2020.html
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/teams/CLE/2016.html
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /teams/CLE/2016.html HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.959399938583374
+DEBUG:root:Scraping https://www.basketball-reference.com/teams/CLE/2016.html
+</system-err></testcase><testcase classname="tests.scrapers.test_TotalMinutesListScraper.TestTotalMinutesListScraper" file="tests\scrapers\test_TotalMinutesListScraper.py" line="4" name="test_scrape" time="2.175"><system-err>DEBUG:root:Difference is 1.0594379901885986s
+DEBUG:root:Lock last set by https://www.basketball-reference.com/teams/CLE/2016.html
+DEBUG:root:Not waiting...
+DEBUG:root:Connecting to https://www.basketball-reference.com/leagues/NBA_2000_totals.html
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.basketball-reference.com:443
+DEBUG:urllib3.connectionpool:https://www.basketball-reference.com:443 &quot;GET /leagues/NBA_2000_totals.html HTTP/1.1&quot; 200 None
+DEBUG:root:Downloaded in 0.9792840480804443
+DEBUG:root:Scraping https://www.basketball-reference.com/leagues/NBA_2000_totals.html
+</system-err></testcase><testcase classname="tests.scrapers.test_base.TestBaseScraper" file="tests\scrapers\test_base.py" line="6" name="test_get_commented_table_with_id" time="0.153"><system-err>DEBUG:root:About to open C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+DEBUG:root:Opened C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+DEBUG:root:Scraping C:\Users\willem.van.lishout\Documents\Repositories\bb-ref-scraper\tests\resources\lebron_james.html
+</system-err></testcase></testsuite></testsuites>

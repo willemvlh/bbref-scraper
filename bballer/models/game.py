@@ -26,7 +26,7 @@ class CondensedGamelog(object):
 
 
 class Game:
-    home_team: str
+    home_team: str  # todo: implement TeamShell
     away_team: str
     date: date
     score: Tuple[int, int]
