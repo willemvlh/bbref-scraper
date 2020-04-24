@@ -1,13 +1,13 @@
 # bbref-scraper
 Easy NBA data scraping for Python using data provided by Basketball Reference.
 
-#Usage
+# Usage
 
-##Retrieving a player
-```
+## Retrieving a player
+```python
 >>> from bballer import player
 >>> pl = player.get_by_name("Jordan")
-Player(Michael Jordan, 1963-02-17) # Returns first match
+Player(Michael Jordan, 1963-02-17)
 
 >>> pl_list = player.search("Bogdanovic")
 [('Bojan Bogdanović (2015-2020)', 'https://www.basketball-reference.com/players/b/bogdabo02.html'), ('Bogdan Bogdanović (2018-2020)', 'https://www.basketball-reference.com/players/b/bogdabo01.html')]
@@ -15,9 +15,9 @@ Player(Michael Jordan, 1963-02-17) # Returns first match
 Player(Bojan Bogdanović, 1989-04-18)
 ```
 
-##Querying a player
-```
-Player(Carmelo Anthony, 1984-05-29)
+## Querying a player
+```python
+>>> pl = player.get_by_name("Carmelo Anthony")
 >>> pl.date_of_birth
 datetime.date(1984, 5, 29)
 >>> stats = pl.career_stats
@@ -29,8 +29,8 @@ datetime.date(1984, 5, 29)
 GameLog(points=41, rebounds=5, assists=0)
 ```
 
-##Querying a team
-```
+## Querying a team
+```python
 >>> from bballer import team
 >>> warriors = team.get_by_name("Golden State Warriors")
 >>> warriors.championships
@@ -55,8 +55,5 @@ Klay Thompson
 Anderson Varejão
 Briante Weber
 David West
-
-
-
 ```
 
