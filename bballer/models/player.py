@@ -23,7 +23,6 @@ class ContractYear:
 class Contract:
     years: List[ContractYear]
 
-
 @dataclass(frozen=True)
 class Player:
     name: str

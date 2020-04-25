@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 from typing import List, Dict
 
+from bballer.scrapers.TeamScraper import TeamPageScraper
+
 
 @dataclass
 class TeamSeason:
@@ -45,3 +47,16 @@ class Team:
     def season(self, year: str):
         season = [s for s in self.seasons if s.season.startswith(str(year))]
         return season[0] if season else None
+
+
+@dataclass
+class TeamShell:
+    name: str
+    url: str
+
+    def __repr__(self):
+        return self.name
+
+    def as_player(self) -> Team:
+        scr = TeamPageScraper(self.url)
+        return scr.get_content()
