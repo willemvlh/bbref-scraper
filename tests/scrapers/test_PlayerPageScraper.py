@@ -13,7 +13,6 @@ class TestPlayerPageScraper:
     chamberlain = PlayerPageScraper(get_resource("chamberlain.html"))
     shayok = PlayerPageScraper(get_resource("shayok.html"))
     simons = PlayerPageScraper(get_resource("anfernee_simons.html"))
-    mike_conley = PlayerPageScraper(get_resource("mike_conley.html"))
 
     def test_equality(self):
         this_player = self.carmelo_anthony.get_content()
