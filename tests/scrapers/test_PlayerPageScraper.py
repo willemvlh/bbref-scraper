@@ -12,6 +12,8 @@ class TestPlayerPageScraper:
     ben_wallace = PlayerPageScraper(get_resource("ben_wallace.html"))
     chamberlain = PlayerPageScraper(get_resource("chamberlain.html"))
     shayok = PlayerPageScraper(get_resource("shayok.html"))
+    simons = PlayerPageScraper(get_resource("anfernee_simons.html"))
+    mike_conley = PlayerPageScraper(get_resource("mike_conley.html"))
 
     def test_equality(self):
         this_player = self.carmelo_anthony.get_content()
@@ -147,7 +149,7 @@ class TestPlayerPageScraper:
         first_year = james.contract.years[0]
         assert first_year.season == "2019-20"
         assert first_year.amount == 37436858
-        # assert first_year.option is None
+        assert first_year.option is None
 
         third_year = james.contract.years[2]
         assert third_year.season == "2021-22"
@@ -159,3 +161,8 @@ class TestPlayerPageScraper:
 
         shayok = self.shayok.get_content()
         assert not shayok.contract
+
+        simons = self.simons.get_content()
+        assert simons.contract.years[0].option == "player"
+        assert simons.contract.years[1].option == "early termination"
+        assert simons.contract.years[2].option == "team"

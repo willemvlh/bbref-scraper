@@ -2,12 +2,24 @@ import logging
 import os
 import re
 from datetime import date
-from typing import List
+from typing import List, Optional
 
 from bballer.models.player import Player, Salary, Contract, ContractYear
 from bballer.models.stats import StatLine, AdvancedStatLine
 from bballer.scrapers.base import Scraper
 from bballer.scrapers.utilities import to_absolute_url
+
+
+def _get_contract_option(classes: List) -> Optional[str]:
+    if not classes:
+        return None
+    option_map = {"salary-pl": "player", "salary-tm": "team", "salary-et": "early termination"}
+    for cl in classes:
+        try:
+            return option_map[cl]
+        except KeyError:
+            continue
+    return None
 
 
 class PlayerPageScraper(Scraper):
@@ -208,6 +220,8 @@ class PlayerPageScraper(Scraper):
         for td in [td for td in contract_row.find_all("td")[1:]]:
             season = len([sibling for sibling in td.previous_siblings if sibling.name == "td"])
             amount = int(re.sub("[$,]", "", td.get_text()))
-            year = ContractYear(season=seasons[season], amount=amount, option=None)
+            option_span = td.find("span")
+            option = _get_contract_option(option_span.attrs["class"]) if option_span else None
+            year = ContractYear(season=seasons[season], amount=amount, option=option)
             years.append(year)
         return Contract(years=years)
