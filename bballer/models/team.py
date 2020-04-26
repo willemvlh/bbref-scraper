@@ -1,9 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Dict
 
-from bballer.scrapers.TeamScraper import TeamPageScraper
-
-
 @dataclass
 class TeamSeason:
     season: str
@@ -58,5 +55,6 @@ class TeamShell:
         return self.name
 
     def as_player(self) -> Team:
+        from bballer.scrapers.TeamScraper import TeamPageScraper
         scr = TeamPageScraper(self.url)
         return scr.get_content()

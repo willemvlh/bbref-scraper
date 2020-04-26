@@ -4,8 +4,9 @@ import re
 from datetime import date
 from typing import List, Optional
 
-from bballer.models.player import Player, Salary, Contract, ContractYear
+from bballer.models.player import Player, Salary, Contract, ContractYear, DraftPick
 from bballer.models.stats import StatLine, AdvancedStatLine
+from bballer.models.team import TeamShell
 from bballer.scrapers.base import Scraper
 from bballer.scrapers.utilities import to_absolute_url
 
@@ -178,11 +179,16 @@ class PlayerPageScraper(Scraper):
     def _get_draft_pick(self):
         element = self._parsed.find("strong", string=re.compile("Draft:"))
         if element:
-            s = element.find_next_sibling(string=re.compile("overall"))
-            if s:
-                matches = re.findall(r"\d{1,2}[a-z]{1,3} overall", s.string)
-                if matches:
-                    return int("".join([c for c in matches[0] if c.isdigit()]))
+            team = element.find_next_sibling("a")
+            url = team.attrs["href"].rstrip("/draft.html")
+            team_shell = TeamShell(name=team.get_text(), url=to_absolute_url(url))
+            txt = element.find_next_sibling(string=re.compile("overall"))
+            year = int(team.find_next_sibling("a").get_text()[0:4])
+            if txt:
+                numbers = [int(x) for x in re.findall("\\d{1,2}", txt)]
+                assert len(numbers) == 3
+                return DraftPick(round=numbers[0], pick=numbers[1], overall=numbers[2], team=team_shell, year=year)
+            return DraftPick(round=None, pick=None, overall=None, team=team_shell, year=year)
 
     def _get_shooting_hand(self) -> str:
         return self.get_first_text_sibling("strong", "Shoots:")

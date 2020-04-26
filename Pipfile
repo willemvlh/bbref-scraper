@@ -10,6 +10,7 @@ requests = "*"
 pytest = "*"
 jsonpickle = "*"
 beautifulsoup4 = "*"
+pytest-xdist = "*"
 
 [requires]
 python_version = "3.7"

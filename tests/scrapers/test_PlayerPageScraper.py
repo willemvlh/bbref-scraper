@@ -1,5 +1,6 @@
 from datetime import date
 
+from bballer.models.player import DraftPick
 from bballer.models.stats import StatLine
 from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
 from tests.scrapers.utils import get_resource
@@ -10,8 +11,6 @@ class TestPlayerPageScraper:
     carmelo_anthony = PlayerPageScraper(get_resource("carmelo_anthony.html")).get_content()
     julius_erving = PlayerPageScraper(get_resource("julius_erving.html")).get_content()
     wilt_chamberlain = PlayerPageScraper(get_resource("chamberlain.html")).get_content()
-    shayok = PlayerPageScraper(get_resource("shayok.html")).get_content()
-    simons = PlayerPageScraper(get_resource("anfernee_simons.html")).get_content()
 
     def test_equality(self):
         assert (self.carmelo_anthony != self.lebron_james)
@@ -133,11 +132,17 @@ class TestPlayerPageScraper:
         assert self.wilt_chamberlain.salaries == []
 
     def test_draft_pick(self):
-        pass
+        dp = self.lebron_james.draft_pick
+        assert isinstance(dp, DraftPick)
+        assert dp.pick == 1
+        assert dp.round == 1
+        assert dp.overall == 1
+        assert dp.team.name == "Cleveland Cavaliers"
+        assert dp.team.url == "https://www.basketball-reference.com/teams/CLE"
+        assert dp.year == 2003
 
     def test_contract(self):
         james = self.lebron_james
-
         assert james.contract
         assert len(james.contract.years) == 3
         assert all([year.season for year in james.contract.years])
@@ -156,8 +161,10 @@ class TestPlayerPageScraper:
         chamberlain = self.wilt_chamberlain
         assert not chamberlain.contract
 
-        assert not self.shayok.contract
+        shayok = PlayerPageScraper(get_resource("shayok.html")).get_content()
+        assert not shayok.contract
 
-        assert self.simons.contract.years[0].option == "player"
-        assert self.simons.contract.years[1].option == "early termination"
-        assert self.simons.contract.years[2].option == "team"
+        simons = PlayerPageScraper(get_resource("anfernee_simons.html")).get_content()
+        assert simons.contract.years[0].option == "player"
+        assert simons.contract.years[1].option == "early termination"
+        assert simons.contract.years[2].option == "team"

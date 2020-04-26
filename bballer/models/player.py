@@ -3,6 +3,16 @@ from datetime import date
 from typing import List, Optional
 
 from bballer.models.stats import StatLine
+from bballer.models.team import TeamShell
+
+
+@dataclass(frozen=True)
+class DraftPick:
+    round: Optional[int]
+    pick: Optional[int]
+    overall: Optional[int]
+    year: int
+    team: TeamShell
 
 
 @dataclass(frozen=True)
@@ -23,6 +33,7 @@ class ContractYear:
 class Contract:
     years: List[ContractYear]
 
+
 @dataclass(frozen=True)
 class Player:
     name: str
@@ -34,7 +45,7 @@ class Player:
     seasons: List[StatLine]  # todo: should be generator
     playoffs: List[StatLine]  # todo: should be generator
     career_stats: StatLine
-    draft_pick: int
+    draft_pick: DraftPick
     id: str
     shooting_hand: str
     contract: Contract
