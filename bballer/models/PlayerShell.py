@@ -4,10 +4,9 @@ from bballer.models.player import Player
 from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlayerShell:
     name: str
-    number: int
     url: str
 
     def __repr__(self):

@@ -46,7 +46,7 @@ class Team:
         return season[0] if season else None
 
 
-@dataclass
+@dataclass(frozen=True)
 class TeamShell:
     name: str
     url: str
@@ -54,7 +54,7 @@ class TeamShell:
     def __repr__(self):
         return self.name
 
-    def as_player(self) -> Team:
+    def as_team(self) -> Team:
         from bballer.scrapers.TeamScraper import TeamPageScraper
         scr = TeamPageScraper(self.url)
         return scr.get_content()
