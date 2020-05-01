@@ -1,8 +1,6 @@
 import concurrent.futures
 from typing import Iterator
 
-import jsonpickle
-
 from bballer.models.player import Player
 from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
 from bballer.scrapers.base import Scraper
@@ -34,7 +32,3 @@ class BulkScraper:
                 players = executor.map(lambda u: PlayerPageScraper(u).get_content(), batch)
                 for p in players:
                     yield p
-
-    def serialize(self):
-        jsonpickle.set_encoder_options(name="json", indent=1)
-        return jsonpickle.encode(self._processed, unpicklable=False)

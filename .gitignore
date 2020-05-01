@@ -4,3 +4,4 @@ test-reports/
 .coverage
 coverage.xml
 path
+htmlcov
