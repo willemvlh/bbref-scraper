@@ -11,6 +11,7 @@ pytest = "*"
 jsonpickle = "*"
 beautifulsoup4 = "*"
 pytest-xdist = "*"
+codecov = "*"
 
 [requires]
 python_version = "3.7"
