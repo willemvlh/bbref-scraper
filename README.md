@@ -2,7 +2,7 @@
 Easy NBA data scraping for Python using data provided by Basketball Reference.
 
 ![Tests](https://github.com/wasmachien75/bbref-scraper/workflows/Tests/badge.svg?branch=master)
-
+[![codecov](https://codecov.io/gh/wasmachien75/bbref-scraper/branch/master/graph/badge.svg)](https://codecov.io/gh/wasmachien75/bbref-scraper)
 # Usage
 
 ## Retrieving a player
