@@ -25,9 +25,8 @@ jobs:
         pipenv install
     - name: Test with pytest
       run: |
-        pipenv shell
-        coverage run -m pytest
-        coverage xml
+        pipenv run coverage run -m pytest
+        pipenv run coverage xml
     - name: Upload coverage
       run: |
         bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
