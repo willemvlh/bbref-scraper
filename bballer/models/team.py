@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Dict
 
+
 @dataclass
 class TeamSeason:
     season: str
@@ -31,7 +32,7 @@ class TeamSeason:
 class Team:
     name: str
     code: str
-    seasons: List[TeamSeason]
+    seasons: List[TeamSeason]  # store in a list so we can easily get number of championships and playoff appearances
     wins: int
     losses: int
     championships: int = field(init=False)

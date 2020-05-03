@@ -91,14 +91,11 @@ class PlayerPageScraper(Scraper):
 
     def _get_totals(self, table):
         if not table:
-            return []
+            yield None
         rows = table.find_all("tr", class_="full_table")
-        totals = []
         for row in rows:
             if self.get_data_stat_in_element("lg_id", row) == "NBA":
-                season = self._parse_stats_from_row(row)
-                totals.append(season)
-        return totals
+                yield self._parse_stats_from_row(row)
 
     def _parse_stats_from_row(self, row):
         season = self._get_season_from_row(row)

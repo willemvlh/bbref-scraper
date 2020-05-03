@@ -1,3 +1,4 @@
+from collections.abc import Generator
 from datetime import date
 
 from bballer.models.player import DraftPick
@@ -140,6 +141,10 @@ class TestPlayerPageScraper:
         assert dp.team.name == "Cleveland Cavaliers"
         assert dp.team.url == "https://www.basketball-reference.com/teams/CLE"
         assert dp.year == 2003
+
+    def test_seasons_and_playoffs_are_generators(self):
+        assert isinstance(self.lebron_james.seasons, Generator)
+        assert isinstance(self.lebron_james.playoffs, Generator)
 
     def test_contract(self):
         james = self.lebron_james
