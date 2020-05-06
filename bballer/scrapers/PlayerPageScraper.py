@@ -36,15 +36,15 @@ class PlayerPageScraper(Scraper):
     def player(self) -> Player:
         id_ = self._get_id()
         name = self._get_name()
-        seasons = self._get_regular_season_totals()
         playoffs = self._get_playoffs_totals()
         college = self._get_college()
         date_of_birth = self._get_dob()
         career_stats = self._get_career_stats()
         height, weight = self._get_physical()
         draft_pick = self._get_draft_pick()
-        positions = [season.position for season in seasons]
+        positions = [season.position for season in list(self._get_regular_season_totals())]
         position = max(positions, key=positions.count) if positions else None
+        seasons = self._get_regular_season_totals()  # recalculate to reset the generator
         shooting_hand = self._get_shooting_hand()
         salaries = self._get_salaries()
         contract = self._get_contract()
@@ -84,7 +84,8 @@ class PlayerPageScraper(Scraper):
             return preceding_element.find_next_sibling("a").text
 
     def _get_regular_season_totals(self):
-        return self._get_totals(self._reg_season_table)
+        for el in self._get_totals(self._reg_season_table):
+            yield el
 
     def _get_playoffs_totals(self):
         return self._get_totals(self._playoff_table)

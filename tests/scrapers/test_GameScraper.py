@@ -43,7 +43,7 @@ class TestGameLogScraper:
     def test_rebounds(self):
         from bballer import player
         pl = player.get_by_name("DJ Mbenga")
-        s = pl.seasons[1]
+        s = list(pl.seasons)[1]
         for r in [gl.rebounds for gl in s.game_logs()]:
             assert r is None or isinstance(r, int)
 

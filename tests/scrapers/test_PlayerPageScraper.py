@@ -47,8 +47,9 @@ class TestPlayerPageScraper:
         assert player.height_in == 80
         assert player.weight_kg == 109
         assert player.weight_lb == 240
-        assert len(player.seasons) > 10
-        rookie_season = player.seasons[0]
+        seasons = list(player.seasons)
+        assert len(seasons) > 10
+        rookie_season = seasons[0]
         assert rookie_season.position == "SF"
         assert rookie_season.season == 2004
         assert rookie_season.games_started == 82
@@ -75,8 +76,8 @@ class TestPlayerPageScraper:
         assert rookie_season.points == 1725
 
     def test_advanced_stats(self):
-        player = self.carmelo_anthony
-        s = player.seasons[0]
+        player = PlayerPageScraper(get_resource("carmelo_anthony.html")).get_content()
+        s = list(player.seasons)[0]
         assert s.advanced.assist_percentage == 13.8
         assert s.advanced.player_efficiency_rating == 17.6
         assert s.advanced.true_shooting_percentage == 0.509
@@ -99,22 +100,24 @@ class TestPlayerPageScraper:
         assert s.advanced.value_over_replacement_player == 1.6
 
     def test_seasons(self):
-        seasons = self.julius_erving.seasons
-        assert len(seasons) == 11  # ABA seasons must be discarded
+        erving = PlayerPageScraper(get_resource("julius_erving.html")).get_content()
+        assert len(list(erving.seasons)) == 11  # ABA seasons must be discarded
 
     def test_game_log(self):
         # can't store this page locally because we depend on a hyperlink inside
-        seasons = PlayerPageScraper(
-            "https://www.basketball-reference.com/players/m/mbengdj01.html").get_content().seasons
+        seasons = list(PlayerPageScraper(
+            "https://www.basketball-reference.com/players/m/mbengdj01.html").get_content().seasons)
         gl = seasons[0].game_logs()
         assert len([game for game in gl if game.played]) == seasons[0].games_played
 
     def test_all_star(self):
-        assert len([season for season in self.julius_erving.seasons if season.all_star]) == 11
+        erving = PlayerPageScraper(get_resource("julius_erving.html")).get_content()
+        assert len([season for season in list(self.julius_erving.seasons) if season.all_star]) == 11
 
     def test_get_playoff_totals(self):
-        assert len(self.julius_erving.playoffs) == 11
-        assert sum([season.points for season in self.julius_erving.playoffs]) == 3088
+        playoffs = list(self.julius_erving.playoffs)
+        assert len(playoffs) == 11
+        assert sum([season.points for season in playoffs]) == 3088
 
     def test_historical_player(self):
         player = PlayerPageScraper(get_resource("tom_hawkins.html")).get_content()
