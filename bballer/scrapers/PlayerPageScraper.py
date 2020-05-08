@@ -5,7 +5,7 @@ from datetime import date
 from typing import List, Optional
 
 from bballer.models.player import Player, Salary, Contract, ContractYear, DraftPick
-from bballer.models.stats import StatLine, AdvancedStatLine
+from bballer.models.stats import StatLine, AdvancedStatLine, PlayoffStatLine
 from bballer.models.team import TeamShell
 from bballer.scrapers.base import Scraper
 from bballer.scrapers.utilities import to_absolute_url
@@ -88,17 +88,17 @@ class PlayerPageScraper(Scraper):
             yield el
 
     def _get_playoffs_totals(self):
-        return self._get_totals(self._playoff_table)
+        return self._get_totals(self._playoff_table, PlayoffStatLine)
 
-    def _get_totals(self, table):
+    def _get_totals(self, table, statline_type=StatLine):
         if not table:
             yield None
         rows = table.find_all("tr", class_="full_table")
         for row in rows:
             if self.get_data_stat_in_element("lg_id", row) == "NBA":
-                yield self._parse_stats_from_row(row)
+                yield self._parse_stats_from_row(row, statline_type)
 
-    def _parse_stats_from_row(self, row):
+    def _parse_stats_from_row(self, row, statline_type=StatLine):
         season = self._get_season_from_row(row)
         age = self.get_data_stat_in_element("age", row)
         team = self.get_data_stat_in_element("team_id", row)
@@ -124,16 +124,17 @@ class PlayerPageScraper(Scraper):
         turnovers = self.get_data_stat_in_element("tov", row)
         fouls = self.get_data_stat_in_element("pf", row)
         points = self.get_data_stat_in_element("pts", row)
-        statline = StatLine(season=season, age=age, all_star=all_star, games_played=games_played,
-                            games_started=games_started,
-                            minutes_played=minutes_played, team=team,
-                            position=position, fg_made=fg_made, fg_attempted=fg_attempted, three_fg_made=three_fg_made,
-                            three_fg_attempted=three_fg_attempted, two_fg_made=two_fg_made,
-                            two_fg_attempted=two_fg_attempted, effective_fg_percentage=effective_fg_percentage,
-                            ft_made=free_throw_made, ft_attempted=free_throw_attempted,
-                            offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
-                            assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
-                            points=points, _player_url=self._url)
+        statline = statline_type(season=season, age=age, all_star=all_star, games_played=games_played,
+                                 games_started=games_started,
+                                 minutes_played=minutes_played, team=team,
+                                 position=position, fg_made=fg_made, fg_attempted=fg_attempted,
+                                 three_fg_made=three_fg_made,
+                                 three_fg_attempted=three_fg_attempted, two_fg_made=two_fg_made,
+                                 two_fg_attempted=two_fg_attempted, effective_fg_percentage=effective_fg_percentage,
+                                 ft_made=free_throw_made, ft_attempted=free_throw_attempted,
+                                 offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
+                                 assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
+                                 points=points, _player_url=self._url)
         advanced_statline_rows = [tr for tr in self._advanced_table.find_all("tr", class_="full_table") if
                                   self._get_season_from_row(tr) == season]
         if advanced_statline_rows:

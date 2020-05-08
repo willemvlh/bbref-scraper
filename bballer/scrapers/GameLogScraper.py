@@ -8,11 +8,17 @@ from bballer.scrapers.utilities import *
 
 class GameLogScraper(Scraper):
 
+    def __init__(self, url: str):
+        super().__init__(url)
+
     def get_content(self):
         return self._get_game_logs()
 
+    def get_table(self):
+        return self.find("table", id="pgl_basic")
+
     def _get_game_logs(self) -> Iterator[GameLog]:
-        table = self.find("table", id="pgl_basic")
+        table = self.get_table()
         if not table:
             return
         rows = table.find("tbody").find_all("tr")
@@ -48,3 +54,11 @@ class GameLogScraper(Scraper):
         gl.plus_minus = self.get_data_stat_in_element("plus_minus", row) if gl.played else None
 
         return gl
+
+
+class PlayoffGameLogScraper(GameLogScraper):
+    def __init__(self, url):
+        super().__init__(url)
+
+    def get_table(self):
+        return self.get_commented_table_with_id("pgl_basic_playoffs")

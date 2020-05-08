@@ -1,6 +1,4 @@
 from bballer import player
-from bballer.models.player import Player
-
 
 def test_get_by_name():
     anthony = player.get_by_name("Carmelo Anthony")

@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional, Any, List
 
-from bballer.scrapers.GameLogScraper import GameLogScraper
+from bballer.scrapers.GameLogScraper import GameLogScraper, PlayoffGameLogScraper
 
 
 @dataclass
@@ -72,6 +72,7 @@ class StatLine:
     advanced: Optional[AdvancedStatLine] = field(init=False, repr=False)
     _player_url: str
     _game_logs: List = field(init=False, default=None)
+    game_log_scraper_class = GameLogScraper
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.season}, {self.team})"
@@ -82,10 +83,13 @@ class StatLine:
 
     def game_logs(self):
         if not self._game_logs:
-            scr = GameLogScraper(
-                self._player_url.rstrip(".html") + f"/gamelog/{self.season}")
+            scr = self.game_log_scraper_class(
+                self._get_game_log_url())
             self._game_logs = scr.get_content()
         return self._game_logs
+
+    def _get_game_log_url(self):
+        return self._player_url.rstrip(".html") + f"/gamelog/{self.season}"
 
     @property
     def three_fg_percentage(self):
@@ -108,6 +112,11 @@ class StatLine:
 
     def per_100_possessions(self):
         pass
+
+
+@dataclass
+class PlayoffStatLine(StatLine):
+    game_log_scraper_class = PlayoffGameLogScraper
 
 
 @dataclass

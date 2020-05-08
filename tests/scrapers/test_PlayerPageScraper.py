@@ -1,6 +1,7 @@
 from collections.abc import Generator
 from datetime import date
 
+from bballer.models.gamelog import GameLog
 from bballer.models.player import DraftPick
 from bballer.models.stats import StatLine
 from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
@@ -176,3 +177,14 @@ class TestPlayerPageScraper:
         assert simons.contract.years[0].option == "player"
         assert simons.contract.years[1].option == "early termination"
         assert simons.contract.years[2].option == "team"
+
+    def test_playoff_games(self):
+        lbj = PlayerPageScraper("https://www.basketball-reference.com/players/j/jamesle01.html").get_content()
+        po = next(lbj.playoffs)
+        assert po.points == 400
+        games = list(po.game_logs())
+        assert len(games) == 13
+        game: GameLog = games[0]
+        assert game.date == date(2006, 4, 22)
+        assert game.points == 32
+        assert game.assists == 11
