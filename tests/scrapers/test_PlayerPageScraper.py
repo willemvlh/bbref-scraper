@@ -204,6 +204,20 @@ class TestPlayerPageScraper:
         assert shooting_data.fgp_by_distance
         assert shooting_data.fga_by_distance
 
+        assert shooting_data.fga_by_distance.two_point == 0.855
+        assert shooting_data.fga_by_distance.zero_three == 0.315
+        assert shooting_data.fga_by_distance.three_ten == 0.168
+        assert shooting_data.fga_by_distance.ten_sixteen == 0.161
+        assert shooting_data.fga_by_distance.sixteen_three_pt == 0.211
+        assert shooting_data.fga_by_distance.three_point == 0.145
+
+        assert shooting_data.fgp_by_distance.two_point == 0.438
+        assert shooting_data.fgp_by_distance.zero_three == 0.604
+        assert shooting_data.fgp_by_distance.three_ten == 0.356
+        assert shooting_data.fgp_by_distance.ten_sixteen == 0.313
+        assert shooting_data.fgp_by_distance.sixteen_three_pt == 0.352
+        assert shooting_data.fgp_by_distance.three_point == 0.290
+
         career_sd = lbj.career_stats.shooting_data
         assert career_sd.dunks_made == 1898
         assert career_sd.dunks_fga == 0.08
@@ -214,5 +228,3 @@ class TestPlayerPageScraper:
         assert career_sd.corner_three_point_fga == 0.129
         assert career_sd.corner_three_point_fgp == 0.387
         assert career_sd.avg_distance == 12.0
-
-        # todo: write tests for fgp and fga by distance
