@@ -2,7 +2,7 @@ import logging
 from datetime import datetime
 
 from bballer.models.game import Game, CondensedGamelog
-from bballer.scrapers.base import Scraper
+from bballer.scrapers.base import Scraper, get_data_stat_in_element
 
 
 class GameScraper(Scraper):

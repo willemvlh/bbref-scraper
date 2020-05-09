@@ -2,7 +2,7 @@ from datetime import date
 from typing import Iterator
 
 from bballer.models.gamelog import GameLog
-from bballer.scrapers.base import Scraper
+from bballer.scrapers.base import Scraper, get_data_stat_in_element
 from bballer.scrapers.utilities import *
 
 

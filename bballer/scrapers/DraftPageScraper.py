@@ -3,7 +3,7 @@ from typing import Iterator
 from bballer.models.PlayerShell import PlayerShell
 from bballer.models.draft import PlayerInDraft
 from bballer.models.team import TeamShell
-from bballer.scrapers.base import Scraper
+from bballer.scrapers.base import Scraper, get_data_stat_in_element
 from bballer.scrapers.utilities import to_absolute_url
 
 
