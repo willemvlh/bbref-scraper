@@ -2,7 +2,7 @@ import logging
 from datetime import datetime
 
 from bballer.models.game import Game, CondensedGamelog
-from bballer.scrapers.base import Scraper
+from bballer.scrapers.base import Scraper, get_data_stat_in_element
 
 
 class GameScraper(Scraper):
@@ -58,25 +58,25 @@ class GameScraper(Scraper):
     def parse_row(self, row):
         gl = CondensedGamelog()
 
-        gl.player_id = self.get_data_stat_in_element("player", row, "data-append-csv")
-        if self.get_data_stat_in_element("reason", row):
+        gl.player_id = get_data_stat_in_element("player", row, "data-append-csv")
+        if get_data_stat_in_element("reason", row):
             gl.played = False
             return gl
-        gl.seconds_played = self.get_data_stat_in_element("mp", row, "csk")
-        gl.defensive_rebounds = self.get_data_stat_in_element("drb", row)
-        gl.offensive_rebounds = self.get_data_stat_in_element("orb", row)
-        gl.ft_attempted = self.get_data_stat_in_element("fta", row)
-        gl.ft_made = self.get_data_stat_in_element("ft", row)
-        gl.fg_made = self.get_data_stat_in_element("fg", row)
-        gl.fg_attempted = self.get_data_stat_in_element("fga", row)
-        gl.three_fg_attempted = self.get_data_stat_in_element("fg3a", row)
-        gl.three_fg_made = self.get_data_stat_in_element("fg3", row)
-        gl.assists = self.get_data_stat_in_element("ast", row)
-        gl.steals = self.get_data_stat_in_element("stl", row)
-        gl.turnovers = self.get_data_stat_in_element("tov", row)
-        gl.fouls = self.get_data_stat_in_element("pf", row)
-        gl.points = self.get_data_stat_in_element("pts", row)
-        gl.plus_minus = self.get_data_stat_in_element("plus_minus", row)
+        gl.seconds_played = get_data_stat_in_element("mp", row, "csk")
+        gl.defensive_rebounds = get_data_stat_in_element("drb", row)
+        gl.offensive_rebounds = get_data_stat_in_element("orb", row)
+        gl.ft_attempted = get_data_stat_in_element("fta", row)
+        gl.ft_made = get_data_stat_in_element("ft", row)
+        gl.fg_made = get_data_stat_in_element("fg", row)
+        gl.fg_attempted = get_data_stat_in_element("fga", row)
+        gl.three_fg_attempted = get_data_stat_in_element("fg3a", row)
+        gl.three_fg_made = get_data_stat_in_element("fg3", row)
+        gl.assists = get_data_stat_in_element("ast", row)
+        gl.steals = get_data_stat_in_element("stl", row)
+        gl.turnovers = get_data_stat_in_element("tov", row)
+        gl.fouls = get_data_stat_in_element("pf", row)
+        gl.points = get_data_stat_in_element("pts", row)
+        gl.plus_minus = get_data_stat_in_element("plus_minus", row)
         gl.played = True
         gl.started = len([sibling for sibling in list(row.previous_siblings) if sibling.name == "tr"]) < 5
         return gl

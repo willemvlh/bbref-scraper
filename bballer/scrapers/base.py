@@ -8,6 +8,37 @@ from bs4 import BeautifulSoup, NavigableString, Comment, PageElement
 from bballer.scrapers.download import Download
 
 
+def get_data_stat_in_element(stat_name, element, attr=None, return_first_child=False) -> Union[
+    PageElement, str, int, float, None]:
+    # this should be split up in two functions really
+    """Returns the text value of a child of {element} which has an attribute "data-stat" with value {stat_name}.
+    If {attr} is not None, it will return the value of the attribute with name {attr}.
+
+    :param stat_name: The value of the "data-stat" attribute.
+    :param element: The element which contains the searched child element.
+    :param attr: An optional attribute name of which the value should be returned.
+    :param return_first_child: Return the first child of the found element, rather than the text value
+    :return: A string or None.
+    """
+    if attr and return_first_child:
+        raise ValueError("Arguments attr and return_first_child are mutually exclusive.")
+    val = element.find(attrs={"data-stat": stat_name})
+    if not val:
+        return None
+    if attr:
+        val = val.attrs[attr]
+    elif return_first_child:
+        return val.find()
+    else:
+        val = val.text if not val.find("a") else val.find("a").text
+    try:
+        if "." in val:
+            return float(val)
+        return int(val)
+    except ValueError:
+        return val
+
+
 class Scraper:
     """
     Base class for each scraper.
@@ -42,37 +73,6 @@ class Scraper:
                 return f.read()
         else:
             raise ValueError
-
-    def get_data_stat_in_element(self, stat_name, element, attr=None, return_first_child=False) -> Union[
-        PageElement, str, int, float, None]:
-
-        # this should be split up in two functions really
-        """Returns the text value of a child of {element} which has an attribute "data-stat" with value {stat_name}.
-        If {attr} is not None, it will return the value of the attribute with name {attr}.
-
-        :param stat_name: The value of the "data-stat" attribute.
-        :param element: The element which contains the searched child element.
-        :param attr: An optional attribute name of which the value should be returned.
-        :param return_first_child: Return the first child of the found element, rather than the text value
-        :return: A string or None.
-        """
-        if attr and return_first_child:
-            raise ValueError("Arguments attr and return_first_child are mutually exclusive.")
-        val = element.find(attrs={"data-stat": stat_name})
-        if not val:
-            return None
-        if attr:
-            val = val.attrs[attr]
-        elif return_first_child:
-            return val.find()
-        else:
-            val = val.text if not val.find("a") else val.find("a").text
-        try:
-            if "." in val:
-                return float(val)
-            return int(val)
-        except ValueError:
-            return val
 
     def get_item_prop(self, prop: str, attr=None, element=None):
         """

@@ -5,6 +5,30 @@ from bballer.scrapers.GameLogScraper import GameLogScraper, PlayoffGameLogScrape
 
 
 @dataclass
+class ShootingByDistance:
+    two_point: float
+    zero_three: float
+    three_ten: float
+    ten_sixteen: float
+    sixteen_three_pt: float
+    three_point: float
+
+
+class ShootingStatLine:
+    avg_distance: float
+    fga_by_distance: ShootingByDistance
+    fgp_by_distance: ShootingByDistance
+    dunks_fga: float
+    dunks_made: int
+    heaves_attempted: int
+    heaves_made: int
+    two_point_fga_assisted: float
+    three_point_fga_assisted: float
+    corner_three_point_fga: float
+    corner_three_point_fgp: float
+
+
+@dataclass
 class AdvancedStatLine:
     season: Any
     player_efficiency_rating: float
@@ -70,9 +94,11 @@ class StatLine:
     points: int
     effective_fg_percentage: float
     advanced: Optional[AdvancedStatLine] = field(init=False, repr=False)
+    shooting_data: ShootingStatLine
     _player_url: str
     _game_logs: List = field(init=False, default=None)
     game_log_scraper_class = GameLogScraper
+    shooting_data_table_id = "shooting"
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.season}, {self.team})"
@@ -117,6 +143,7 @@ class StatLine:
 @dataclass
 class PlayoffStatLine(StatLine):
     game_log_scraper_class = PlayoffGameLogScraper
+    shooting_data_table_id = "playoffs_shooting"
 
 
 @dataclass
