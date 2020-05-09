@@ -3,7 +3,7 @@ from typing import Tuple
 
 from bballer.models.PlayerShell import PlayerShell
 from bballer.models.team import Team, TeamSeason
-from bballer.scrapers.base import Scraper
+from bballer.scrapers.base import Scraper, get_data_stat_in_element
 from bballer.scrapers.utilities import to_absolute_url
 
 
