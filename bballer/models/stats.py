@@ -98,6 +98,7 @@ class StatLine:
     _player_url: str
     _game_logs: List = field(init=False, default=None)
     game_log_scraper_class = GameLogScraper
+    shooting_data_table_id = "shooting"
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.season}, {self.team})"
@@ -142,6 +143,7 @@ class StatLine:
 @dataclass
 class PlayoffStatLine(StatLine):
     game_log_scraper_class = PlayoffGameLogScraper
+    shooting_data_table_id = "playoffs_shooting"
 
 
 @dataclass

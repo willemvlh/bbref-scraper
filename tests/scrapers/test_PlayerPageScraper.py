@@ -228,3 +228,7 @@ class TestPlayerPageScraper:
         assert career_sd.corner_three_point_fga == 0.129
         assert career_sd.corner_three_point_fgp == 0.387
         assert career_sd.avg_distance == 12.0
+
+        first_playoffs = next(lbj.playoffs)
+        assert first_playoffs.shooting_data.avg_distance == 12.1
+        assert first_playoffs.shooting_data.dunks_made == 13
