@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from bballer.models.PlayerShell import PlayerShell
+from bballer.models.player import PlayerShell
 from bballer.models.team import TeamShell
 
 

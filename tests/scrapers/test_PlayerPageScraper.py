@@ -50,55 +50,6 @@ class TestPlayerPageScraper:
         assert player.weight_lb == 240
         seasons = list(player.seasons)
         assert len(seasons) > 10
-        rookie_season = seasons[0]
-        assert rookie_season.position == "SF"
-        assert rookie_season.season == 2004
-        assert rookie_season.games_started == 82
-        assert rookie_season.games_played == 82
-        assert rookie_season.minutes_played == 2995
-        assert rookie_season.fg_attempted == 1465
-        assert rookie_season.fg_made == 624
-        assert rookie_season.three_fg_made == 69
-        assert rookie_season.three_fg_attempted == 214
-        assert rookie_season.two_fg_attempted == 1251
-        assert rookie_season.two_fg_made == 555
-        assert rookie_season.effective_fg_percentage == 0.449
-        assert rookie_season.ft_made == 408
-        assert rookie_season.ft_attempted == 525
-        assert rookie_season.offensive_rebounds == 183
-        assert rookie_season.defensive_rebounds == 315
-        assert rookie_season.rebounds == 498
-        assert not rookie_season.all_star
-        assert rookie_season.assists == 227
-        assert rookie_season.blocks == 41
-        assert rookie_season.turnovers == 247
-        assert rookie_season.steals == 97
-        assert rookie_season.fouls == 225
-        assert rookie_season.points == 1725
-
-    def test_advanced_stats(self):
-        player = PlayerPageScraper(get_resource("carmelo_anthony.html")).get_content()
-        s = list(player.seasons)[0]
-        assert s.advanced.assist_percentage == 13.8
-        assert s.advanced.player_efficiency_rating == 17.6
-        assert s.advanced.true_shooting_percentage == 0.509
-        assert s.advanced.three_fg_attempt_rate == 0.146
-        assert s.advanced.ft_attempt_rate == 0.358
-        assert s.advanced.offensive_rebound_percentage == 6.8
-        assert s.advanced.defensive_rebound_percentage == 12.1
-        assert s.advanced.total_rebound_percentage == 9.4
-        assert s.advanced.steal_percentage == 1.7
-        assert s.advanced.block_percentage == 1.0
-        assert s.advanced.turnover_percentage == 12.7
-        assert s.advanced.usage_percentage == 28.5
-        assert s.advanced.offensive_win_shares == 3.7
-        assert s.advanced.defensive_win_shares == 2.4
-        assert s.advanced.win_shares == 6.1
-        assert s.advanced.win_shares_per_48 == 0.098
-        assert s.advanced.offensive_box_plus_minus == 1.2
-        assert s.advanced.defensive_box_plus_minus == -1.2
-        assert s.advanced.box_plus_minus == 0
-        assert s.advanced.value_over_replacement_player == 1.6
 
     def test_seasons(self):
         erving = PlayerPageScraper(get_resource("julius_erving.html")).get_content()

@@ -1,41 +1,32 @@
 from dataclasses import dataclass, field
-from typing import Optional, Any, List
+from typing import Optional, List
 
+from bballer.models.advanced_stats import AdvancedStatLine
 from bballer.scrapers.GameLogScraper import GameLogScraper, PlayoffGameLogScraper
 
 
 @dataclass
-class AdvancedStatLine:
-    season: Any
-    player_efficiency_rating: float
-    true_shooting_percentage: float
-    three_fg_attempt_rate: float
-    ft_attempt_rate: float
-    offensive_rebound_percentage: float
-    defensive_rebound_percentage: float
-    total_rebound_percentage: float
-    assist_percentage: float
-    steal_percentage: float
-    block_percentage: float
-    turnover_percentage: float
-    usage_percentage: float
-    offensive_win_shares: float
-    defensive_win_shares: float
-    win_shares_per_48: float
-    offensive_box_plus_minus: float
-    defensive_box_plus_minus: float
-    value_over_replacement_player: float
-    box_plus_minus: float = field(init=False)
-    win_shares: float = field(init=False)
+class ShootingByDistance:
+    two_point: float
+    zero_three: float
+    three_ten: float
+    ten_sixteen: float
+    sixteen_three_pt: float
+    three_point: float
 
-    def __repr__(self):
-        return f"Statline({self.season})"
 
-    def __post_init__(self):
-        if self.defensive_box_plus_minus and self.offensive_box_plus_minus:
-            self.box_plus_minus = self.defensive_box_plus_minus + self.offensive_box_plus_minus
-        if self.offensive_win_shares and self.defensive_win_shares:
-            self.win_shares = self.offensive_win_shares + self.defensive_win_shares
+class ShootingStatLine:
+    avg_distance: float
+    fga_by_distance: ShootingByDistance
+    fgp_by_distance: ShootingByDistance
+    dunks_fga: float
+    dunks_made: int
+    heaves_attempted: int
+    heaves_made: int
+    two_point_fga_assisted: float
+    three_point_fga_assisted: float
+    corner_three_point_fga: float
+    corner_three_point_fgp: float
 
 
 def per_game():
@@ -70,16 +61,22 @@ class StatLine:
     points: int
     effective_fg_percentage: float
     advanced: Optional[AdvancedStatLine] = field(init=False, repr=False)
+    shooting_data: ShootingStatLine
     _player_url: str
     _game_logs: List = field(init=False, default=None)
+    _round_digits = 3
     game_log_scraper_class = GameLogScraper
+    shooting_data_table_id = "shooting"
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.season}, {self.team})"
 
     @property
     def two_fg_percentage(self):
-        return self.two_fg_made / self.two_fg_attempted
+        return self._round(self.two_fg_made / self.two_fg_attempted)
+
+    def _round(self, number: float):
+        return round(number, self._round_digits)
 
     def game_logs(self):
         if not self._game_logs:
@@ -93,15 +90,15 @@ class StatLine:
 
     @property
     def three_fg_percentage(self):
-        return self.three_fg_made / self.three_fg_attempted
+        return self._round(self.three_fg_made / self.three_fg_attempted)
 
     @property
     def fg_percentage(self):
-        return self.fg_made / self.fg_attempted
+        return self._round(self.fg_made / self.fg_attempted)
 
     @property
     def free_throw_percentage(self):
-        return self.ft_made / self.ft_attempted
+        return self._round(self.ft_made / self.ft_attempted)
 
     @property
     def rebounds(self):
@@ -117,6 +114,7 @@ class StatLine:
 @dataclass
 class PlayoffStatLine(StatLine):
     game_log_scraper_class = PlayoffGameLogScraper
+    shooting_data_table_id = "playoffs_shooting"
 
 
 @dataclass

@@ -75,3 +75,17 @@ class Player:
     @property
     def weight_lb(self):
         return self._weight
+
+
+@dataclass(frozen=True)
+class PlayerShell:
+    name: str
+    url: str
+
+    def __repr__(self):
+        return self.name
+
+    def as_player(self) -> Player:
+        from bballer.scrapers.PlayerPageScraper import PlayerPageScraper
+        scr = PlayerPageScraper(self.url)
+        return scr.get_content()

@@ -1,4 +1,4 @@
-from bballer.models.PlayerShell import PlayerShell
+from bballer.models.player import PlayerShell
 from bballer.scrapers.TeamScraper import TeamSeasonScraper
 
 

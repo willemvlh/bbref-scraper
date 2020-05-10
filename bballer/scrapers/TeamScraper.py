@@ -1,7 +1,7 @@
 import re
 from typing import Tuple
 
-from bballer.models.PlayerShell import PlayerShell
+from bballer.models.player import PlayerShell
 from bballer.models.team import Team, TeamSeason
 from bballer.scrapers.base import Scraper
 from bballer.scrapers.utilities import to_absolute_url

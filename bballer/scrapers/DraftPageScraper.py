@@ -1,7 +1,7 @@
 from typing import Iterator
 
-from bballer.models.PlayerShell import PlayerShell
 from bballer.models.draft import PlayerInDraft
+from bballer.models.player import PlayerShell
 from bballer.models.team import TeamShell
 from bballer.scrapers.base import Scraper
 from bballer.scrapers.utilities import to_absolute_url

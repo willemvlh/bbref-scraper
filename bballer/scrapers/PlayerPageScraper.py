@@ -2,12 +2,13 @@ import logging
 import os
 import re
 from datetime import date
-from typing import List, Optional
+from typing import List, Optional, Type
 
-from bballer.models.player import Player, Salary, Contract, ContractYear, DraftPick
-from bballer.models.stats import StatLine, AdvancedStatLine, PlayoffStatLine
+from bballer.models.advanced_stats import AdvancedStatLine
+from bballer.models.player import Salary, Contract, ContractYear, DraftPick, Player
+from bballer.models.stats import StatLine, PlayoffStatLine, ShootingStatLine, ShootingByDistance
 from bballer.models.team import TeamShell
-from bballer.scrapers.base import Scraper
+from bballer.scrapers.base import Scraper, get_data_stat_in_element
 from bballer.scrapers.utilities import to_absolute_url
 
 
@@ -24,6 +25,7 @@ def _get_contract_option(classes: List) -> Optional[str]:
 
 
 class PlayerPageScraper(Scraper):
+
     def get_content(self):
         return self.player()
 
@@ -95,35 +97,37 @@ class PlayerPageScraper(Scraper):
             yield None
         rows = table.find_all("tr", class_="full_table")
         for row in rows:
-            if self.get_data_stat_in_element("lg_id", row) == "NBA":
+            if get_data_stat_in_element("lg_id", row) == "NBA":
                 yield self._parse_stats_from_row(row, statline_type)
 
-    def _parse_stats_from_row(self, row, statline_type=StatLine):
+    def _parse_stats_from_row(self, row, statline_type: Type[StatLine] = StatLine):
         season = self._get_season_from_row(row)
-        age = self.get_data_stat_in_element("age", row)
-        team = self.get_data_stat_in_element("team_id", row)
+        age = get_data_stat_in_element("age", row)
+        team = get_data_stat_in_element("team_id", row)
         all_star = bool(row.find("span", class_="sr_star"))
-        games_played = self.get_data_stat_in_element("g", row)
-        games_started = self.get_data_stat_in_element("gs", row)
-        minutes_played = self.get_data_stat_in_element("mp", row)
-        position = self.get_data_stat_in_element("pos", row)
-        fg_made = self.get_data_stat_in_element("fg", row)
-        fg_attempted = self.get_data_stat_in_element("fga", row)
-        three_fg_made = self.get_data_stat_in_element("fg3", row)
-        three_fg_attempted = self.get_data_stat_in_element("fg3a", row)
-        two_fg_made = self.get_data_stat_in_element("fg2", row)
-        two_fg_attempted = self.get_data_stat_in_element("fg2a", row)
-        effective_fg_percentage = self.get_data_stat_in_element("efg_pct", row)
-        free_throw_made = self.get_data_stat_in_element("ft", row)
-        free_throw_attempted = self.get_data_stat_in_element("fta", row)
-        offensive_rebounds = self.get_data_stat_in_element("orb", row)
-        defensive_rebounds = self.get_data_stat_in_element("drb", row)
-        assists = self.get_data_stat_in_element("ast", row)
-        steals = self.get_data_stat_in_element("stl", row)
-        blocks = self.get_data_stat_in_element("blk", row)
-        turnovers = self.get_data_stat_in_element("tov", row)
-        fouls = self.get_data_stat_in_element("pf", row)
-        points = self.get_data_stat_in_element("pts", row)
+        games_played = get_data_stat_in_element("g", row)
+        games_started = get_data_stat_in_element("gs", row)
+        minutes_played = get_data_stat_in_element("mp", row)
+        position = get_data_stat_in_element("pos", row)
+        fg_made = get_data_stat_in_element("fg", row)
+        fg_attempted = get_data_stat_in_element("fga", row)
+        three_fg_made = get_data_stat_in_element("fg3", row)
+        three_fg_attempted = get_data_stat_in_element("fg3a", row)
+        two_fg_made = get_data_stat_in_element("fg2", row)
+        two_fg_attempted = get_data_stat_in_element("fg2a", row)
+        effective_fg_percentage = get_data_stat_in_element("efg_pct", row)
+        free_throw_made = get_data_stat_in_element("ft", row)
+        free_throw_attempted = get_data_stat_in_element("fta", row)
+        offensive_rebounds = get_data_stat_in_element("orb", row)
+        defensive_rebounds = get_data_stat_in_element("drb", row)
+        assists = get_data_stat_in_element("ast", row)
+        steals = get_data_stat_in_element("stl", row)
+        blocks = get_data_stat_in_element("blk", row)
+        turnovers = get_data_stat_in_element("tov", row)
+        fouls = get_data_stat_in_element("pf", row)
+        points = get_data_stat_in_element("pts", row)
+        sl = ShootingDataScraper(self.get_commented_table_with_id(statline_type.shooting_data_table_id))
+        shooting_data = sl.get_shooting_data(season)
         statline = statline_type(season=season, age=age, all_star=all_star, games_played=games_played,
                                  games_started=games_started,
                                  minutes_played=minutes_played, team=team,
@@ -134,7 +138,7 @@ class PlayerPageScraper(Scraper):
                                  ft_made=free_throw_made, ft_attempted=free_throw_attempted,
                                  offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
                                  assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
-                                 points=points, _player_url=self._url)
+                                 points=points, _player_url=self._url, shooting_data=shooting_data)
         advanced_statline_rows = [tr for tr in self._advanced_table.find_all("tr", class_="full_table") if
                                   self._get_season_from_row(tr) == season]
         if advanced_statline_rows:
@@ -143,26 +147,26 @@ class PlayerPageScraper(Scraper):
         return statline
 
     def _parse_stats_from_advanced_row(self, row, season):
-        per = self.get_data_stat_in_element("per", row)
-        tsp = self.get_data_stat_in_element("ts_pct", row)
-        orb = self.get_data_stat_in_element("orb_pct", row)
-        tpar = self.get_data_stat_in_element("fg3a_per_fga_pct", row)
-        ftar = self.get_data_stat_in_element("fta_per_fga_pct", row)
-        drb = self.get_data_stat_in_element("drb_pct", row)
-        trb = self.get_data_stat_in_element("trb_pct", row)
-        astp = self.get_data_stat_in_element("ast_pct", row)
-        stlp = self.get_data_stat_in_element("stl_pct", row)
-        blkp = self.get_data_stat_in_element("blk_pct", row)
-        tovp = self.get_data_stat_in_element("tov_pct", row)
-        usgp = self.get_data_stat_in_element("usg_pct", row)
-        ows = self.get_data_stat_in_element("ows", row)
-        dws = self.get_data_stat_in_element("dws", row)
-        wsp48 = self.get_data_stat_in_element("ws_per_48", row)
-        obpm = self.get_data_stat_in_element("obpm", row)
-        dbpm = self.get_data_stat_in_element("dbpm", row)
-        vorp = self.get_data_stat_in_element("vorp", row)
+        per = get_data_stat_in_element("per", row)
+        tsp = get_data_stat_in_element("ts_pct", row)
+        orb = get_data_stat_in_element("orb_pct", row)
+        tpar = get_data_stat_in_element("fg3a_per_fga_pct", row)
+        ftar = get_data_stat_in_element("fta_per_fga_pct", row)
+        drb = get_data_stat_in_element("drb_pct", row)
+        trb = get_data_stat_in_element("trb_pct", row)
+        astp = get_data_stat_in_element("ast_pct", row)
+        stlp = get_data_stat_in_element("stl_pct", row)
+        blkp = get_data_stat_in_element("blk_pct", row)
+        tovp = get_data_stat_in_element("tov_pct", row)
+        usgp = get_data_stat_in_element("usg_pct", row)
+        ows = get_data_stat_in_element("ows", row)
+        dws = get_data_stat_in_element("dws", row)
+        wsp48 = get_data_stat_in_element("ws_per_48", row)
+        obpm = get_data_stat_in_element("obpm", row)
+        dbpm = get_data_stat_in_element("dbpm", row)
+        vorp = get_data_stat_in_element("vorp", row)
 
-        return AdvancedStatLine(season=season, player_efficiency_rating=per, true_shooting_percentage=tsp,
+        return AdvancedStatLine(basic_stats=season, player_efficiency_rating=per, true_shooting_percentage=tsp,
                                 offensive_rebound_percentage=orb, defensive_rebound_percentage=drb,
                                 total_rebound_percentage=trb, assist_percentage=astp, steal_percentage=stlp,
                                 three_fg_attempt_rate=tpar, ft_attempt_rate=ftar,
@@ -193,7 +197,7 @@ class PlayerPageScraper(Scraper):
         return self.get_first_text_sibling("strong", "Shoots:")
 
     def _get_season_from_row(self, row):
-        s = self.get_data_stat_in_element("season", row)
+        s = get_data_stat_in_element("season", row)
         return 0 if "Career" in s else int(s[0:4]) + 1
 
     def _get_salaries(self):
@@ -202,10 +206,10 @@ class PlayerPageScraper(Scraper):
             return []
         salaries = []
         for row in table.find("tbody").find_all("tr"):
-            season = self.get_data_stat_in_element("season", row)
-            team = self.get_data_stat_in_element("team_name", row, return_first_child=True)["href"]
+            season = get_data_stat_in_element("season", row)
+            team = get_data_stat_in_element("team_name", row, return_first_child=True)["href"]
             team_url = to_absolute_url(team)
-            amount = int(self.get_data_stat_in_element("salary", row, "csk"))
+            amount = int(get_data_stat_in_element("salary", row, "csk"))
             salaries.append(Salary(season=season, team=team_url, amount=amount))
         return salaries
 
@@ -230,3 +234,52 @@ class PlayerPageScraper(Scraper):
             year = ContractYear(season=seasons[season], amount=amount, option=option)
             years.append(year)
         return Contract(years=years)
+
+
+class ShootingDataScraper:
+    def __init__(self, table):
+        self.table = table
+
+    def get_shooting_data(self, season):
+        table = self.table
+        if not table:
+            return None
+        if season == 0:
+            row = table.find("tfoot").find("tr")
+        else:
+            row = table.find("tr", id=re.compile(f"{season}$"))
+            assert row
+        return self._parse_stats_from_shooting_row(row)
+
+    def _parse_stats_from_shooting_row(self, row):
+        sd = ShootingStatLine()
+        sd.fga_by_distance = self.get_fga_by_distance(row)
+        sd.fgp_by_distance = self.get_fgp_by_distance(row)
+        sd.avg_distance = get_data_stat_in_element("avg_dist", row)
+        sd.two_point_fga_assisted = get_data_stat_in_element("fg2_pct_ast", row)
+        sd.dunks_fga = get_data_stat_in_element("pct_fg2_dunk", row)
+        sd.dunks_made = get_data_stat_in_element("fg2_dunk", row)
+        sd.three_point_fga_assisted = get_data_stat_in_element("fg3_pct_ast", row)
+        sd.corner_three_point_fga = get_data_stat_in_element("pct_fg3a_corner", row)
+        sd.corner_three_point_fgp = get_data_stat_in_element("fg3_pct_corner", row)
+        sd.heaves_attempted = get_data_stat_in_element("fg3a_heave", row)
+        sd.heaves_made = get_data_stat_in_element("fg3_heave", row)
+        return sd
+
+    def get_fga_by_distance(self, row):
+        two_point = get_data_stat_in_element("fg2a_pct_fga", row)
+        zero_three = get_data_stat_in_element("pct_fga_00_03", row)
+        three_ten = get_data_stat_in_element("pct_fga_03_10", row)
+        ten_sixteen = get_data_stat_in_element("pct_fga_10_16", row)
+        sixteen_xx = get_data_stat_in_element("pct_fga_16_xx", row)
+        three_point = get_data_stat_in_element("fg3a_pct_fga", row)
+        return ShootingByDistance(two_point, zero_three, three_ten, ten_sixteen, sixteen_xx, three_point)
+
+    def get_fgp_by_distance(self, row):
+        two_point = get_data_stat_in_element("fg2_pct", row)
+        zero_three = get_data_stat_in_element("fg_pct_00_03", row)
+        three_ten = get_data_stat_in_element("fg_pct_03_10", row)
+        ten_sixteen = get_data_stat_in_element("fg_pct_10_16", row)
+        sixteen_xx = get_data_stat_in_element("fg_pct_16_xx", row)
+        three_point = get_data_stat_in_element("fg3_pct", row)
+        return ShootingByDistance(two_point, zero_three, three_ten, ten_sixteen, sixteen_xx, three_point)
