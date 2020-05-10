@@ -32,6 +32,8 @@ def get_data_stat_in_element(stat_name, element, attr=None, return_first_child=F
     else:
         val = val.text if not val.find("a") else val.find("a").text
     try:
+        if not val:
+            return None
         if "." in val:
             return float(val)
         return int(val)

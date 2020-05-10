@@ -62,3 +62,32 @@ class TestStats:
         assert rookie_season.advanced.defensive_box_plus_minus == -1.2
         assert rookie_season.advanced.box_plus_minus == 0
         assert rookie_season.advanced.value_over_replacement_player == 1.6
+
+    def test_stats_where_none_available(self):
+        chamberlain = PlayerPageScraper(get_resource("chamberlain.html")).get_content()
+        rookie_season = next(chamberlain.seasons)
+        assert rookie_season.rebounds is None
+        assert rookie_season.offensive_rebounds is None
+        assert rookie_season.defensive_rebounds is None
+        assert rookie_season.turnovers is None
+        assert rookie_season.three_fg_percentage is None
+        assert rookie_season.three_fg_made is None
+        assert rookie_season.three_fg_attempted is None
+        assert rookie_season.shooting_data is None
+
+        advanced_stats = rookie_season.advanced
+        assert advanced_stats.value_over_replacement_player is None
+        assert advanced_stats.ft_attempt_rate == 0.429
+        assert advanced_stats.assist_percentage is None
+        assert advanced_stats.offensive_rebound_percentage is None
+        assert advanced_stats.defensive_rebound_percentage is None
+        assert advanced_stats.usage_percentage is None
+
+    def test_stats_where_partially_available(self):
+        mullin = PlayerPageScraper(get_resource("chris_mullin.html")).get_content()
+        seasons = list(mullin.seasons)
+        rookie_season = seasons[0]
+        assert rookie_season.shooting_data is None
+        final_season = seasons[-1]
+        assert final_season.shooting_data
+        assert final_season.shooting_data.avg_distance == 18.8

@@ -244,11 +244,12 @@ class ShootingDataScraper:
         table = self.table
         if not table:
             return None
-        if season == 0:
+        if season == 0:  # Career stats
             row = table.find("tfoot").find("tr")
         else:
             row = table.find("tr", id=re.compile(f"{season}$"))
-            assert row
+            if not row:
+                return None
         return self._parse_stats_from_shooting_row(row)
 
     def _parse_stats_from_shooting_row(self, row):

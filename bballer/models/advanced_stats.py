@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class AdvancedStatLine:
-    basic_stats: object
+    basic_stats: object  # should probably get rid of this
     player_efficiency_rating: float
     true_shooting_percentage: float
     three_fg_attempt_rate: float

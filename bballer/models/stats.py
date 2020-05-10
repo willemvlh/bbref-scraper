@@ -90,19 +90,23 @@ class StatLine:
 
     @property
     def three_fg_percentage(self):
-        return self._round(self.three_fg_made / self.three_fg_attempted)
+        if self.three_fg_made and self.three_fg_attempted:
+            return self._round(self.three_fg_made / self.three_fg_attempted)
 
     @property
     def fg_percentage(self):
-        return self._round(self.fg_made / self.fg_attempted)
+        if self.fg_made and self.fg_attempted:
+            return self._round(self.fg_made / self.fg_attempted)
 
     @property
     def free_throw_percentage(self):
-        return self._round(self.ft_made / self.ft_attempted)
+        if self.ft_made and self.ft_attempted:
+            return self._round(self.ft_made / self.ft_attempted)
 
     @property
     def rebounds(self):
-        return self.defensive_rebounds + self.offensive_rebounds
+        if self.defensive_rebounds and self.offensive_rebounds:
+            return self.defensive_rebounds + self.offensive_rebounds
 
     def per_game(self):
         pass
