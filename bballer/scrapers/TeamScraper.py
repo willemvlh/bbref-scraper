@@ -3,7 +3,7 @@ from typing import Tuple
 
 from bballer.models.player import PlayerShell
 from bballer.models.team import Team, TeamSeason
-from bballer.scrapers.base import Scraper
+from bballer.scrapers.base import Scraper, get_data_stat_in_element
 from bballer.scrapers.utilities import to_absolute_url
 
 
@@ -17,7 +17,7 @@ class TeamSeasonScraper(Scraper):
 
     def get_roster(self):
         table = self.find("table", id="roster")
-        return [PlayerShell(name=self.get_data_stat_in_element("player", row),
+        return [PlayerShell(name=get_data_stat_in_element("player", row),
                             url=to_absolute_url(row.find("td", attrs={"data-stat": "player"}).find("a").attrs["href"]))
                 for row in table.find("tbody").find_all("tr")]
 
@@ -57,15 +57,15 @@ class TeamPageScraper(Scraper):
         return list(reversed([self.parse_team_row(row) for row in rows]))
 
     def parse_team_row(self, row):
-        season = self.get_data_stat_in_element("season", row)
-        wins = self.get_data_stat_in_element("wins", row)
-        losses = self.get_data_stat_in_element("losses", row)
-        pace = self.get_data_stat_in_element("pace", row)
-        rel_pace = self.get_data_stat_in_element("pace_rel", row)
-        off_rtg = self.get_data_stat_in_element("off_rtg", row)
-        off_rtg_rel = self.get_data_stat_in_element("off_rtg_rel", row)
-        def_rtg = self.get_data_stat_in_element("def_rtg", row)
-        def_rtg_rel = self.get_data_stat_in_element("def_rtg_rel", row)
+        season = get_data_stat_in_element("season", row)
+        wins = get_data_stat_in_element("wins", row)
+        losses = get_data_stat_in_element("losses", row)
+        pace = get_data_stat_in_element("pace", row)
+        rel_pace = get_data_stat_in_element("pace_rel", row)
+        off_rtg = get_data_stat_in_element("off_rtg", row)
+        off_rtg_rel = get_data_stat_in_element("off_rtg_rel", row)
+        def_rtg = get_data_stat_in_element("def_rtg", row)
+        def_rtg_rel = get_data_stat_in_element("def_rtg_rel", row)
         playoff_result = self._get_playoff_result_from_row(row)
         won_championship = playoff_result.lower() == "Won Finals".lower()
         made_playoffs = bool(playoff_result)

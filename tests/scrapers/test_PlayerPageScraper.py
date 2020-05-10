@@ -139,3 +139,47 @@ class TestPlayerPageScraper:
         assert game.date == date(2006, 4, 22)
         assert game.points == 32
         assert game.assists == 11
+
+    def test_shooting_data(self):
+        lbj = PlayerPageScraper("https://www.basketball-reference.com/players/j/jamesle01.html").get_content()
+        first_season = next(lbj.seasons)
+        shooting_data = first_season.shooting_data
+        assert shooting_data.heaves_made == 0
+        assert shooting_data.heaves_attempted == 3
+        assert shooting_data.corner_three_point_fgp == 0.323
+        assert shooting_data.corner_three_point_fga == 0.286
+        assert shooting_data.three_point_fga_assisted == 0.746
+        assert shooting_data.dunks_made == 91
+        assert shooting_data.dunks_fga == 0.064
+        assert shooting_data.two_point_fga_assisted == 0.442
+        assert shooting_data.fgp_by_distance
+        assert shooting_data.fga_by_distance
+
+        assert shooting_data.fga_by_distance.two_point == 0.855
+        assert shooting_data.fga_by_distance.zero_three == 0.315
+        assert shooting_data.fga_by_distance.three_ten == 0.168
+        assert shooting_data.fga_by_distance.ten_sixteen == 0.161
+        assert shooting_data.fga_by_distance.sixteen_three_pt == 0.211
+        assert shooting_data.fga_by_distance.three_point == 0.145
+
+        assert shooting_data.fgp_by_distance.two_point == 0.438
+        assert shooting_data.fgp_by_distance.zero_three == 0.604
+        assert shooting_data.fgp_by_distance.three_ten == 0.356
+        assert shooting_data.fgp_by_distance.ten_sixteen == 0.313
+        assert shooting_data.fgp_by_distance.sixteen_three_pt == 0.352
+        assert shooting_data.fgp_by_distance.three_point == 0.290
+
+        career_sd = lbj.career_stats.shooting_data
+        assert career_sd.dunks_made == 1898
+        assert career_sd.dunks_fga == 0.08
+        assert career_sd.heaves_made == 2
+        assert career_sd.heaves_attempted == 34
+        assert career_sd.two_point_fga_assisted == 0.347
+        assert career_sd.three_point_fga_assisted == 0.469
+        assert career_sd.corner_three_point_fga == 0.129
+        assert career_sd.corner_three_point_fgp == 0.387
+        assert career_sd.avg_distance == 12.0
+
+        first_playoffs = next(lbj.playoffs)
+        assert first_playoffs.shooting_data.avg_distance == 12.1
+        assert first_playoffs.shooting_data.dunks_made == 13
