@@ -139,11 +139,18 @@ class PlayerPageScraper(Scraper):
                                  offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
                                  assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
                                  points=points, _player_url=self._url, shooting_data=shooting_data)
-        advanced_statline_rows = [tr for tr in self._advanced_table.find_all("tr", class_="full_table") if
-                                  self._get_season_from_row(tr) == season]
-        if advanced_statline_rows:
-            advanced_statline = self._parse_stats_from_advanced_row(advanced_statline_rows[0], statline)
+
+        if season == 0:
+            advanced_statline = self._advanced_table.find("tfoot").find("tr")
+            if advanced_statline:
+                statline.advanced = self._parse_stats_from_advanced_row(advanced_statline, statline)
+
+        else:
+            advanced_statline_row = [tr for tr in self._advanced_table.find_all("tr", class_="full_table") if
+                                     self._get_season_from_row(tr) == season][0]
+            advanced_statline = self._parse_stats_from_advanced_row(advanced_statline_row, statline)
             statline.advanced = advanced_statline
+
         return statline
 
     def _parse_stats_from_advanced_row(self, row, season):

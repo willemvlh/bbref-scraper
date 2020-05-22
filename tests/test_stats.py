@@ -91,3 +91,7 @@ class TestStats:
         final_season = seasons[-1]
         assert final_season.shooting_data
         assert final_season.shooting_data.avg_distance == 18.8
+
+    def test_career_stats_advanced(self):
+        mullin = PlayerPageScraper(get_resource("chris_mullin.html")).get_content()
+        assert mullin.career_stats.advanced.usage_percentage
