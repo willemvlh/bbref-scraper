@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import date
 from typing import List, Optional, Generator
 
-from bballer.models.stats import StatLine
+from bballer.models.stats import StatLine, SeasonStatLine, PlayoffStatLine
 from bballer.models.team import TeamShell
 
 
@@ -42,8 +42,8 @@ class Player:
     _height: int
     _weight: int
     position: str
-    seasons: Generator[StatLine, None, None]
-    playoffs: Generator[StatLine, None, None]
+    seasons: Generator[SeasonStatLine, None, None]
+    playoffs: Generator[PlayoffStatLine, None, None]
     career_stats: StatLine
     draft_pick: DraftPick
     id: str

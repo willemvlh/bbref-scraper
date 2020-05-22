@@ -1,15 +1,13 @@
 import logging
 import os
 import re
-from typing import Union
 
-from bs4 import BeautifulSoup, NavigableString, Comment, PageElement
+from bs4 import BeautifulSoup, NavigableString, Comment
 
 from bballer.scrapers.download import Download
 
 
-def get_data_stat_in_element(stat_name, element, attr=None, return_first_child=False) -> Union[
-    PageElement, str, int, float, None]:
+def get_data_stat_in_element(stat_name, element, attr=None, return_first_child=False):
     # this should be split up in two functions really
     """Returns the text value of a child of {element} which has an attribute "data-stat" with value {stat_name}.
     If {attr} is not None, it will return the value of the attribute with name {attr}.

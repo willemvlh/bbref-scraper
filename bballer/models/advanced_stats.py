@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class AdvancedStatLine:
-    basic_stats: object  # should probably get rid of this
+    season: int
     player_efficiency_rating: float
     true_shooting_percentage: float
     three_fg_attempt_rate: float
@@ -26,7 +26,7 @@ class AdvancedStatLine:
     win_shares: float = field(init=False)
 
     def __repr__(self):
-        return f"AdvancedStatLine({self.basic_stats.season})"
+        return f"AdvancedStatLine({self.season})"
 
     def __post_init__(self):
         if self.defensive_box_plus_minus and self.offensive_box_plus_minus:
