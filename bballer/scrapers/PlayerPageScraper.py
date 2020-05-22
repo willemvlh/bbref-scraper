@@ -236,7 +236,7 @@ class PlayerPageScraper(Scraper):
         if not table:
             return None
         rows = self.get_commented_table_with_id("contracts_.*").find_all("tr")
-        if not len(rows):
+        if not rows:
             return None
         header_row = rows[0]
         if len(header_row.find_all()) == 1:

@@ -66,7 +66,7 @@ class Scraper:
     def _get_content(self):
         if self._url.startswith("http"):
             return Download.download(self._url)
-        elif os.path.isfile(self._url):
+        if os.path.isfile(self._url):
             logging.debug(f"About to open {self._url}")
             with open(self._url, "r", encoding="utf-8") as f:
                 logging.debug(f"Opened {self._url}")
