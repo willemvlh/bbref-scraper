@@ -2,11 +2,11 @@ import logging
 import os
 import re
 from datetime import date
-from typing import List, Optional, Type
+from typing import List, Optional
 
 from bballer.models.advanced_stats import AdvancedStatLine
 from bballer.models.player import Salary, Contract, ContractYear, DraftPick, Player
-from bballer.models.stats import StatLine, PlayoffStatLine, ShootingStatLine, ShootingByDistance
+from bballer.models.stats import StatLine, PlayoffStatLine, ShootingStatLine, ShootingByDistance, SeasonStatLine
 from bballer.models.team import TeamShell
 from bballer.scrapers.base import Scraper, get_data_stat_in_element
 from bballer.scrapers.utilities import to_absolute_url
@@ -22,6 +22,10 @@ def _get_contract_option(classes: List) -> Optional[str]:
         except KeyError:
             continue
     return None
+
+
+def _should_parse_row(row):
+    return get_data_stat_in_element("lg_id", row) == "NBA"
 
 
 class PlayerPageScraper(Scraper):
@@ -44,7 +48,7 @@ class PlayerPageScraper(Scraper):
         career_stats = self._get_career_stats()
         height, weight = self._get_physical()
         draft_pick = self._get_draft_pick()
-        positions = [season.position for season in list(self._get_regular_season_totals())]
+        positions = [s.stats.position for s in list(self._get_regular_season_totals())]
         position = max(positions, key=positions.count) if positions else None
         seasons = self._get_regular_season_totals()  # recalculate to reset the generator
         shooting_hand = self._get_shooting_hand()
@@ -78,7 +82,7 @@ class PlayerPageScraper(Scraper):
     def _get_career_stats(self):
         if self._reg_season_table:
             career_row = self._reg_season_table.find("th", string="Career").find_parent("tr")
-            return self._parse_stats_from_row(career_row)
+            return self._parse_stats_from_row(career_row, StatLine)
 
     def _get_college(self):
         preceding_element = self._parsed.find("strong", text=re.compile("College:"))
@@ -90,21 +94,27 @@ class PlayerPageScraper(Scraper):
             yield el
 
     def _get_playoffs_totals(self):
-        return self._get_totals(self._playoff_table, PlayoffStatLine)
+        for el in self._get_totals(self._playoff_table, PlayoffStatLine):
+            yield el
 
-    def _get_totals(self, table, statline_type=StatLine):
+    def _get_totals(self, table, statline_type=SeasonStatLine):
         if not table:
             yield None
         rows = table.find_all("tr", class_="full_table")
-        for row in rows:
-            if get_data_stat_in_element("lg_id", row) == "NBA":
-                yield self._parse_stats_from_row(row, statline_type)
+        for row in [row for row in rows if _should_parse_row(row)]:
+            statline = self._parse_stats_from_row(row, statline_type)
+            yield self.wrap_statline(statline, statline_type, row)
 
-    def _parse_stats_from_row(self, row, statline_type: Type[StatLine] = StatLine):
+    def wrap_statline(self, statline, statline_type, row):
         season = self._get_season_from_row(row)
         age = get_data_stat_in_element("age", row)
         team = get_data_stat_in_element("team_id", row)
         all_star = bool(row.find("span", class_="sr_star"))
+        return statline_type(stats=statline, season=season, age=age, team=team, all_star=all_star,
+                             _player_url=self._url)
+
+    def _parse_stats_from_row(self, row, statline_type):
+        season = self._get_season_from_row(row)
         games_played = get_data_stat_in_element("g", row)
         games_started = get_data_stat_in_element("gs", row)
         minutes_played = get_data_stat_in_element("mp", row)
@@ -127,33 +137,34 @@ class PlayerPageScraper(Scraper):
         fouls = get_data_stat_in_element("pf", row)
         points = get_data_stat_in_element("pts", row)
         sl = ShootingDataScraper(self.get_commented_table_with_id(statline_type.shooting_data_table_id))
-        shooting_data = sl.get_shooting_data(season)
-        statline = statline_type(season=season, age=age, all_star=all_star, games_played=games_played,
-                                 games_started=games_started,
-                                 minutes_played=minutes_played, team=team,
-                                 position=position, fg_made=fg_made, fg_attempted=fg_attempted,
-                                 three_fg_made=three_fg_made,
-                                 three_fg_attempted=three_fg_attempted, two_fg_made=two_fg_made,
-                                 two_fg_attempted=two_fg_attempted, effective_fg_percentage=effective_fg_percentage,
-                                 ft_made=free_throw_made, ft_attempted=free_throw_attempted,
-                                 offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
-                                 assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
-                                 points=points, _player_url=self._url, shooting_data=shooting_data)
+        shooting_data = sl.get_shooting_data(self._get_season_from_row(row))
+        statline = StatLine(games_played=games_played,
+                            games_started=games_started,
+                            minutes_played=minutes_played,
+                            position=position, fg_made=fg_made, fg_attempted=fg_attempted,
+                            three_fg_made=three_fg_made,
+                            three_fg_attempted=three_fg_attempted, two_fg_made=two_fg_made,
+                            two_fg_attempted=two_fg_attempted, effective_fg_percentage=effective_fg_percentage,
+                            ft_made=free_throw_made, ft_attempted=free_throw_attempted,
+                            offensive_rebounds=offensive_rebounds, defensive_rebounds=defensive_rebounds,
+                            assists=assists, steals=steals, blocks=blocks, turnovers=turnovers, fouls=fouls,
+                            points=points, shooting_data=shooting_data)
 
         if season == 0:
             advanced_statline = self._advanced_table.find("tfoot").find("tr")
             if advanced_statline:
-                statline.advanced = self._parse_stats_from_advanced_row(advanced_statline, statline)
+                statline.advanced = self._parse_stats_from_advanced_row(advanced_statline)
 
         else:
             advanced_statline_row = [tr for tr in self._advanced_table.find_all("tr", class_="full_table") if
                                      self._get_season_from_row(tr) == season][0]
-            advanced_statline = self._parse_stats_from_advanced_row(advanced_statline_row, statline)
+            advanced_statline = self._parse_stats_from_advanced_row(advanced_statline_row)
             statline.advanced = advanced_statline
 
         return statline
 
-    def _parse_stats_from_advanced_row(self, row, season):
+    def _parse_stats_from_advanced_row(self, row):
+        season = self._get_season_from_row(row)
         per = get_data_stat_in_element("per", row)
         tsp = get_data_stat_in_element("ts_pct", row)
         orb = get_data_stat_in_element("orb_pct", row)
@@ -173,7 +184,7 @@ class PlayerPageScraper(Scraper):
         dbpm = get_data_stat_in_element("dbpm", row)
         vorp = get_data_stat_in_element("vorp", row)
 
-        return AdvancedStatLine(basic_stats=season, player_efficiency_rating=per, true_shooting_percentage=tsp,
+        return AdvancedStatLine(season=season, player_efficiency_rating=per, true_shooting_percentage=tsp,
                                 offensive_rebound_percentage=orb, defensive_rebound_percentage=drb,
                                 total_rebound_percentage=trb, assist_percentage=astp, steal_percentage=stlp,
                                 three_fg_attempt_rate=tpar, ft_attempt_rate=ftar,
@@ -225,7 +236,7 @@ class PlayerPageScraper(Scraper):
         if not table:
             return None
         rows = self.get_commented_table_with_id("contracts_.*").find_all("tr")
-        if not len(rows):
+        if not rows:
             return None
         header_row = rows[0]
         if len(header_row.find_all()) == 1:

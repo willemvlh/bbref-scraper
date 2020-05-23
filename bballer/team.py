@@ -4,7 +4,7 @@ from bballer.scrapers.TeamScraper import TeamPageScraper
 
 def get_by_name(name: str):
     result = Search.search_teams(name)
-    if not len(result):
+    if not result:
         return None
     url = result[0][-1]
     return TeamPageScraper(url).get_content()

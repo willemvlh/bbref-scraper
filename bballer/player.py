@@ -8,7 +8,7 @@ from bballer.scrapers.misc import TotalMinutesScraper, BulkScraper
 
 def get_by_name(name: str) -> Optional[Player]:
     result = Search.search_players(name)
-    if not len(result):
+    if not result:
         return None
     url = result[0][-1]
     return PlayerPageScraper(url).get_content()

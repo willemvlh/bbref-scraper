@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
-from typing import Optional, List
+from typing import Optional, Generator
 
 from bballer.models.advanced_stats import AdvancedStatLine
+from bballer.models.gamelog import GameLog
 from bballer.scrapers.GameLogScraper import GameLogScraper, PlayoffGameLogScraper
 
 
@@ -29,18 +30,10 @@ class ShootingStatLine:
     corner_three_point_fgp: float
 
 
-def per_game():
-    pass
-
-
 @dataclass
 class StatLine:
-    season: int
-    age: int
-    all_star: bool
     minutes_played: int
     position: str
-    team: str
     games_played: int
     games_started: int
     fg_made: int
@@ -62,14 +55,8 @@ class StatLine:
     effective_fg_percentage: float
     advanced: Optional[AdvancedStatLine] = field(init=False, repr=False)
     shooting_data: ShootingStatLine
-    _player_url: str
-    _game_logs: List = field(init=False, default=None)
     _round_digits = 3
-    game_log_scraper_class = GameLogScraper
     shooting_data_table_id = "shooting"
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self.season}, {self.team})"
 
     @property
     def two_fg_percentage(self):
@@ -77,16 +64,6 @@ class StatLine:
 
     def _round(self, number: float):
         return round(number, self._round_digits)
-
-    def game_logs(self):
-        if not self._game_logs:
-            scr = self.game_log_scraper_class(
-                self._get_game_log_url())
-            self._game_logs = scr.get_content()
-        return self._game_logs
-
-    def _get_game_log_url(self):
-        return self._player_url.rstrip(".html") + f"/gamelog/{self.season}"
 
     @property
     def three_fg_percentage(self):
@@ -108,20 +85,37 @@ class StatLine:
         if self.defensive_rebounds and self.offensive_rebounds:
             return self.defensive_rebounds + self.offensive_rebounds
 
-    def per_game(self):
-        pass
 
-    def per_100_possessions(self):
-        pass
+@dataclass
+class SeasonStatLine:
+    _player_url: str
+    stats: StatLine
+    season: int
+    age: int
+    all_star: bool
+    team: str
+    _game_logs: Generator = field(init=False, default=None)
+    shooting_data_table_id = "shooting"
+
+    def game_logs(self) -> Generator[GameLog, None, None]:
+        if not self._game_logs:
+            scr = self.new_gamelog_scraper()
+            self._game_logs = scr.get_content()
+        return self._game_logs
+
+    def get_game_log_url(self):
+        return self._player_url.rstrip(".html") + f"/gamelog/{self.season}"
+
+    def __repr__(self):
+        return f"SeasonStatLine({self.season}, {self.team})"
+
+    def new_gamelog_scraper(self):
+        return GameLogScraper(self.get_game_log_url())
 
 
 @dataclass
-class PlayoffStatLine(StatLine):
-    game_log_scraper_class = PlayoffGameLogScraper
+class PlayoffStatLine(SeasonStatLine):
     shooting_data_table_id = "playoffs_shooting"
 
-
-@dataclass
-class CareerStatLine(StatLine):
-    def __repr__(self):
-        return f"{self.__class__.__name__}(points={self.points}, rebounds={self.rebounds}, assists={self.assists})"
+    def new_gamelog_scraper(self):
+        return PlayoffGameLogScraper(self.get_game_log_url())
