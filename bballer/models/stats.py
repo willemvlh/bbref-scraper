@@ -30,10 +30,6 @@ class ShootingStatLine:
     corner_three_point_fgp: float
 
 
-def per_game():
-    pass
-
-
 @dataclass
 class StatLine:
     minutes_played: int
@@ -123,9 +119,3 @@ class PlayoffStatLine(SeasonStatLine):
 
     def new_gamelog_scraper(self):
         return PlayoffGameLogScraper(self.get_game_log_url())
-
-
-@dataclass
-class CareerStatLine(StatLine):
-    def __repr__(self):
-        return f"{self.__class__.__name__}(points={self.points}, rebounds={self.rebounds}, assists={self.assists})"
