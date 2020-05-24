@@ -2,7 +2,9 @@ import logging
 from datetime import datetime
 
 from bballer.models.game import Game, CondensedGamelog
+from bballer.models.team import TeamShell
 from bballer.scrapers.base import Scraper, get_data_stat_in_element
+from bballer.scrapers.utilities import remove_year_from_team_url
 
 
 class GameScraper(Scraper):
@@ -12,8 +14,7 @@ class GameScraper(Scraper):
     def get_content(self):
         game = Game()
         teams = self.find_teams()
-        game.away_team = teams[0]
-        game.home_team = teams[1]
+        game.home_team, game.away_team = self.find_teams()
         game.score = self.find_score()
         game.date = self.find_date()
         game.score_by_quarter = self.find_score_by_quarter()
@@ -26,8 +27,9 @@ class GameScraper(Scraper):
 
     def find_teams(self):
         performers = self.find_all("div", itemprop="performer")
-        teams = [pf.find("a", itemprop="name").get_text() for pf in performers]
-        return teams
+        anchors = [pf.find("a", itemprop="name") for pf in performers]
+        teams = [TeamShell(name=a.get_text(), url=remove_year_from_team_url(a.attrs["href"])) for a in anchors]
+        return teams[1], teams[0]
 
     def find_date(self):
         scorebox_div = self.find("div", class_="scorebox_meta")

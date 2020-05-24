@@ -7,6 +7,14 @@ from bs4 import BeautifulSoup, NavigableString, Comment
 from bballer.scrapers.download import Download
 
 
+def get_data_stat_child(stat_name, container):
+    """Returns the first child of container which has an attribute "data-stat" with value stat_name."""
+    val = container.find(attrs={"data-stat": stat_name})
+    if not val:
+        return None
+    return val.find()
+
+
 def get_data_stat_in_element(stat_name, element, attr=None, return_first_child=False):
     # this should be split up in two functions really
     """Returns the text value of a child of {element} which has an attribute "data-stat" with value {stat_name}.

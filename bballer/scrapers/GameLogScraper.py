@@ -2,7 +2,8 @@ from datetime import date
 from typing import Iterator
 
 from bballer.models.gamelog import GameLog
-from bballer.scrapers.base import Scraper, get_data_stat_in_element
+from bballer.models.team import TeamShell
+from bballer.scrapers.base import Scraper, get_data_stat_in_element, get_data_stat_child
 from bballer.scrapers.utilities import *
 
 
@@ -25,13 +26,16 @@ class GameLogScraper(Scraper):
         for row in [r for r in rows if "class" not in r.attrs]:
             yield self._parse_row(row)
 
+    def _parse_team_from_element(self, element) -> TeamShell:
+        return TeamShell(name=element.get_text(), url=remove_year_from_team_url(element.attrs["href"]))
+
     def _parse_row(self, row):
         gl = GameLog()
         gl.game_url = to_absolute_url(row.find("td", attrs={"data-stat": "date_game"}).find("a").attrs["href"])
         gl.date = date.fromisoformat(get_data_stat_in_element("date_game", row))
         gl.age = get_data_stat_in_element("age", row)
-        gl.team = get_data_stat_in_element("team_id", row)
-        gl.opponent = get_data_stat_in_element("opp_id", row)
+        gl.team = self._parse_team_from_element(get_data_stat_child("team_id", row))
+        gl.opponent = self._parse_team_from_element(get_data_stat_child("opp_id", row))
         gl.result = get_data_stat_in_element("game_result", row)
         gl.started = get_data_stat_in_element("gs", row) == 1
         gl.played = not get_data_stat_in_element("reason", row)

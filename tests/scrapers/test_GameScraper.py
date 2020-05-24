@@ -1,6 +1,7 @@
 from datetime import date
 
 from bballer.models.game import Game, CondensedGamelog
+from bballer.models.team import TeamShell
 from bballer.scrapers.GameLogScraper import GameLogScraper
 from bballer.scrapers.GameScraper import GameScraper
 
@@ -10,8 +11,10 @@ class TestGameScraper:
         url = "https://www.basketball-reference.com/boxscores/201611010CLE.html"
         scr = GameScraper(url)
         game = scr.get_content()
-        assert game.home_team == "Cleveland Cavaliers"
-        assert game.away_team == "Houston Rockets"
+        assert isinstance(game.home_team, TeamShell)
+        assert isinstance(game.away_team, TeamShell)
+        assert game.home_team.name == "Cleveland Cavaliers"
+        assert game.away_team.name == "Houston Rockets"
         assert game.score == (120, 128)
         assert game.date.day == 1
         assert game.date.month == 11
@@ -54,16 +57,20 @@ class TestGameLogScraper:
         assert len(logs) == 70
         first_game = logs[0]
         assert not first_game.played
-        assert first_game.team == "GSW"
-        assert first_game.opponent == "TOR"
+        assert isinstance(first_game.team, TeamShell)
+        assert isinstance(first_game.opponent, TeamShell)
+        assert first_game.team.name == "GSW"
+        assert first_game.opponent.name == "TOR"
         assert first_game.date == date.fromisoformat("2007-11-18")
         assert first_game.points is None
 
         second_game = logs[1]
         assert not second_game.started
         assert second_game.played
-        assert second_game.team == "GSW"
-        assert second_game.opponent == "NYK"
+        assert isinstance(second_game.team, TeamShell)
+        assert isinstance(second_game.opponent, TeamShell)
+        assert second_game.team.name == "GSW"
+        assert second_game.opponent.name == "NYK"
         assert second_game.result == "W (+26)"
         assert second_game.seconds_played == 597
         assert second_game.fg_made == 1

@@ -1,13 +1,14 @@
 from datetime import date
 
+from bballer.models.team import TeamShell
 from bballer.scrapers.GameScraper import GameScraper
 
 
 class GameLog:
     date: date
-    team: str
+    team: TeamShell
     age: str
-    opponent: str
+    opponent: TeamShell
     played: bool
     started: bool
     seconds_played: int

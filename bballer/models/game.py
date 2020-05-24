@@ -1,6 +1,8 @@
 from datetime import date
 from typing import Tuple, List
 
+from bballer.models.team import TeamShell
+
 
 class CondensedGamelog(object):
     player_id: str
@@ -26,8 +28,8 @@ class CondensedGamelog(object):
 
 
 class Game:
-    home_team: str  # todo: implement TeamShell
-    away_team: str
+    home_team: TeamShell
+    away_team: TeamShell
     date: date
     score: Tuple[int, int]
     score_by_quarter: List[Tuple[int, int]]
