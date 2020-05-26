@@ -22,13 +22,9 @@ class TotalMinutesScraper(Scraper):
 class BulkScraper:
     def __init__(self, urls):
         self._urls = urls
-        self._processed = []
 
     def scrape_all(self, _max: int = None) -> Iterator[Player]:
         urls = list(set(self._urls[0:_max] if _max else self._urls))
-        batches = [urls[i:i+10] for i in range(0, len(urls), 10)]
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            for batch in batches:
-                players = executor.map(lambda u: PlayerPageScraper(u).get_content(), batch)
-                for p in players:
-                    yield p
+            for player in executor.map(lambda u: PlayerPageScraper(u).get_content(), urls):
+                yield player
